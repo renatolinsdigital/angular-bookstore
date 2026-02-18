@@ -75,52 +75,54 @@
     }
   }
 
-  &__cart-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-left: auto;
-    margin-right: 1rem;
-  }
-
-  &__cart-label {
-    color: var(--color-gray4);
-    font-size: var(--font-size-small);
-    font-weight: var(--font-weight-semi-bold);
-    padding-bottom: 0.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  &__cart-count {
-    color: var(--color-primary);
-    font-size: var(--font-size-super-small);
-    font-weight: var(--font-weight-bold);
-    padding-top: 0.15rem;
-  }
-
   &__cart-btn {
-    background: rgba(245, 158, 11, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    border-radius: var(--radius-sm);
+    position: relative;
+    background: var(--color-tertiary);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    padding: 0.5rem 0.625rem;
+    padding: 0.5rem 0.675rem;
     display: flex;
     align-items: center;
+    margin-left: auto;
+    color: var(--color-white);
     transition:
       background-color var(--transition-default),
       border-color var(--transition-default),
+      color var(--transition-default),
       transform var(--transition-fast);
 
     &:hover {
-      background: rgba(245, 158, 11, 0.22);
+      background: var(--color-tertiary-dark);
       border-color: var(--color-primary);
+      color: var(--color-primary);
       transform: scale(1.05);
     }
   }
 
   &__cart-icon {
     width: 22px;
-    height: auto;
+    height: 22px;
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background: var(--color-primary);
+    color: var(--color-secondary-dark);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-base);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    pointer-events: none;
+    box-shadow: 0 0 0 2px var(--color-secondary);
   }
 }
