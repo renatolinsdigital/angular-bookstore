@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ResponsiveService } from '../../../core/services/responsive.service';
+import { ResponsiveService } from '../../../domain/services/responsive.service';
 
 @Component({
   selector: 'app-footer',

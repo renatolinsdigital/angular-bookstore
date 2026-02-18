@@ -1,6 +1,6 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
-import { CartService } from '../../core/services/cart.service';
-import { ResponsiveService } from '../../core/services/responsive.service';
+import { CartService } from '../../domain/services/cart.service';
+import { ResponsiveService } from '../../domain/services/responsive.service';
 import { PageContainerComponent } from '../../features/layout/page-container/page-container';
 import { ProductCardComponent } from '../../features/products/product-card/product-card';
 

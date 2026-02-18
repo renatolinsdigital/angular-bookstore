@@ -1,6 +1,6 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { CartService } from '../../../core/services/cart.service';
-import { ResponsiveService } from '../../../core/services/responsive.service';
+import { CartService } from '../../../domain/services/cart.service';
+import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
 
 @Component({

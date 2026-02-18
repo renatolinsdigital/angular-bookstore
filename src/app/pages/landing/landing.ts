@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResponsiveService } from '../../core/services/responsive.service';
+import { ResponsiveService } from '../../domain/services/responsive.service';
 
 @Component({
   selector: 'app-landing',
