@@ -49,28 +49,4 @@
       max-width: 80px;
     }
   }
-
-  &__btn {
-    min-height: 42px;
-    width: 175px;
-    max-width: 100%;
-    padding: 0.5rem;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    font-size: var(--font-size-super-small);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition:
-      background-color var(--transition-default),
-      transform var(--transition-fast);
-
-    &:hover {
-      background-color: var(--color-primary-dark);
-      transform: translateY(-1px);
-    }
-  }
 }

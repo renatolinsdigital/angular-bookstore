@@ -33,18 +33,17 @@
           >
             {{ item.title }}
           </span>
-          <button
-            type="button"
-            class="success__download-btn"
-            [class.success__download-btn--full]="responsive.isSmaller()"
+          <app-button
+            variant="download"
+            [fullWidth]="responsive.isSmaller()"
             (click)="downloadItem(item.downloadUrl)"
           >
             Download
-          </button>
+          </app-button>
         </div>
       }
     </div>
 
-    <button type="button" class="success__home-btn" (click)="goToHome()">BACK TO STORE</button>
+    <app-button variant="primary" (click)="goToHome()">BACK TO STORE</app-button>
   </div>
 </app-page-container>

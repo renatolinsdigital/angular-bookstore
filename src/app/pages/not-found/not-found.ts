@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { PageContainerComponent } from '../../domain/components/page-container/page-container';
+import { AppButtonComponent } from '../../shared/components/button/button';
 
 @Component({
   selector: 'app-not-found',
-  imports: [PageContainerComponent],
+  imports: [PageContainerComponent, AppButtonComponent],
   templateUrl: './not-found.html',
   styleUrl: './not-found.scss',
 })

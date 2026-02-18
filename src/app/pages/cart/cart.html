@@ -20,7 +20,7 @@
           [class.cart__empty-image--tiny]="responsive.youJokingRight()"
         />
       </div>
-      <button type="button" class="btn btn--primary" (click)="goToHome()">BROWSE THE STORE</button>
+      <app-button variant="primary" (click)="goToHome()">BROWSE THE STORE</app-button>
     </div>
   } @else {
     <!-- Cart items list -->
@@ -44,10 +44,8 @@
 
       <!-- Actions -->
       <div class="cart__actions">
-        <button type="button" class="btn btn--outline" (click)="goToHome()">
-          Continue Shopping
-        </button>
-        <button type="button" class="btn btn--primary" (click)="onPurchase()">PURCHASE</button>
+        <app-button variant="outline" (click)="goToHome()">Continue Shopping</app-button>
+        <app-button variant="primary" (click)="onPurchase()">PURCHASE</app-button>
       </div>
     </div>
   }

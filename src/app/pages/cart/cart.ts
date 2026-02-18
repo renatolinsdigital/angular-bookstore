@@ -6,10 +6,11 @@ import { ResponsiveService } from '../../domain/services/responsive.service';
 import { PageContainerComponent } from '../../domain/components/page-container/page-container';
 import { CartItemCardComponent } from './cart-item-card/cart-item-card';
 import { CurrencyBrlPipe } from '../../shared/pipes/currency-brl.pipe';
+import { AppButtonComponent } from '../../shared/components/button/button';
 
 @Component({
   selector: 'app-cart',
-  imports: [PageContainerComponent, CartItemCardComponent, CurrencyBrlPipe],
+  imports: [PageContainerComponent, CartItemCardComponent, CurrencyBrlPipe, AppButtonComponent],
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })

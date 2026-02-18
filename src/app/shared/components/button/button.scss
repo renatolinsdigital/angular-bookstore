@@ -1,0 +1,105 @@
+:host {
+  display: contents;
+}
+
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition:
+    background-color var(--transition-default),
+    color var(--transition-default),
+    transform var(--transition-fast);
+
+  &--primary {
+    min-height: 42px;
+    padding: 0.5rem 1.25rem;
+    width: 175px;
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-super-small);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--outline {
+    min-height: 42px;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-super-small);
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(99, 102, 241, 0.08);
+    }
+  }
+
+  &--cta {
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: var(--font-size-default);
+    border-radius: var(--radius-sm);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .app-btn__cta-arrow {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      transition: transform var(--transition-default);
+    }
+
+    &:hover:not(:disabled) .app-btn__cta-arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  &--download {
+    width: 140px;
+    min-height: 100%;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: var(--font-size-small);
+    border-radius: 0;
+    text-transform: none;
+    letter-spacing: 0;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-dark);
+      transform: scale(1.02);
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+    min-height: auto;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

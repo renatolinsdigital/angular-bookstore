@@ -74,44 +74,6 @@
   justify-content: center;
 }
 
-.home__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 2rem;
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  font-size: var(--font-size-default);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition:
-    background-color var(--transition-default),
-    transform var(--transition-fast);
-
-  &:hover {
-    background-color: var(--color-primary-dark);
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-.home__cta-arrow {
-  width: 18px;
-  height: 18px;
-  transition: transform var(--transition-default);
-
-  .home__cta:hover & {
-    transform: translateX(3px);
-  }
-}
-
 // ── Feature cards ────────────────────────────────────────────────────────────────
 
 .home__features {

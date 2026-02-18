@@ -45,7 +45,7 @@ describe('HomeComponent', () => {
   });
 
   it('should render the CTA button', () => {
-    const btn = fixture.nativeElement.querySelector('.home__cta');
+    const btn = fixture.nativeElement.querySelector('.app-btn--cta');
     expect(btn).not.toBeNull();
   });
 

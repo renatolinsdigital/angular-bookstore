@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { DownloadService } from '../../domain/services/download.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { PageContainerComponent } from '../../domain/components/page-container/page-container';
+import { AppButtonComponent } from '../../shared/components/button/button';
 
 @Component({
   selector: 'app-success',
-  imports: [PageContainerComponent],
+  imports: [PageContainerComponent, AppButtonComponent],
   templateUrl: './success.html',
   styleUrl: './success.scss',
 })
