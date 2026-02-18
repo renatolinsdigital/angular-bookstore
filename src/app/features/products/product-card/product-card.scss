@@ -8,21 +8,20 @@
   padding: 1rem;
   align-self: flex-start;
   box-shadow: var(--shadow-md);
-  border: 1px solid rgba(240, 232, 216, 0.6);
+  border: 2px solid var(--color-primary);
   transition:
     transform var(--transition-default),
     box-shadow var(--transition-default);
 
   &:hover {
-    transform: translateY(-5px);
     box-shadow: var(--shadow-lift);
   }
 
   &__image-wrapper {
-    border: 2px solid var(--color-tertiary-dark);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-sm);
     overflow: hidden;
-    background-color: var(--color-tertiary-dark);
+    background-color: rgba(36, 61, 97, 0.5);
   }
 
   &__image {
@@ -33,7 +32,7 @@
     transition: transform var(--transition-slow);
 
     .product-card:hover & {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
   }
 
@@ -42,7 +41,7 @@
     padding-bottom: 0.5rem;
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-small);
-    color: var(--color-dark);
+    color: var(--color-gray2);
     line-height: var(--line-height-tall);
   }
 
@@ -50,7 +49,7 @@
     font-weight: var(--font-weight-bold);
     padding-bottom: 0.875rem;
     font-size: var(--font-size-large);
-    color: var(--color-accent-dark);
+    color: var(--color-primary);
 
     &--compact {
       font-size: var(--font-size-small);
@@ -83,8 +82,6 @@
 
     &:hover:not(:disabled) {
       background-color: var(--color-primary-dark);
-      box-shadow: var(--shadow-amber);
-      transform: translateY(-1px);
     }
 
     &:active:not(:disabled) {

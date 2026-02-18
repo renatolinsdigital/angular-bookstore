@@ -19,7 +19,7 @@
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-extra-large);
     line-height: var(--line-height-taller);
-    color: var(--color-dark);
+    color: var(--color-gray2);
     max-width: auto;
 
     &--compact {
@@ -69,20 +69,20 @@
     align-items: center;
     gap: 1rem;
     padding: 1.25rem 0;
-    border-top: 1px solid var(--color-gray3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 0.5rem;
   }
 
   &__totals-label {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-large);
-    color: var(--color-gray6);
+    color: var(--color-gray4);
   }
 
   &__totals-value {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-huge);
-    color: var(--color-accent-dark);
+    color: var(--color-primary);
   }
 
   &__actions {
@@ -116,7 +116,7 @@
     color: var(--color-secondary);
     max-width: 100%;
     width: 175px;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.35);
 
     &:hover {
       background-color: var(--color-primary-dark);

@@ -6,7 +6,7 @@
   width: 100%;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid var(--color-gray3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   &--compact {
     padding-bottom: 0;
@@ -22,7 +22,7 @@
 
   &__col-header {
     text-transform: uppercase;
-    color: var(--color-gray5);
+    color: var(--color-gray4);
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-bold);
     padding-bottom: 1rem;
@@ -32,7 +32,7 @@
   &__image {
     max-height: 90px;
     width: auto;
-    border: 1px solid var(--color-tertiary-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-sm);
     object-fit: cover;
 
@@ -79,12 +79,13 @@
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-bold);
     padding-bottom: 0.25rem;
+    color: var(--color-gray1);
   }
 
   &__price {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-default);
-    color: var(--color-gray6);
+    color: var(--color-gray4);
   }
 
   &__qty-col {
@@ -153,7 +154,7 @@
   &__subtotal {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-default);
-    color: var(--color-accent-dark);
+    color: var(--color-accent);
   }
 
   &__remove-col {

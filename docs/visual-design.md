@@ -35,11 +35,19 @@ Amber is the color of a warm desk lamp, candlelight, and the golden spines of cl
 
 Because amber sits opposite to the dark navy on the colour wheel (warm vs. cool), it creates tension that draws the eye immediately. This makes conversion-critical actions highly visible without resorting to loud or aggressive reds.
 
-### Surface — Warm Parchment `#fdf8f0` / `#f0e8d8`
+### Surface — Deep Ocean Blue `#1a2d4a` / `#243d61`
 
-> _"The page itself."_
+> _"A shelf lit from within."_
 
-Product cards, cart panels, and full-page content areas use a warm off-white — not a clinical `#ffffff`. This slight warmth references the physical texture of book pages, creating a subliminal association between the digital interface and the tactile pleasure of a real book. It also reduces eye strain on long browsing sessions.
+Product cards, cart panels, and full-page content areas use a deep ocean blue rather than a light surface. This creates a **three-layer depth hierarchy**: the midnight slate background (`#0f172a`) recedes furthest, the ocean blue card (`#1a2d4a`) floats above it, and the warm amber and indigo accents sit on top of that. The result is an interface that reads as genuinely three-dimensional without any decorative chrome.
+
+A light parchment surface was considered but rejected because:
+
+- It created a jarring light-vs-dark contrast that felt like a UI inconsistency rather than intentional design
+- Book cover images look significantly better surrounded by dark tones — the same reason art galleries paint their walls dark
+- A dark surface keeps users in the immersive "midnight library" atmosphere throughout the entire shopping flow, rather than snapping them out of it at each card
+
+All text inside dark-surface cards explicitly uses light tokens (`--color-gray1`, `--color-gray2`, `--color-gray4`) rather than inheriting the dark body text, ensuring WCAG-compliant contrast at every level.
 
 ### Accent — Soft Indigo `#6366f1` / `#4f46e5`
 
