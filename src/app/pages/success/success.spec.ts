@@ -2,10 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { signal } from '@angular/core';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import confetti from 'canvas-confetti';
 import { SuccessComponent } from './success';
 import { DownloadService } from '../../domain/services/download.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { CartItem } from '../../domain/models/cart-item.model';
+
+vi.mock('canvas-confetti', () => ({ default: vi.fn() }));
 
 const mockDownloadItems: CartItem[] = [
   {
@@ -37,6 +40,7 @@ describe('SuccessComponent', () => {
   let router: Router;
 
   beforeEach(async () => {
+    vi.clearAllMocks();
     await TestBed.configureTestingModule({
       imports: [SuccessComponent],
       providers: [
@@ -54,6 +58,10 @@ describe('SuccessComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should launch confetti on init', () => {
+    expect(confetti).toHaveBeenCalled();
   });
 
   it('should navigate to /store when goToHome() is called', () => {
