@@ -1,0 +1,9 @@
+<div class="page-container" [class.page-container--row]="!isVertical()">
+  @if (isContentLoading()) {
+    <div class="page-container__loading">
+      <div class="loading-spinner"></div>
+    </div>
+  } @else {
+    <ng-content />
+  }
+</div>

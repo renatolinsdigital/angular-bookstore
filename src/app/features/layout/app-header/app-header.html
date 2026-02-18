@@ -1,0 +1,28 @@
+<header class="app-header" [class.compact]="responsive.youJokingRight()">
+  <div class="app-header__inner">
+    <button
+      class="app-header__logo"
+      (click)="goToHome()"
+      type="button"
+      [class.app-header__logo--compact]="responsive.youJokingRight()"
+    >
+      Digital<span class="logo-accent">Book</span>Store
+    </button>
+
+    <div class="app-header__cart-info">
+      @if (!responsive.isSmall()) {
+        <span class="app-header__cart-label">My Cart</span>
+      }
+      @if (!responsive.youJokingRight()) {
+        <span class="app-header__cart-count">
+          {{ cartService.totalItemsInCart() }}
+          {{ cartService.totalItemsInCart() === 1 ? 'item' : 'items' }}
+        </span>
+      }
+    </div>
+
+    <button class="app-header__cart-btn" (click)="goToCart()" type="button" aria-label="Go to cart">
+      <img src="assets/images/cart-icon.svg" alt="Cart" class="app-header__cart-icon" />
+    </button>
+  </div>
+</header>

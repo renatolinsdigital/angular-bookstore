@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "price": 9.99,
+      "title": "The First Book",
+      "image": "data/images/book1.png",
+      "downloadUrl": "data/books/book1.pdf"
+    },
+    {
+      "id": "2",
+      "price": 12.59,
+      "title": "The Second Book",
+      "image": "data/images/book2.png",
+      "downloadUrl": "data/books/book2.pdf"
+    },
+    {
+      "id": "3",
+      "price": 29.0,
+      "title": "The Third Book",
+      "image": "data/images/book3.png",
+      "downloadUrl": "data/books/book3.pdf"
+    },
+    {
+      "id": "4",
+      "price": 19.5,
+      "title": "The Fourth Book",
+      "image": "data/images/book4.png",
+      "downloadUrl": "data/books/book4.pdf"
+    },
+    {
+      "id": "5",
+      "price": 22.5,
+      "title": "The Fifth Book",
+      "image": "data/images/book5.png",
+      "downloadUrl": "data/books/book5.pdf"
+    },
+    {
+      "id": "6",
+      "price": 16.9,
+      "title": "The Sixth Book",
+      "image": "data/images/book6.png",
+      "downloadUrl": "data/books/book6.pdf"
+    }
+  ]
+}

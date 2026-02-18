@@ -1,0 +1,15 @@
+<div class="toast-container" role="region" aria-live="polite" aria-label="Notifications">
+  @for (toast of toastService.toasts(); track trackById($index, toast)) {
+    <div class="toast toast--{{ toast.type }}" role="alert">
+      <span class="toast__message">{{ toast.message }}</span>
+      <button
+        class="toast__close"
+        type="button"
+        aria-label="Dismiss notification"
+        (click)="toastService.dismiss(toast.id)"
+      >
+        &#x2715;
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,98 @@
+@use '../../../../styles/variables' as v;
+
+.app-header {
+  min-height: 72px;
+  width: 100%;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-mid) 100%);
+  border-bottom: 2px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__inner {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    color: var(--color-white);
+    font-size: var(--font-size-extra-large);
+    font-weight: var(--font-weight-bold);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    letter-spacing: -0.025em;
+    transition: color var(--transition-default);
+
+    // Amber highlight on the first word
+    span.logo-accent {
+      color: var(--color-primary);
+    }
+
+    &:hover {
+      color: var(--color-primary-light);
+    }
+
+    &--compact {
+      font-size: var(--font-size-small);
+    }
+  }
+
+  &__cart-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  &__cart-label {
+    color: var(--color-gray4);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semi-bold);
+    padding-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__cart-count {
+    color: var(--color-primary);
+    font-size: var(--font-size-super-small);
+    font-weight: var(--font-weight-bold);
+    padding-top: 0.15rem;
+  }
+
+  &__cart-btn {
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    padding: 0.5rem 0.625rem;
+    display: flex;
+    align-items: center;
+    transition:
+      background-color var(--transition-default),
+      border-color var(--transition-default),
+      transform var(--transition-fast);
+
+    &:hover {
+      background: rgba(245, 158, 11, 0.22);
+      border-color: var(--color-primary);
+      transform: scale(1.05);
+    }
+  }
+
+  &__cart-icon {
+    width: 22px;
+    height: auto;
+  }
+}

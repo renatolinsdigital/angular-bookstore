@@ -1,0 +1,16 @@
+<app-page-container [isContentLoading]="cartService.status() === 'loading'">
+  @if (cartService.status() === 'failed') {
+    <p class="home__error">Product list is unavailable. Try again later.</p>
+  } @else {
+    <div class="home__grid" [style.grid-template-columns]="gridColumns()">
+      @for (product of cartService.products(); track product.id) {
+        <app-product-card
+          [productId]="product.id"
+          [title]="product.title"
+          [price]="product.price"
+          [imageUrl]="product.image"
+        />
+      }
+    </div>
+  }
+</app-page-container>

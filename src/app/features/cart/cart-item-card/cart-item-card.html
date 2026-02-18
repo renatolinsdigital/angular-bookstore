@@ -1,0 +1,87 @@
+<div class="cart-item" [class.cart-item--compact]="responsive.youJokingRight()">
+  <!-- Product image column -->
+  <div class="cart-item__image-col">
+    @if (hasHeader() && !responsive.isSmaller() && !responsive.youJokingRight()) {
+      <p class="cart-item__col-header">PRODUCT</p>
+    }
+    <img
+      [src]="imageUrl() || 'assets/images/placeholder.png'"
+      [alt]="itemName()"
+      class="cart-item__image"
+      [class.cart-item__image--compact]="responsive.youJokingRight()"
+      [class.cart-item__image--smaller]="responsive.isSmaller()"
+    />
+  </div>
+
+  <!-- Details grid -->
+  <div class="cart-item__details" [class.cart-item__details--smaller]="responsive.isSmaller()">
+    <!-- Name + Price -->
+    @if (!responsive.youJokingRight()) {
+      <div
+        class="cart-item__name-col"
+        [class.cart-item__name-col--row]="responsive.isSmaller()"
+        [class.cart-item__name-col--padded]="!responsive.isSmaller() && hasHeader()"
+      >
+        <span class="cart-item__name">{{ itemName() }}</span>
+        @if (!responsive.isSmaller()) {
+          <span class="cart-item__price">{{ itemPrice() | currencyBrl }}</span>
+        }
+      </div>
+    }
+
+    <!-- Quantity controls -->
+    @if (!responsive.youJokingRight()) {
+      <div class="cart-item__qty-col">
+        @if (hasHeader() && !responsive.isSmaller() && !responsive.youJokingRight()) {
+          <p class="cart-item__col-header">QUANTITY</p>
+        }
+        <div class="cart-item__qty-controls">
+          <button
+            type="button"
+            class="cart-item__qty-btn"
+            (click)="subtract()"
+            aria-label="Subtract"
+          >
+            <img src="assets/images/minus.svg" alt="-" />
+          </button>
+          <input
+            class="cart-item__qty-input"
+            type="number"
+            [value]="formQuantity()"
+            (input)="onQuantityInput($event)"
+            (blur)="onQuantityBlur()"
+            min="0"
+            max="999"
+          />
+          <button type="button" class="cart-item__qty-btn" (click)="add()" aria-label="Add">
+            <img src="assets/images/plus.svg" alt="+" />
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- Price (for non-smaller screens) -->
+    @if (!responsive.youJokingRight() && !responsive.isSmaller()) {
+      <div class="cart-item__price-col">
+        @if (hasHeader()) {
+          <p class="cart-item__col-header">PRICE</p>
+        }
+        <span class="cart-item__subtotal">{{ itemPrice() * quantity() | currencyBrl }}</span>
+      </div>
+    }
+
+    <!-- Remove button -->
+    @if (!responsive.youJokingRight()) {
+      <div class="cart-item__remove-col">
+        <button
+          type="button"
+          class="cart-item__remove-btn"
+          (click)="remove()"
+          aria-label="Remove item"
+        >
+          <img src="assets/images/trash.svg" alt="Remove" />
+        </button>
+      </div>
+    }
+  </div>
+</div>

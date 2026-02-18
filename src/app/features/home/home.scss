@@ -1,0 +1,18 @@
+.home__grid {
+  display: grid;
+  gap: 1.25rem;
+  width: 100%;
+  min-height: 688px;
+  align-items: start;
+}
+
+.home__error {
+  color: var(--color-primary-light);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--line-height-tall);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+}

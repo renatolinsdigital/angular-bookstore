@@ -1,0 +1,50 @@
+<app-page-container>
+  <div class="success__card">
+    <p
+      class="success__title"
+      [class.success__title--compact]="responsive.youJokingRight()"
+      [class.success__title--smaller]="responsive.isSmaller()"
+    >
+      Purchase completed successfully!
+    </p>
+
+    <div
+      class="success__image-wrapper"
+      [class.success__image-wrapper--small]="responsive.isSmall()"
+    >
+      <img
+        src="assets/images/characters_success.png"
+        alt="Order Success"
+        class="success__image"
+        [class.success__image--tiny]="responsive.youJokingRight()"
+      />
+    </div>
+
+    <!-- Download list -->
+    <div class="success__downloads">
+      @for (item of downloadService.downloadItems(); track item.id) {
+        <div
+          class="success__download-item"
+          [class.success__download-item--column]="responsive.isSmaller()"
+        >
+          <span
+            class="success__item-title"
+            [class.success__item-title--compact]="responsive.youJokingRight()"
+          >
+            {{ item.title }}
+          </span>
+          <button
+            type="button"
+            class="success__download-btn"
+            [class.success__download-btn--full]="responsive.isSmaller()"
+            (click)="downloadItem(item.downloadUrl)"
+          >
+            Download
+          </button>
+        </div>
+      }
+    </div>
+
+    <button type="button" class="success__home-btn" (click)="goToHome()">BACK TO STORE</button>
+  </div>
+</app-page-container>

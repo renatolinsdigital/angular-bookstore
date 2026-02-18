@@ -1,0 +1,38 @@
+<div class="product-card">
+  <div class="product-card__image-wrapper">
+    <img
+      [src]="imageUrl() || 'assets/images/placeholder.png'"
+      [alt]="title()"
+      class="product-card__image"
+      loading="lazy"
+    />
+  </div>
+
+  <p class="product-card__title">{{ title() }}</p>
+
+  <p class="product-card__price" [class.product-card__price--compact]="responsive.youJokingRight()">
+    {{ price() | currencyBrl }}
+  </p>
+
+  <button
+    type="button"
+    class="product-card__btn"
+    [class.product-card__btn--in-cart]="quantityInCart > 0"
+    [class.product-card__btn--compact]="responsive.youJokingRight()"
+    [class.product-card__btn--loading]="isLoading()"
+    [disabled]="quantityInCart >= 999 || isLoading()"
+    (click)="handleAddToCart()"
+  >
+    @if (isLoading()) {
+      <span class="product-card__btn-spinner"></span>
+    } @else {
+      @if (!responsive.youJokingRight()) {
+        <img src="assets/images/cart-add.svg" alt="" class="product-card__btn-icon" />
+        <span class="product-card__btn-qty">{{ quantityInCart }}</span>
+      }
+      <span class="product-card__btn-label">
+        {{ quantityInCart > 0 ? 'ADD MORE' : 'ADD TO CART' }}
+      </span>
+    }
+  </button>
+</div>

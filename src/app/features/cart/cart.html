@@ -1,0 +1,54 @@
+<app-page-container>
+  @if (cartService.cartItems().length === 0) {
+    <!-- Empty cart state -->
+    <div class="cart__empty">
+      <p
+        class="cart__empty-msg"
+        [class.cart__empty-msg--compact]="responsive.youJokingRight()"
+        [class.cart__empty-msg--smaller]="responsive.isSmaller()"
+      >
+        You don't have any items in your cart yet. Go shopping!
+      </p>
+      <div
+        class="cart__empty-image-wrapper"
+        [class.cart__empty-image-wrapper--small]="responsive.isSmall()"
+      >
+        <img
+          src="assets/images/characters_buying.png"
+          alt="The Cart is Empty"
+          class="cart__empty-image"
+          [class.cart__empty-image--tiny]="responsive.youJokingRight()"
+        />
+      </div>
+      <button type="button" class="btn btn--primary" (click)="goToHome()">BROWSE THE STORE</button>
+    </div>
+  } @else {
+    <!-- Cart items list -->
+    <div class="cart__list">
+      @for (item of cartService.cartItems(); track item.id; let i = $index) {
+        <app-cart-item-card
+          [itemId]="item.id"
+          [itemName]="item.title"
+          [itemPrice]="item.price"
+          [quantity]="item.quantity"
+          [imageUrl]="item.image"
+          [hasHeader]="i === 0"
+        />
+      }
+
+      <!-- Totals row -->
+      <div class="cart__totals">
+        <span class="cart__totals-label">Total:</span>
+        <span class="cart__totals-value">{{ cartService.cartTotal() | currencyBrl }}</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="cart__actions">
+        <button type="button" class="btn btn--outline" (click)="goToHome()">
+          Continue Shopping
+        </button>
+        <button type="button" class="btn btn--primary" (click)="onPurchase()">PURCHASE</button>
+      </div>
+    </div>
+  }
+</app-page-container>

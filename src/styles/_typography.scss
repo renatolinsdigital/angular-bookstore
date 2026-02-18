@@ -1,0 +1,35 @@
+// =============================================================================
+// Typography – font-face declarations
+// =============================================================================
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: 'Open Sans';
+  src: url('/assets/fonts/OpenSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+  font-family: 'Open Sans';
+  src: url('/assets/fonts/OpenSans-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: 'Open Sans';
+  src: url('/assets/fonts/OpenSans-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+html,
+body {
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 400;
+  font-family: var(--font-family-base);
+}

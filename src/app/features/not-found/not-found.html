@@ -1,0 +1,23 @@
+<app-page-container>
+  <div class="not-found__card">
+    <p
+      class="not-found__title"
+      [class.not-found__title--compact]="responsive.youJokingRight()"
+      [class.not-found__title--smaller]="responsive.isSmaller()"
+    >
+      Oops... it seems the page doesn't exist :s
+    </p>
+    <div
+      class="not-found__image-wrapper"
+      [class.not-found__image-wrapper--small]="responsive.isSmall()"
+    >
+      <img
+        src="assets/images/characters_buying.png"
+        alt="Page Not Found"
+        class="not-found__image"
+        [class.not-found__image--tiny]="responsive.youJokingRight()"
+      />
+    </div>
+    <button type="button" class="not-found__btn" (click)="goToHome()">BROWSE THE STORE</button>
+  </div>
+</app-page-container>
