@@ -1,0 +1,109 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { signal } from '@angular/core';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { CartItemCardComponent } from './cart-item-card';
+import { CartService } from '../../../domain/services/cart.service';
+import { ResponsiveService } from '../../../domain/services/responsive.service';
+import { provideHttpClient } from '@angular/common/http';
+
+const mockCartService = {
+  totalItemsInCart: signal(0),
+  cartItems: signal([]),
+  products: signal([]),
+  status: signal<'idle' | 'loading' | 'succeeded' | 'failed'>('idle'),
+  error: signal<string | null>(null),
+  cartTotal: signal(0),
+  loadProducts: vi.fn(),
+  addToCart: vi.fn(),
+  subtractFromCart: vi.fn(),
+  removeFromCart: vi.fn(),
+  emptyCart: vi.fn(),
+  setQuantity: vi.fn(),
+  getQuantityById: vi.fn().mockReturnValue(1),
+};
+
+const mockResponsiveService = {
+  youJokingRight: signal(false),
+  isSmaller: signal(false),
+  isSmall: signal(false),
+  isSuperSmall: signal(false),
+  isDesktopBigScreen: signal(true),
+  isDesktopSmallScreen: signal(false),
+};
+
+describe('CartItemCardComponent', () => {
+  let component: CartItemCardComponent;
+  let fixture: ComponentFixture<CartItemCardComponent>;
+
+  beforeEach(async () => {
+    vi.clearAllMocks();
+
+    await TestBed.configureTestingModule({
+      imports: [CartItemCardComponent],
+      providers: [
+        provideHttpClient(),
+        { provide: CartService, useValue: mockCartService },
+        { provide: ResponsiveService, useValue: mockResponsiveService },
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(CartItemCardComponent);
+    component = fixture.componentInstance;
+    fixture.componentRef.setInput('itemId', 'p1');
+    fixture.componentRef.setInput('itemName', 'Test Book');
+    fixture.componentRef.setInput('itemPrice', 29.99);
+    fixture.componentRef.setInput('quantity', 2);
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should sync formQuantity with quantity input on ngOnChanges', () => {
+    fixture.componentRef.setInput('quantity', 5);
+    component.ngOnChanges();
+    expect((component as any).formQuantity()).toBe('5');
+  });
+
+  it('should call subtractFromCart when subtract() is called with quantity > 0', () => {
+    (component as any).subtract();
+    expect(mockCartService.subtractFromCart).toHaveBeenCalledWith('p1');
+  });
+
+  it('should not call subtractFromCart when quantity is 0', () => {
+    fixture.componentRef.setInput('quantity', 0);
+    fixture.detectChanges();
+    (component as any).subtract();
+    expect(mockCartService.subtractFromCart).not.toHaveBeenCalled();
+  });
+
+  it('should call addToCart when add() is called', () => {
+    (component as any).add();
+    expect(mockCartService.addToCart).toHaveBeenCalledWith('p1');
+  });
+
+  it('should not call addToCart when quantity is at 999', () => {
+    fixture.componentRef.setInput('quantity', 999);
+    fixture.detectChanges();
+    (component as any).add();
+    expect(mockCartService.addToCart).not.toHaveBeenCalled();
+  });
+
+  it('should call removeFromCart when remove() is called', () => {
+    (component as any).remove();
+    expect(mockCartService.removeFromCart).toHaveBeenCalledWith('p1');
+  });
+
+  it('should call setQuantity on blur with parsed numeric value', () => {
+    (component as any).formQuantity.set('7');
+    (component as any).onQuantityBlur();
+    expect(mockCartService.setQuantity).toHaveBeenCalledWith('p1', 7);
+  });
+
+  it('should call setQuantity with 0 when blur value is NaN', () => {
+    (component as any).formQuantity.set('abc');
+    (component as any).onQuantityBlur();
+    expect(mockCartService.setQuantity).toHaveBeenCalledWith('p1', 0);
+  });
+});

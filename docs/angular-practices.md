@@ -189,7 +189,93 @@ Each component follows the Angular convention of co-located files:
 product-card/
 ├── product-card.ts     ← class + metadata
 ├── product-card.html   ← template
-└── product-card.scss   ← scoped styles
+├── product-card.scss   ← scoped styles
+└── product-card.spec.ts← unit tests (co-located)
 ```
 
 No separate `index.ts` barrel files are used — Angular's compiler resolves components by their class name directly.
+
+---
+
+## Unit Testing
+
+All components are tested with **Vitest** via Angular's `@angular/build:unit-test` builder. Tests live beside their component in a `.spec.ts` file.
+
+Run once (non-watch):
+
+```bash
+npm test -- --watch=false
+```
+
+### TestBed Setup for Standalone Components
+
+Each spec imports the component under test directly into `imports[]` (no module needed) and provides fake service objects via `providers[]`:
+
+```ts
+await TestBed.configureTestingModule({
+  imports: [ProductCardComponent],
+  providers: [
+    { provide: CartService, useValue: mockCartService },
+    { provide: ResponsiveService, useValue: mockResponsiveService },
+  ],
+}).compileComponents();
+```
+
+### Signal-Backed Service Mocks
+
+Service properties that are signals are mocked with real `signal()` instances so Angular's reactivity graph is intact inside the component:
+
+```ts
+const mockCartService = {
+  totalItemsInCart: signal(0),
+  cartItems: signal([]),
+  addToCart: vi.fn(),
+  // ...
+};
+```
+
+Methods that drive template state through a `computed()` are backed by a writable signal so the computed re-evaluates when the backing value changes:
+
+```ts
+// module-level backing signal
+const mockQty = signal(0);
+
+const mockCartService = {
+  getQuantityById: vi.fn().mockImplementation(() => mockQty()),
+  // ...
+};
+
+// in test:
+mockQty.set(2);
+fixture.detectChanges();
+```
+
+This avoids `NG0100: ExpressionChangedAfterItHasBeenCheckedError`, which occurs when a plain non-signal getter changes value between Angular's update pass and its dev-mode verification pass.
+
+### Setting Signal Inputs in Tests
+
+Signal inputs (`input()` / `input.required()`) cannot be set via `nativeElement` assignment. Use `fixture.componentRef.setInput()`:
+
+```ts
+fixture.componentRef.setInput('productId', 'book-1');
+fixture.componentRef.setInput('title', 'Deep Dive');
+fixture.detectChanges();
+```
+
+### Prefer `computed` Over Getters for Reactive State
+
+When a component property depends on both an injected service and an `input()` signal, declare it as a `computed()` rather than a plain getter:
+
+```ts
+// ✅ computed — Angular tracks the dependency; ECAIBC-safe in tests
+protected readonly quantityInCart = computed(() =>
+  this.cartService.getQuantityById(this.productId())
+);
+
+// ❌ getter — Angular cannot track reactivity; may cause NG0100 in dev mode
+protected get quantityInCart() {
+  return this.cartService.getQuantityById(this.productId());
+}
+```
+
+Templates call the computed as a function: `{{ quantityInCart() }}`.

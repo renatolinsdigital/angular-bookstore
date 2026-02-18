@@ -5,8 +5,9 @@ An **Angular** SPA for purchasing digital books, with **Signals** for state mana
 ## Quick Start
 
 ```bash
-npm install       # Install dependencies
-npm run dev       # Start the dev server at http://localhost:4200
+npm install                      # Install dependencies
+npm run dev                      # Start the dev server at http://localhost:4200
+npm test -- --watch=false        # Run all unit tests once
 ```
 
 ## Main Stack
@@ -54,6 +55,7 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Self-hosted Open Sans font family via `@font-face`
 - ✅ Responsive layout driven by a `ResponsiveService` with named breakpoints
 - ✅ Strict TypeScript with `strictTemplates` Angular compiler option
+- ✅ Unit tests for all components — Vitest via `@angular/build:unit-test`, signal-backed mocks, co-located `.spec.ts` files
 
 ## Features of This Project
 

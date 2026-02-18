@@ -17,10 +17,10 @@
   <button
     type="button"
     class="product-card__btn"
-    [class.product-card__btn--in-cart]="quantityInCart > 0"
+    [class.product-card__btn--in-cart]="quantityInCart() > 0"
     [class.product-card__btn--compact]="responsive.youJokingRight()"
     [class.product-card__btn--loading]="isLoading()"
-    [disabled]="quantityInCart >= 999 || isLoading()"
+    [disabled]="quantityInCart() >= 999 || isLoading()"
     (click)="handleAddToCart()"
   >
     @if (isLoading()) {
@@ -28,10 +28,10 @@
     } @else {
       @if (!responsive.youJokingRight()) {
         <img src="assets/images/cart-add.svg" alt="" class="product-card__btn-icon" />
-        <span class="product-card__btn-qty">{{ quantityInCart }}</span>
+        <span class="product-card__btn-qty">{{ quantityInCart() }}</span>
       }
       <span class="product-card__btn-label">
-        {{ quantityInCart > 0 ? 'ADD MORE' : 'ADD TO CART' }}
+        {{ quantityInCart() > 0 ? 'ADD MORE' : 'ADD TO CART' }}
       </span>
     }
   </button>

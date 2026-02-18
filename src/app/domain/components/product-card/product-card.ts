@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { CartService } from '../../../domain/services/cart.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
@@ -19,12 +19,12 @@ export class ProductCardComponent {
   protected readonly responsive = inject(ResponsiveService);
   protected readonly isLoading = signal(false);
 
-  protected get quantityInCart(): number {
-    return this.cartService.getQuantityById(this.productId());
-  }
+  protected readonly quantityInCart = computed(() =>
+    this.cartService.getQuantityById(this.productId()),
+  );
 
   protected async handleAddToCart(): Promise<void> {
-    if (this.quantityInCart >= 999) return;
+    if (this.quantityInCart() >= 999) return;
     this.isLoading.set(true);
     // Simulate a short network delay (mirrors the React version)
     await new Promise((resolve) => setTimeout(resolve, 200));
