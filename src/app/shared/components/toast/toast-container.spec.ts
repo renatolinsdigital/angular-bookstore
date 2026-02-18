@@ -107,4 +107,18 @@ describe('ToastContainerComponent', () => {
     const bar = fixture.nativeElement.querySelector('.toast__progress-bar') as HTMLElement;
     expect(bar.style.animationDuration).toBe('3000ms');
   });
+
+  it('should apply toast-container--top class by default', () => {
+    const container = fixture.nativeElement.querySelector('.toast-container');
+    expect(container.classList.contains('toast-container--top')).toBe(true);
+    expect(container.classList.contains('toast-container--bottom')).toBe(false);
+  });
+
+  it('should apply toast-container--bottom class when position is bottom', () => {
+    fixture.componentRef.setInput('position', 'bottom');
+    fixture.detectChanges();
+    const container = fixture.nativeElement.querySelector('.toast-container');
+    expect(container.classList.contains('toast-container--bottom')).toBe(true);
+    expect(container.classList.contains('toast-container--top')).toBe(false);
+  });
 });
