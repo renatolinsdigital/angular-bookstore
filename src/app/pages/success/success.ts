@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DownloadService } from '../../core/services/download.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
-import { PageContainerComponent } from '../layout/page-container/page-container';
+import { PageContainerComponent } from '../../features/layout/page-container/page-container';
 
 @Component({
   selector: 'app-success',
@@ -16,7 +16,7 @@ export class SuccessComponent {
   protected readonly responsive = inject(ResponsiveService);
 
   protected goToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/store']);
   }
 
   protected downloadItem(downloadUrl?: string): void {

@@ -91,7 +91,7 @@ Responsive behaviour is handled in two complementary ways:
 1. **JavaScript signals** (`ResponsiveService`) — for structural layout changes (number of grid columns, whether a section is shown, etc.).
 2. **CSS media queries** — for minor presentational tweaks only (font-size bumps, padding adjustments).
 
-Example — grid columns in HomeComponent:
+Example — grid columns in StoreComponent:
 
 ```ts
 // In component TS

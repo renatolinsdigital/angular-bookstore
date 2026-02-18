@@ -45,7 +45,7 @@ HTTP GET /data/books.json
    ↓
 CartService.products (signal)
    ↓
-HomeComponent template (reads signal via @for)
+StoreComponent template (reads signal via @for)
    ↓
 ProductCardComponent (reads per-item quantity from CartService)
    ↓

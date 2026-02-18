@@ -47,6 +47,34 @@
     }
   }
 
+  &__nav {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+  }
+
+  &__nav-link {
+    background: transparent;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.375rem 0.875rem;
+    cursor: pointer;
+    transition:
+      background-color var(--transition-default),
+      border-color var(--transition-default),
+      color var(--transition-default);
+
+    &:hover {
+      background-color: rgba(245, 158, 11, 0.12);
+      border-color: var(--color-primary);
+    }
+  }
+
   &__cart-info {
     display: flex;
     flex-direction: column;

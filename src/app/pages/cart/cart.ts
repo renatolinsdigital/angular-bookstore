@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { DownloadService } from '../../core/services/download.service';
 import { ResponsiveService } from '../../core/services/responsive.service';
-import { PageContainerComponent } from '../layout/page-container/page-container';
+import { PageContainerComponent } from '../../features/layout/page-container/page-container';
 import { CartItemCardComponent } from './cart-item-card/cart-item-card';
 import { CurrencyBrlPipe } from '../../shared/pipes/currency-brl.pipe';
 
@@ -20,7 +20,7 @@ export class CartComponent {
   protected readonly responsive = inject(ResponsiveService);
 
   protected goToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/store']);
   }
 
   protected onPurchase(): void {

@@ -108,7 +108,6 @@
   transition:
     background-color var(--transition-default),
     color var(--transition-default),
-    box-shadow var(--transition-default),
     transform var(--transition-fast);
 
   &--primary {

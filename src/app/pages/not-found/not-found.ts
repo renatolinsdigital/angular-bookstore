@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResponsiveService } from '../../core/services/responsive.service';
-import { PageContainerComponent } from '../layout/page-container/page-container';
+import { PageContainerComponent } from '../../features/layout/page-container/page-container';
 
 @Component({
   selector: 'app-not-found',
@@ -14,6 +14,6 @@ export class NotFoundComponent {
   protected readonly responsive = inject(ResponsiveService);
 
   protected goToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/store']);
   }
 }

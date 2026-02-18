@@ -17,6 +17,10 @@ export class AppHeaderComponent {
     this.router.navigate(['/']);
   }
 
+  protected goToStore(): void {
+    this.router.navigate(['/store']);
+  }
+
   protected goToCart(): void {
     this.router.navigate(['/cart']);
   }

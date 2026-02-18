@@ -45,9 +45,9 @@ Generic page wrapper that constrains content to `max-width: 1080px` and shows a 
 
 ## Feature Components
 
-### `HomeComponent`
+### `StoreComponent`
 
-**Selector:** `app-home` (lazy route `/`)  
+**Selector:** `app-store` (lazy route `/store`)  
 **Path:** `src/app/features/home/`
 
 Triggers `CartService.loadProducts()` on init. Renders a responsive product grid using `@for` over `cartService.products()`. Grid column count is a `computed()` signal from breakpoints.
