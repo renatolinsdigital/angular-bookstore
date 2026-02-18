@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DownloadService } from '../../domain/services/download.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
-import { PageContainerComponent } from '../../features/layout/page-container/page-container';
+import { PageContainerComponent } from '../../domain/components/page-container/page-container';
 
 @Component({
   selector: 'app-success',

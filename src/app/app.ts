@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppHeaderComponent } from './features/layout/app-header/app-header';
-import { AppFooterComponent } from './features/layout/app-footer/app-footer';
+import { AppHeaderComponent } from './domain/components/app-header/app-header';
+import { AppFooterComponent } from './domain/components/app-footer/app-footer';
 import { ToastContainerComponent } from './shared/components/toast/toast-container';
 
 @Component({
