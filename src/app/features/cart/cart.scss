@@ -116,12 +116,9 @@
     color: var(--color-secondary);
     max-width: 100%;
     width: 175px;
-    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.35);
 
     &:hover {
       background-color: var(--color-primary-dark);
-      box-shadow: var(--shadow-amber);
-      transform: translateY(-1px);
     }
   }
 
@@ -132,7 +129,6 @@
 
     &:hover {
       background-color: rgba(99, 102, 241, 0.08);
-      transform: translateY(-1px);
     }
   }
 }

@@ -74,7 +74,7 @@
     letter-spacing: 0.04em;
     color: var(--color-secondary);
     background-color: var(--color-primary);
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+
     transition:
       background-color var(--transition-default),
       box-shadow var(--transition-default),
@@ -91,11 +91,9 @@
     &--in-cart {
       background-color: var(--color-accent);
       color: var(--color-white);
-      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
 
       &:hover:not(:disabled) {
         background-color: var(--color-accent-dark);
-        box-shadow: 0 4px 16px rgba(99, 102, 241, 0.45);
       }
     }
 
