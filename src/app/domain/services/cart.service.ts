@@ -2,12 +2,14 @@ import { Injectable, Signal, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
 import { CartItem } from '../models/cart-item.model';
+import { ToastService } from './toast.service';
 
 export type LoadStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private readonly http = inject(HttpClient);
+  private readonly toast = inject(ToastService);
 
   // ── State ────────────────────────────────────────────────────────────────────
   readonly products = signal<Product[]>([]);
@@ -36,6 +38,7 @@ export class CartService {
       error: (err: Error) => {
         this.status.set('failed');
         this.error.set(err?.message ?? 'Failed to load products');
+        this.toast.error('Failed to load products. Please try again.');
       },
     });
   }
@@ -53,6 +56,8 @@ export class CartService {
       }
       return [...items, { ...product, quantity: 1 }];
     });
+
+    this.toast.success(`"${product.title}" added to cart.`);
   }
 
   subtractFromCart(productId: string): void {

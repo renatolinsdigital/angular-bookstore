@@ -9,7 +9,7 @@ export interface Toast {
   duration: number;
 }
 
-const DEFAULT_DURATION = 4000;
+const DEFAULT_DURATION = 3000;
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {

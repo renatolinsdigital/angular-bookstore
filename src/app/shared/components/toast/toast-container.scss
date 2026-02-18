@@ -16,7 +16,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.875rem 1rem;
+  padding: 0.875rem 1rem 1.375rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-family-base);
   font-size: var(--font-size-small);
@@ -28,27 +28,70 @@
     0 2px 8px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   pointer-events: all;
+  position: relative;
+  overflow: hidden;
   animation: toast-slide-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
   &--success {
     background-color: var(--color-success-dark);
     border-left: 3px solid var(--color-success);
+
+    .toast__icon {
+      color: var(--color-success);
+    }
+    .toast__progress-bar {
+      background-color: var(--color-success);
+    }
   }
 
   &--error {
     background-color: var(--color-danger-dark);
     border-left: 3px solid var(--color-danger);
+
+    .toast__icon {
+      color: var(--color-danger);
+    }
+    .toast__progress-bar {
+      background-color: var(--color-danger);
+    }
   }
 
   &--info {
     background-color: var(--color-info-dark);
     border-left: 3px solid var(--color-info);
+
+    .toast__icon {
+      color: var(--color-info);
+    }
+    .toast__progress-bar {
+      background-color: var(--color-info);
+    }
   }
 
   &--warning {
     background-color: var(--color-alert-dark);
     color: var(--color-white);
     border-left: 3px solid var(--color-alert);
+
+    .toast__icon {
+      color: var(--color-alert);
+    }
+    .toast__progress-bar {
+      background-color: var(--color-alert);
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
   }
 
   &__message {
@@ -73,6 +116,23 @@
       }
     }
   }
+
+  &__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &__progress-bar {
+    height: 100%;
+    width: 100%;
+    transform-origin: left center;
+    animation: toast-shrink linear forwards;
+    // animation-duration is set inline per-toast
+  }
 }
 
 @keyframes toast-slide-in {
@@ -83,5 +143,14 @@
   to {
     opacity: 1;
     transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes toast-shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
   }
 }

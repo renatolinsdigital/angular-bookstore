@@ -5,8 +5,8 @@ import { ToastContainerComponent } from './toast-container';
 import { Toast, ToastService } from '../../../domain/services/toast.service';
 
 const mockToasts: Toast[] = [
-  { id: '1', message: 'Item added to cart', type: 'success', duration: 4000 },
-  { id: '2', message: 'Something went wrong', type: 'error', duration: 4000 },
+  { id: '1', message: 'Item added to cart', type: 'success', duration: 3000 },
+  { id: '2', message: 'Something went wrong', type: 'error', duration: 3000 },
 ];
 
 const mockToastService = {
@@ -78,5 +78,33 @@ describe('ToastContainerComponent', () => {
   it('trackById should return the toast id', () => {
     const id = component.trackById(0, mockToasts[0]);
     expect(id).toBe('1');
+  });
+
+  it('should render an icon for each toast', () => {
+    mockToastService.toasts.set(mockToasts);
+    fixture.detectChanges();
+    const icons = fixture.nativeElement.querySelectorAll('.toast__icon');
+    expect(icons.length).toBe(2);
+  });
+
+  it('should render an svg inside the icon', () => {
+    mockToastService.toasts.set([mockToasts[0]]);
+    fixture.detectChanges();
+    const svg = fixture.nativeElement.querySelector('.toast__icon svg');
+    expect(svg).not.toBeNull();
+  });
+
+  it('should render a progress bar for each toast', () => {
+    mockToastService.toasts.set(mockToasts);
+    fixture.detectChanges();
+    const bars = fixture.nativeElement.querySelectorAll('.toast__progress-bar');
+    expect(bars.length).toBe(2);
+  });
+
+  it('should set the progress bar animation-duration to match toast.duration', () => {
+    mockToastService.toasts.set([mockToasts[0]]);
+    fixture.detectChanges();
+    const bar = fixture.nativeElement.querySelector('.toast__progress-bar') as HTMLElement;
+    expect(bar.style.animationDuration).toBe('3000ms');
   });
 });
