@@ -60,19 +60,19 @@ describe('AppHeaderComponent', () => {
 
   it('should navigate to / on goToHome()', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).goToHome();
+    (component as unknown as { goToHome(): void }).goToHome();
     expect(spy).toHaveBeenCalledWith(['/']);
   });
 
   it('should navigate to /store on goToStore()', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).goToStore();
+    (component as unknown as { goToStore(): void }).goToStore();
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 
   it('should navigate to /cart on goToCart()', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).goToCart();
+    (component as unknown as { goToCart(): void }).goToCart();
     expect(spy).toHaveBeenCalledWith(['/cart']);
   });
 

@@ -40,7 +40,7 @@ describe('NotFoundComponent', () => {
 
   it('should navigate to /store when goToHome() is called', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).goToHome();
+    (component as unknown as { goToHome(): void }).goToHome();
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 });

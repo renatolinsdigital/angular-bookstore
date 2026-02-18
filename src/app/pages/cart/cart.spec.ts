@@ -72,23 +72,23 @@ describe('CartComponent', () => {
 
   it('should navigate to /store when goToHome() is called', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).goToHome();
+    (component as unknown as { goToHome(): void }).goToHome();
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 
   it('should call proceedToDownload with current cart items on purchase', () => {
-    (component as any).onPurchase();
+    (component as unknown as { onPurchase(): void }).onPurchase();
     expect(mockDownloadService.proceedToDownload).toHaveBeenCalledWith(mockCartItems);
   });
 
   it('should empty cart on purchase', () => {
-    (component as any).onPurchase();
+    (component as unknown as { onPurchase(): void }).onPurchase();
     expect(mockCartService.emptyCart).toHaveBeenCalled();
   });
 
   it('should navigate to /success on purchase', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).onPurchase();
+    (component as unknown as { onPurchase(): void }).onPurchase();
     expect(spy).toHaveBeenCalledWith(['/success']);
   });
 });

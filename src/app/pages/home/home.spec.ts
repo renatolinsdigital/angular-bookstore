@@ -40,7 +40,7 @@ describe('HomeComponent', () => {
 
   it('should navigate to /store when browse() is called', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).browse();
+    (component as unknown as { browse(): void }).browse();
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 

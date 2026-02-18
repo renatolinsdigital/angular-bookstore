@@ -66,20 +66,22 @@ describe('SuccessComponent', () => {
 
   it('should navigate to /store when goToHome() is called', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as any).goToHome();
+    (component as unknown as { goToHome(): void }).goToHome();
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 
   it('should do nothing in downloadItem() when no URL is provided', () => {
     const spy = vi.spyOn(document.body, 'appendChild');
-    (component as any).downloadItem(undefined);
+    (component as unknown as { downloadItem(url?: string): void }).downloadItem(undefined);
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('should trigger download link when downloadItem() is called with a URL', () => {
     const appendSpy = vi.spyOn(document.body, 'appendChild').mockImplementation(() => ({}) as Node);
     const removeSpy = vi.spyOn(document.body, 'removeChild').mockImplementation(() => ({}) as Node);
-    (component as any).downloadItem('https://example.com/book.pdf');
+    (component as unknown as { downloadItem(url: string): void }).downloadItem(
+      'https://example.com/book.pdf',
+    );
     expect(appendSpy).toHaveBeenCalled();
     expect(removeSpy).toHaveBeenCalled();
   });
