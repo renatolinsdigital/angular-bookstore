@@ -103,21 +103,30 @@
   }
 
   &__qty-btn {
-    background: transparent;
-    border: none;
+    background: var(--color-secondary-mid);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0.3rem;
     display: flex;
     align-items: center;
-    transition: filter var(--transition-default);
+    justify-content: center;
+    color: var(--color-gray3);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast);
 
     &:hover {
-      filter: brightness(70%);
+      background: var(--color-tertiary-dark);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
     }
 
-    img {
-      width: 18px;
-      height: auto;
+    svg {
+      width: 16px;
+      height: 16px;
+      display: block;
     }
   }
 
