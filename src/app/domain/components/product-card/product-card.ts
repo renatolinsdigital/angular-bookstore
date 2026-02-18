@@ -2,10 +2,11 @@ import { Component, computed, inject, input, signal } from '@angular/core';
 import { CartService } from '../../../domain/services/cart.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
+import { AppButtonComponent } from '../../../shared/components/button/button';
 
 @Component({
   selector: 'app-product-card',
-  imports: [CurrencyBrlPipe],
+  imports: [CurrencyBrlPipe, AppButtonComponent],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })

@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../domain/services/cart.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
+import { AppButtonComponent } from '../../../shared/components/button/button';
 
 @Component({
   selector: 'app-cart-item-card',
-  imports: [FormsModule, CurrencyBrlPipe],
+  imports: [FormsModule, CurrencyBrlPipe, AppButtonComponent],
   templateUrl: './cart-item-card.html',
   styleUrl: './cart-item-card.scss',
 })

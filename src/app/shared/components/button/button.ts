@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 
-export type ButtonVariant = 'primary' | 'outline' | 'cta' | 'download';
+export type ButtonVariant = 'primary' | 'outline' | 'cta' | 'download' | 'ghost';
 export type ButtonType = 'button' | 'submit' | 'reset';
 
 @Component({

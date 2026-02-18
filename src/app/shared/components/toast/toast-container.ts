@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Toast, ToastService } from '../../../domain/services/toast.service';
+import { AppButtonComponent } from '../button/button';
 
 @Component({
   selector: 'app-toast-container',
+  imports: [AppButtonComponent],
   templateUrl: './toast-container.html',
   styleUrl: './toast-container.scss',
 })

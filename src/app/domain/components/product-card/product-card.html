@@ -14,8 +14,8 @@
     {{ price() | currencyBrl }}
   </p>
 
-  <button
-    type="button"
+  <app-button
+    variant="ghost"
     class="product-card__btn"
     [class.product-card__btn--in-cart]="quantityInCart() > 0"
     [class.product-card__btn--compact]="responsive.youJokingRight()"
@@ -34,5 +34,5 @@
         {{ quantityInCart() > 0 ? 'ADD MORE' : 'ADD TO CART' }}
       </span>
     }
-  </button>
+  </app-button>
 </div>

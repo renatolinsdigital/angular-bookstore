@@ -90,7 +90,8 @@ describe('ProductCardComponent', () => {
   it('should disable button when quantity is at 999', () => {
     mockQty.set(999);
     fixture.detectChanges();
-    const btn = fixture.nativeElement.querySelector('.product-card__btn');
+    // The native <button> is the inner .app-btn inside <app-button>
+    const btn = fixture.nativeElement.querySelector('.product-card__btn .app-btn');
     expect(btn.disabled).toBe(true);
   });
 });

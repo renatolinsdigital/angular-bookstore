@@ -1,18 +1,18 @@
 <header class="app-header" [class.compact]="responsive.youJokingRight()">
   <div class="app-header__inner">
-    <button
+    <app-button
+      variant="ghost"
       class="app-header__logo"
       (click)="goToHome()"
-      type="button"
       [class.app-header__logo--compact]="responsive.youJokingRight()"
     >
       Digital<span class="logo-accent">Book</span>Store
-    </button>
+    </app-button>
 
-    <button
+    <app-button
+      variant="ghost"
       class="app-header__cart-btn"
       (click)="goToCart()"
-      type="button"
       [attr.aria-label]="'Cart, ' + cartService.totalItemsInCart() + ' items'"
     >
       <svg
@@ -35,6 +35,6 @@
           cartService.totalItemsInCart() > 99 ? '99+' : cartService.totalItemsInCart()
         }}</span>
       }
-    </button>
+    </app-button>
   </div>
 </header>

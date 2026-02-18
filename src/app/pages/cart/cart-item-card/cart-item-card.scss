@@ -103,26 +103,29 @@
   }
 
   &__qty-btn {
-    background: var(--color-secondary-mid);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    padding: 0.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-gray3);
-    transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast),
-      color var(--transition-fast);
+    ::ng-deep .app-btn {
+      background: var(--color-secondary-mid);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      padding: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gray3);
+      transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
 
-    &:hover {
-      background: var(--color-tertiary-dark);
-      border-color: var(--color-primary);
-      color: var(--color-primary);
+      &:hover {
+        background: var(--color-tertiary-dark);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+      }
     }
 
+    // svg is projected content — retains parent scope, no ::ng-deep needed
     svg {
       width: 16px;
       height: 16px;
@@ -173,16 +176,19 @@
   }
 
   &__remove-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem;
-    transition: filter var(--transition-default);
+    ::ng-deep .app-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      transition: filter var(--transition-default);
 
-    &:hover {
-      filter: brightness(60%);
+      &:hover {
+        filter: brightness(60%);
+      }
     }
 
+    // img is projected content — retains parent scope, no ::ng-deep needed
     img {
       width: 18px;
       height: auto;

@@ -102,4 +102,18 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  &--ghost {
+    background: none;
+    border: none;
+    padding: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    min-height: unset;
+    width: auto;
+    border-radius: 0;
+  }
 }

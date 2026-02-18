@@ -36,8 +36,8 @@
           <p class="cart-item__col-header">QUANTITY</p>
         }
         <div class="cart-item__qty-controls">
-          <button
-            type="button"
+          <app-button
+            variant="ghost"
             class="cart-item__qty-btn"
             (click)="subtract()"
             aria-label="Subtract"
@@ -53,7 +53,7 @@
             >
               <line x1="5" y1="12" x2="19" y2="12" />
             </svg>
-          </button>
+          </app-button>
           <input
             class="cart-item__qty-input"
             type="number"
@@ -63,7 +63,7 @@
             min="0"
             max="999"
           />
-          <button type="button" class="cart-item__qty-btn" (click)="add()" aria-label="Add">
+          <app-button variant="ghost" class="cart-item__qty-btn" (click)="add()" aria-label="Add">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -76,7 +76,7 @@
               <line x1="12" y1="5" x2="12" y2="19" />
               <line x1="5" y1="12" x2="19" y2="12" />
             </svg>
-          </button>
+          </app-button>
         </div>
       </div>
     }
@@ -94,14 +94,14 @@
     <!-- Remove button -->
     @if (!responsive.youJokingRight()) {
       <div class="cart-item__remove-col">
-        <button
-          type="button"
+        <app-button
+          variant="ghost"
           class="cart-item__remove-btn"
           (click)="remove()"
           aria-label="Remove item"
         >
           <img src="assets/images/trash.svg" alt="Remove" />
-        </button>
+        </app-button>
       </div>
     }
   </div>
