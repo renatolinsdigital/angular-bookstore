@@ -1,0 +1,96 @@
+<div class="home" [class.home--compact]="responsive.youJokingRight()">
+  <div class="home__hero">
+    <div class="home__badge">New arrivals every week</div>
+
+    <h1 class="home__title" [class.home__title--compact]="responsive.isSmaller()">
+      Your next great read<br />
+      <span class="home__title-accent">is one click away</span>
+    </h1>
+
+    <p class="home__subtitle" [class.home__subtitle--compact]="responsive.isSmaller()">
+      Discover hand-picked digital books across every genre. Buy once, download instantly, read
+      forever.
+    </p>
+
+    <div class="home__actions">
+      <button type="button" class="home__cta" (click)="browse()">
+        Browse the Store
+        <svg class="home__cta-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path
+            fill-rule="evenodd"
+            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="home__features" [class.home__features--column]="responsive.isSmall()">
+    <div class="home__feature">
+      <div class="home__feature-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+          />
+        </svg>
+      </div>
+      <h3 class="home__feature-title">Curated Library</h3>
+      <p class="home__feature-desc">
+        Carefully selected titles across fiction, non-fiction, science, and more.
+      </p>
+    </div>
+
+    <div class="home__feature">
+      <div class="home__feature-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+          />
+        </svg>
+      </div>
+      <h3 class="home__feature-title">Instant Download</h3>
+      <p class="home__feature-desc">
+        Purchase and download your books immediately. No waiting, no shipping.
+      </p>
+    </div>
+
+    <div class="home__feature">
+      <div class="home__feature-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.745 3.745 0 013.296-1.043A3.745 3.745 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 013.296 1.043 3.745 3.745 0 011.043 3.296A3.745 3.745 0 0121 12z"
+          />
+        </svg>
+      </div>
+      <h3 class="home__feature-title">DRM-Free</h3>
+      <p class="home__feature-desc">
+        Your purchase is yours. Read on any device, any app, forever.
+      </p>
+    </div>
+  </div>
+</div>
