@@ -1,6 +1,13 @@
 # DigitalBookStore
 
-An **Angular** SPA for browsing and purchasing digital books, with **Signals** for state management and **SCSS** for styling. Follows a feature-driven architecture with lazy-loaded routes, a service-based state layer, and a design token system backed by CSS custom properties.
+An **Angular** SPA for purchasing digital books, with **Signals** for state management and **SCSS** for styling. Features a landing page, a searchable book catalogue, a shopping cart, and an instant-download purchase flow. The project features lazy-loaded routes and a design token system based on CSS variables.
+
+## Quick Start
+
+```bash
+npm install       # Install dependencies
+npm run dev       # Start the dev server at http://localhost:4200
+```
 
 ## Main Stack
 
@@ -17,30 +24,10 @@ An **Angular** SPA for browsing and purchasing digital books, with **Signals** f
 - **Sass** - CSS preprocessor with BEM naming conventions
 - **Vitest** - Unit testing (Angular CLI default)
 
-## Quick Start
-
-To understand the project's styling conventions, refer to the [Styling Guide](docs/styling.md).
-
 ### Prerequisites
 
 - Node.js 20+
 - Angular CLI: `npm i -g @angular/cli`
-
-## Development
-
-### Available Scripts
-
-```bash
-# Development
-npm run dev             # Start development server with hot reload
-
-# Building
-npm run build             # Compile and optimize for production
-npm run watch     # Development watch mode with rebuild
-
-# Testing
-npm run test              # Run unit tests with Vitest
-```
 
 ## Documentation
 
@@ -61,17 +48,21 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Modern `@if` / `@for` built-in control flow (no `*ngIf` / `*ngFor`)
 - ✅ `input()` signal API replacing `@Input()` decorators
 - ✅ `inject()` function replacing constructor parameter injection
+- ✅ `domain/` layer separating services, components, and models from page-level code
 - ✅ Design tokens as CSS custom properties in a single `_variables.scss` partial
-- ✅ BEM-style SCSS with `&__` / `&--` nesting — no styling libraries
+- ✅ BEM-style SCSS with `&__` / `&--` nesting
 - ✅ Self-hosted Open Sans font family via `@font-face`
 - ✅ Responsive layout driven by a `ResponsiveService` with named breakpoints
 - ✅ Strict TypeScript with `strictTemplates` Angular compiler option
 
 ## Features of This Project
 
+- ✅ Landing page with hero section and feature highlights
 - ✅ Product catalogue loaded from a static JSON endpoint
+- ✅ Real-time search: filter books by title instantly (client-side, signal-powered)
 - ✅ Shopping cart with add, subtract, set quantity, and remove actions
-- ✅ Persistent cart total and item count in the header (reactive via `computed()`)
+- ✅ Cart item badge on the header icon that shows live count, hidden when empty
+- ✅ Prices displayed in USD
 - ✅ Purchase flow that moves cart items to a download queue
 - ✅ Per-item file download on the success page
 - ✅ Fully responsive layout across all viewport sizes
@@ -81,7 +72,7 @@ For complete documentation, see the `docs/` folder which includes:
 
 ## Improvement Possibilities
 
-- Dark/light mode toggle (CSS custom property swap)
+- Dark/light mode toggle
 - Authentication / user accounts
 - Pagination / infinite scroll
 - Real payment integration

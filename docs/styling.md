@@ -12,7 +12,7 @@ All design tokens are declared as **CSS Custom Properties** (CSS variables) in `
 :root {
   --color-primary: #f59e0b; /* Warm amber — reading-lamp glow */
   --color-secondary: #0f172a; /* Midnight slate — immersive background */
-  --color-tertiary: #fdf8f0; /* Warm parchment — card surfaces */
+  --color-tertiary: #1a2d4a; /* Deep ocean blue — elevated card surfaces */
   --color-accent: #6366f1; /* Soft indigo — state / information */
   --font-size-default: 1rem;
   --font-weight-bold: 700;

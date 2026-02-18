@@ -13,7 +13,7 @@ Angular Signals (stable since v17) provide:
 
 ## CartService
 
-`src/app/core/services/cart.service.ts`
+`src/app/domain/services/cart.service.ts`
 
 ### State Signals
 
@@ -45,7 +45,7 @@ getQuantityById(id); // Read-only helper (not a signal)
 
 ## DownloadService
 
-`src/app/core/services/download.service.ts`
+`src/app/domain/services/download.service.ts`
 
 Simple service that holds the list of items a user has "purchased". Items are deduplicated by ID.
 
@@ -66,7 +66,7 @@ onPurchase(): void {
 
 ## ResponsiveService
 
-`src/app/core/services/responsive.service.ts`
+`src/app/domain/services/responsive.service.ts`
 
 Maintains reactive viewport-size breakpoints as named tokens. Components use its computed signals to adapt their layout and behaviour.
 

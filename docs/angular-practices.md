@@ -86,7 +86,7 @@ Every page route uses `loadComponent` with a dynamic `import()`. Angular CLI aut
 {
   path: 'cart',
   loadComponent: () =>
-    import('./features/cart/cart').then((m) => m.CartComponent)
+    import('./pages/cart/cart').then((m) => m.CartComponent)
 }
 ```
 
