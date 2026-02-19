@@ -1,10 +1,11 @@
 <div class="product-card">
   <div class="product-card__image-wrapper">
     <img
-      [src]="imageUrl() || 'assets/images/placeholder.svg'"
+      [src]="imageUrl()"
       [alt]="title()"
       class="product-card__image"
       loading="lazy"
+      (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
     />
   </div>
 

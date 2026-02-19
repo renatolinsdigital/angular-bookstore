@@ -5,9 +5,10 @@
       <p class="cart-item__col-header">PRODUCT</p>
     }
     <img
-      [src]="imageUrl() || 'assets/images/placeholder.svg'"
+      [src]="imageUrl()"
       [alt]="itemName()"
       class="cart-item__image"
+      (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
       [class.cart-item__image--compact]="responsive.youJokingRight()"
       [class.cart-item__image--smaller]="responsive.isSmaller()"
     />
