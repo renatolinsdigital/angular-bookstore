@@ -1,17 +1,12 @@
 @use '../../../styles/variables' as v;
 
-// Host element fills the full available height inside app-body (flex column)
-:host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 // ── Outer wrapper ───────────────────────────────────────────────────────────────
 
 .cart {
   position: relative;
-  min-height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   overflow: hidden;
 }
