@@ -2,6 +2,7 @@
   "products": [
     {
       "id": "1",
+      "categories": ["Programming", "Career"],
       "price": 14.99,
       "title": "Clean Code Principles",
       "quickDescription": "Write code that is readable, maintainable, and built to last — essential practices every developer should master.",
@@ -11,6 +12,7 @@
     },
     {
       "id": "2",
+      "categories": ["Design"],
       "price": 19.99,
       "title": "The Art of UI Design",
       "quickDescription": "A practical guide to crafting interfaces that are both beautiful and intuitive, from first sketch to polished product.",
@@ -20,6 +22,7 @@
     },
     {
       "id": "3",
+      "categories": ["Entrepreneurship", "Career"],
       "price": 24.99,
       "title": "Startup Mindset",
       "quickDescription": "The mental models and decision-making frameworks that distinguish founders who build lasting companies from those who burn out.",
@@ -29,6 +32,7 @@
     },
     {
       "id": "4",
+      "categories": ["Productivity"],
       "price": 12.99,
       "title": "Deep Focus",
       "quickDescription": "Proven techniques to eliminate distraction, enter flow states on demand, and produce your best work consistently.",
@@ -38,6 +42,7 @@
     },
     {
       "id": "5",
+      "categories": ["Programming", "Career"],
       "price": 22.5,
       "title": "The Pragmatic Developer",
       "quickDescription": "Timeless advice on craftsmanship, tooling, and professional growth for software developers at every stage of their career.",
@@ -47,6 +52,7 @@
     },
     {
       "id": "6",
+      "categories": ["Programming"],
       "price": 18.0,
       "title": "Data Structures Unlocked",
       "quickDescription": "A visual, intuitive exploration of the data structures that power every program, with clear implementation guides in multiple languages.",
@@ -56,6 +62,7 @@
     },
     {
       "id": "7",
+      "categories": ["Architecture", "Web Dev"],
       "price": 29.99,
       "title": "Modern Web Architecture",
       "quickDescription": "A comprehensive look at the distributed systems, API patterns, and deployment strategies behind today's large-scale web applications.",
@@ -65,6 +72,7 @@
     },
     {
       "id": "8",
+      "categories": ["Design", "Entrepreneurship"],
       "price": 16.5,
       "title": "The Design Thinker",
       "quickDescription": "Apply the design thinking methodology to solve complex problems, spark innovation, and deliver products users genuinely love.",
@@ -74,6 +82,7 @@
     },
     {
       "id": "9",
+      "categories": ["Finance"],
       "price": 21.0,
       "title": "Financial Freedom Blueprint",
       "quickDescription": "A step-by-step roadmap for engineers and tech professionals to build wealth, escape the paycheck cycle, and retire on their terms.",
@@ -83,6 +92,7 @@
     },
     {
       "id": "10",
+      "categories": ["Programming", "Web Dev"],
       "price": 26.99,
       "title": "Mastering TypeScript",
       "quickDescription": "Go beyond basic types and unlock TypeScript's full power — generics, conditional types, mapped types, and the type-level programming model.",
@@ -92,6 +102,7 @@
     },
     {
       "id": "11",
+      "categories": ["Productivity"],
       "price": 15.99,
       "title": "The Science of Learning",
       "quickDescription": "Evidence-based strategies for studying smarter, retaining more, and building skills that stick — grounded in cognitive science.",
@@ -101,6 +112,7 @@
     },
     {
       "id": "12",
+      "categories": ["Career"],
       "price": 23.5,
       "title": "Leadership in Tech",
       "quickDescription": "A candid guide to becoming a tech leader who builds high-performing teams, ships great products, and stays technically grounded.",
@@ -110,6 +122,7 @@
     },
     {
       "id": "13",
+      "categories": ["Programming", "Web Dev"],
       "price": 20.0,
       "title": "React & Beyond",
       "quickDescription": "Master modern React from hooks and context to performance optimisation and server components, then understand when to reach beyond it.",
@@ -119,6 +132,7 @@
     },
     {
       "id": "14",
+      "categories": ["Entrepreneurship"],
       "price": 27.0,
       "title": "The Product Strategy Playbook",
       "quickDescription": "Frameworks and real-world case studies for setting product direction, prioritising ruthlessly, and aligning teams around outcomes.",
@@ -128,6 +142,7 @@
     },
     {
       "id": "15",
+      "categories": ["Marketing"],
       "price": 17.99,
       "title": "Psychology of Persuasion",
       "quickDescription": "The cognitive science of influence — how people make decisions and how to apply those insights ethically in product, sales, and communication.",
@@ -137,6 +152,7 @@
     },
     {
       "id": "16",
+      "categories": ["Architecture", "Web Dev"],
       "price": 25.5,
       "title": "Building APIs That Last",
       "quickDescription": "Design and evolve REST and GraphQL APIs that clients love, teams can maintain, and time does not break.",
@@ -146,6 +162,7 @@
     },
     {
       "id": "17",
+      "categories": ["Career", "Productivity"],
       "price": 13.99,
       "title": "The Remote Work Handbook",
       "quickDescription": "How to thrive as a distributed team — communication, culture, tooling, and the personal habits that make remote work sustainable long-term.",
@@ -155,6 +172,7 @@
     },
     {
       "id": "18",
+      "categories": ["Machine Learning", "Programming"],
       "price": 32.0,
       "title": "Machine Learning Foundations",
       "quickDescription": "Build genuine intuition for how machine learning models work — the maths, the patterns, and the practical engineering behind real systems.",
@@ -164,6 +182,7 @@
     },
     {
       "id": "19",
+      "categories": ["Programming", "Design"],
       "price": 18.5,
       "title": "The Creative Coder",
       "quickDescription": "Where art meets algorithm — a guide to generative art, creative computation, and building expressive interactive experiences with code.",
@@ -173,6 +192,7 @@
     },
     {
       "id": "20",
+      "categories": ["DevOps", "Architecture"],
       "price": 28.0,
       "title": "DevOps in Practice",
       "quickDescription": "A hands-on guide to CI/CD, infrastructure as code, containerisation, and the cultural shifts that make DevOps transformations succeed.",
@@ -182,6 +202,7 @@
     },
     {
       "id": "21",
+      "categories": ["Design"],
       "price": 16.0,
       "title": "User Research Essentials",
       "quickDescription": "Plan, conduct, and synthesise user research that generates genuine insight and drives better product decisions.",
@@ -191,6 +212,7 @@
     },
     {
       "id": "22",
+      "categories": ["Blockchain"],
       "price": 22.0,
       "title": "Blockchain Decoded",
       "quickDescription": "A clear technical introduction to how blockchain systems work, what they are genuinely good at, and where the hype exceeds the reality.",
@@ -200,6 +222,7 @@
     },
     {
       "id": "23",
+      "categories": ["Marketing"],
       "price": 19.0,
       "title": "The Marketing Engineer",
       "quickDescription": "How engineers can apply analytical thinking to marketing — from growth funnels and attribution to A/B testing and lifecycle automation.",
@@ -209,6 +232,7 @@
     },
     {
       "id": "24",
+      "categories": ["Security"],
       "price": 31.5,
       "title": "Cybersecurity Fundamentals",
       "quickDescription": "Build a solid security foundation — threat modelling, cryptography, network security, and secure coding practices every developer needs.",
@@ -218,6 +242,7 @@
     },
     {
       "id": "25",
+      "categories": ["Career", "Machine Learning"],
       "price": 34.99,
       "title": "The Future of Software",
       "quickDescription": "Where software engineering is heading — AI-assisted development, autonomous systems, new programming models, and the skills that will matter most.",

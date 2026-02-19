@@ -32,12 +32,20 @@ export class BooksApiService {
    * Returns the requested page of (optionally filtered) products
    * along with total page count and item count.
    */
-  fetchPage(page: number, query: string, pageSize = 10): Observable<PagedResult> {
+  fetchPage(
+    page: number,
+    query: string,
+    pageSize = 10,
+    category?: string,
+  ): Observable<PagedResult> {
     return this.getCatalogue().pipe(
       delay(500),
       map((books) => {
         const q = query.trim().toLowerCase();
-        const filtered = q ? books.filter((b) => b.title.toLowerCase().includes(q)) : books;
+        let filtered = q ? books.filter((b) => b.title.toLowerCase().includes(q)) : books;
+        if (category) {
+          filtered = filtered.filter((b) => b.categories?.includes(category));
+        }
 
         const totalItems = filtered.length;
         const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
@@ -50,6 +58,17 @@ export class BooksApiService {
           totalPages,
           page: safePage,
         };
+      }),
+    );
+  }
+
+  /** Returns all unique categories sorted alphabetically. */
+  fetchCategories(): Observable<string[]> {
+    return this.getCatalogue().pipe(
+      map((books) => {
+        const set = new Set<string>();
+        books.forEach((b) => b.categories?.forEach((c) => set.add(c)));
+        return Array.from(set).sort();
       }),
     );
   }

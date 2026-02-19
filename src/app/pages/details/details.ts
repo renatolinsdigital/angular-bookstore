@@ -58,4 +58,8 @@ export class DetailsComponent implements OnInit {
   protected goToCart(): void {
     this.router.navigate(['/cart']);
   }
+
+  protected goToStoreWithCategory(category: string): void {
+    this.router.navigate(['/store'], { queryParams: { category } });
+  }
 }

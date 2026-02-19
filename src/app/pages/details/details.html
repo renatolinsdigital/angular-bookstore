@@ -131,7 +131,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            In Stock
+            Top 30 Selling Books
           </div>
 
           <h1 class="details__title">{{ product()!.title }}</h1>
@@ -146,6 +146,21 @@
           </div>
 
           <div class="details__divider" aria-hidden="true"></div>
+
+          @if (product()!.categories?.length) {
+            <div class="details__tags">
+              @for (cat of product()!.categories!; track cat) {
+                <button
+                  class="details__tag"
+                  (click)="goToStoreWithCategory(cat)"
+                  type="button"
+                  [title]="'Browse ' + cat + ' books'"
+                >
+                  {{ cat }}
+                </button>
+              }
+            </div>
+          }
 
           @if (product()!.fullDescription) {
             <p class="details__description">{{ product()!.fullDescription }}</p>

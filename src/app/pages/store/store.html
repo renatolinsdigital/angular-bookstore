@@ -35,6 +35,23 @@
       </div>
     </div>
 
+    <!-- Category filter pills -->
+    @if (categories().length) {
+      <div class="store__categories" role="list" aria-label="Filter by category">
+        @for (cat of categories(); track cat) {
+          <button
+            class="store__category-pill"
+            [class.store__category-pill--active]="activeCategory() === cat"
+            (click)="onCategoryToggle(cat)"
+            type="button"
+            role="listitem"
+          >
+            {{ cat }}
+          </button>
+        }
+      </div>
+    }
+
     @if (cartService.status() === 'failed') {
       <p class="store__error">Product list is unavailable. Try again later.</p>
     } @else if (isLoading()) {
@@ -52,9 +69,16 @@
           </div>
         }
       </div>
-    } @else if (pageResult().products.length === 0 && searchQuery()) {
+    } @else if (pageResult().products.length === 0 && (searchQuery() || activeCategory())) {
       <p class="store__no-results">
-        No books match <strong>"{{ searchQuery() }}"</strong>.
+        No books
+        @if (activeCategory()) {
+          in <strong>{{ activeCategory() }}</strong>
+        }
+        @if (searchQuery()) {
+          match <strong>"{{ searchQuery() }}"</strong>
+        }
+        .
       </p>
     } @else {
       <div class="store__grid">
