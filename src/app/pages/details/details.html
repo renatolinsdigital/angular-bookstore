@@ -1,59 +1,182 @@
-<app-page-container>
-  @if (cartService.status() === 'loading') {
-    <div class="details__loading">
-      <p>Loading...</p>
-    </div>
-  } @else if (!product()) {
-    <div class="details__not-found">
-      <p class="details__not-found-text">Product not found.</p>
-      <app-button variant="outline" (click)="goToStore()">Back to Store</app-button>
-    </div>
-  } @else {
-    <div class="details__layout" [class.details__layout--stacked]="responsive.isSmaller()">
-      <!-- Cover image -->
-      <div class="details__cover-col">
-        <img
-          [src]="product()!.image"
-          [alt]="product()!.title"
-          class="details__cover"
-          (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
-        />
+<div class="details">
+  <div class="details__bg-glow details__bg-glow--left" aria-hidden="true"></div>
+  <div class="details__bg-glow details__bg-glow--right" aria-hidden="true"></div>
+
+  <app-page-container>
+    @if (cartService.status() === 'loading') {
+      <div class="details__loading">
+        <span class="details__loading-spinner" aria-hidden="true"></span>
+        <p>Loading book...</p>
       </div>
+    } @else if (!product()) {
+      <div class="details__not-found">
+        <p class="details__not-found-text">Product not found.</p>
+        <app-button variant="outline" (click)="goToStore()">Back to Store</app-button>
+      </div>
+    } @else {
+      <div class="details__layout" [class.details__layout--stacked]="responsive.isSmaller()">
+        <!-- Cover column -->
+        <div class="details__cover-col">
+          <div class="details__cover-frame">
+            <div class="details__cover-glow" aria-hidden="true"></div>
+            <img
+              [src]="product()!.image"
+              [alt]="product()!.title"
+              class="details__cover"
+              (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
+            />
+          </div>
 
-      <!-- Info panel -->
-      <div class="details__info-col">
-        <h1 class="details__title">{{ product()!.title }}</h1>
-        <p class="details__price">{{ product()!.price | appCurrency }}</p>
+          <!-- Chips under the cover -->
+          <div class="details__chips">
+            <span class="details__chip">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                aria-hidden="true"
+              >
+                <path
+                  d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Instant Download
+            </span>
+            <span class="details__chip">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="11"
+                  width="18"
+                  height="11"
+                  rx="2"
+                  ry="2"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M7 11V7a5 5 0 0 1 10 0v4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              DRM-Free
+            </span>
+            <span class="details__chip">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Digital Book
+            </span>
+          </div>
+        </div>
 
-        @if (product()!.fullDescription) {
-          <p class="details__description">{{ product()!.fullDescription }}</p>
-        }
+        <!-- Info column -->
+        <div class="details__info-col">
+          <div class="details__badge">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="11"
+              height="11"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <polyline
+                points="22 4 12 14.01 9 11.01"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            In Stock
+          </div>
 
-        <div class="details__actions">
-          <app-button
-            variant="primary"
-            size="large"
-            [disabled]="quantityInCart() >= 999 || isLoading()"
-            (click)="handleAddToCart()"
-          >
-            @if (isLoading()) {
-              <span class="details__btn-spinner"></span>
-            } @else if (uniquePurchase && quantityInCart() > 0) {
-              VIEW IN CART
-            } @else if (quantityInCart() > 0) {
-              ADD ONE MORE
-            } @else {
-              ADD TO CART
-            }
-          </app-button>
+          <h1 class="details__title">{{ product()!.title }}</h1>
 
-          @if (quantityInCart() > 0) {
-            <app-button variant="outline" (click)="goToCart()">View Cart</app-button>
+          @if (product()!.quickDescription) {
+            <p class="details__tagline">{{ product()!.quickDescription }}</p>
           }
 
-          <app-button variant="outline" (click)="goToStore()">← Back to Store</app-button>
+          <div class="details__price-row">
+            <span class="details__price">{{ product()!.price | appCurrency }}</span>
+            <span class="details__price-note">one-time · keep forever</span>
+          </div>
+
+          <div class="details__divider" aria-hidden="true"></div>
+
+          @if (product()!.fullDescription) {
+            <p class="details__description">{{ product()!.fullDescription }}</p>
+          }
+
+          <div class="details__actions">
+            <app-button
+              variant="primary"
+              size="large"
+              [disabled]="quantityInCart() >= 999 || isLoading()"
+              (click)="handleAddToCart()"
+            >
+              @if (isLoading()) {
+                <span class="details__btn-spinner"></span>
+              } @else if (uniquePurchase && quantityInCart() > 0) {
+                VIEW IN CART
+              } @else if (quantityInCart() > 0) {
+                ADD ONE MORE
+              } @else {
+                ADD TO CART
+              }
+            </app-button>
+
+            @if (quantityInCart() > 0) {
+              <app-button variant="outline" (click)="goToCart()">View Cart</app-button>
+            }
+
+            <app-button variant="outline" (click)="goToStore()">← Back to Store</app-button>
+          </div>
         </div>
       </div>
-    </div>
-  }
-</app-page-container>
+    }
+  </app-page-container>
+</div>
