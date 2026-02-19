@@ -88,7 +88,6 @@
       left: -4rem;
       width: 30rem;
       height: 30rem;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 65%);
     }
 
     &--accent {
@@ -96,7 +95,6 @@
       right: -4rem;
       width: 28rem;
       height: 28rem;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.09) 0%, transparent 65%);
     }
   }
 
@@ -161,7 +159,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.04) 0%, transparent 60%);
+
       pointer-events: none;
     }
 
