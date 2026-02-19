@@ -3,7 +3,7 @@
   <div class="store__bg-glow store__bg-glow--left" aria-hidden="true"></div>
   <div class="store__bg-glow store__bg-glow--right" aria-hidden="true"></div>
 
-  <app-page-container [isContentLoading]="isInitialLoad()">
+  <app-page-container>
     <div class="store__header">
       <div class="store__header-content">
         <h1 class="store__title">Browse Books</h1>
@@ -37,31 +37,44 @@
 
     @if (cartService.status() === 'failed') {
       <p class="store__error">Product list is unavailable. Try again later.</p>
+    } @else if (isLoading()) {
+      <!-- Skeleton grid — same columns/gap as the real grid, no layout shift -->
+      <div class="store__grid">
+        @for (_ of skeletonRange; track $index) {
+          <div class="store__skeleton-card">
+            <div class="store__skeleton-image"></div>
+            <div class="store__skeleton-text">
+              <div class="store__skeleton-line"></div>
+              <div class="store__skeleton-line store__skeleton-line--short"></div>
+            </div>
+            <div class="store__skeleton-price"></div>
+            <div class="store__skeleton-btn"></div>
+          </div>
+        }
+      </div>
+    } @else if (pageResult().products.length === 0 && searchQuery()) {
+      <p class="store__no-results">
+        No books match <strong>"{{ searchQuery() }}"</strong>.
+      </p>
     } @else {
-      @if (pageResult().products.length === 0 && searchQuery()) {
-        <p class="store__no-results">
-          No books match <strong>"{{ searchQuery() }}"</strong>.
-        </p>
-      } @else {
-        <div class="store__grid">
-          @for (product of pageResult().products; track product.id) {
-            <app-product-card
-              [productId]="product.id"
-              [title]="product.title"
-              [price]="product.price"
-              [imageUrl]="product.image"
-            />
-          }
-        </div>
-
-        @if (pageResult().totalPages > 1) {
-          <app-paginator
-            [currentPage]="pageResult().page"
-            [totalPages]="pageResult().totalPages"
-            [totalItems]="pageResult().totalItems"
-            (pageChange)="onPageChange($event)"
+      <div class="store__grid">
+        @for (product of pageResult().products; track product.id) {
+          <app-product-card
+            [productId]="product.id"
+            [title]="product.title"
+            [price]="product.price"
+            [imageUrl]="product.image"
           />
         }
+      </div>
+
+      @if (pageResult().totalPages > 1) {
+        <app-paginator
+          [currentPage]="pageResult().page"
+          [totalPages]="pageResult().totalPages"
+          [totalItems]="pageResult().totalItems"
+          (pageChange)="onPageChange($event)"
+        />
       }
     }
   </app-page-container>

@@ -24,13 +24,15 @@ export class StoreComponent implements OnInit {
   readonly currentPage = signal(1);
   readonly pageSize = inject(PAGE_SIZE);
   readonly isLoading = signal(true);
-  /** True only during the very first fetch — prevents full-page blink on page changes. */
-  readonly isInitialLoad = signal(true);
+  /** Placeholder array used to render skeleton cards while a fetch is in-flight. */
+  readonly skeletonRange: readonly unknown[];
 
   /** Populated reactively via BooksApiService — reacts to page and query changes. */
   readonly pageResult: Signal<PagedResult>;
 
   constructor() {
+    this.skeletonRange = Array.from({ length: this.pageSize });
+
     const params$ = combineLatest({
       page: toObservable(this.currentPage),
       query: toObservable(this.searchQuery),
@@ -40,10 +42,7 @@ export class StoreComponent implements OnInit {
       params$.pipe(
         tap(() => this.isLoading.set(true)),
         switchMap(({ page, query }) => this.booksApi.fetchPage(page, query, this.pageSize)),
-        tap(() => {
-          this.isLoading.set(false);
-          this.isInitialLoad.set(false);
-        }),
+        tap(() => this.isLoading.set(false)),
       ),
       { initialValue: EMPTY_PAGE },
     );

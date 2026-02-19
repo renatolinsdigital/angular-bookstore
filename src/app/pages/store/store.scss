@@ -169,6 +169,83 @@
   }
 }
 
+// ── Skeleton cards ──────────────────────────────────────────────────────────
+
+@keyframes store-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+// Shared shimmer mixin used by every skeleton block
+@mixin shimmer {
+  background-color: rgba(36, 61, 97, 0.5);
+  background-image: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: store-shimmer 1.4s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+.store__skeleton-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-tertiary);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.store__skeleton-image {
+  @include shimmer;
+  aspect-ratio: 5 / 7; // identical to product-card__image-wrapper
+  width: 100%;
+}
+
+.store__skeleton-text {
+  // mirrors product-card__title: padding-top 0.875rem + padding-bottom 0.5rem + 3em content
+  padding-top: 0.875rem;
+  padding-bottom: 0.5rem;
+  height: calc(3em + 0.875rem + 0.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-small); // em units resolve against this
+}
+
+.store__skeleton-line {
+  @include shimmer;
+  height: 0.875em;
+  width: 90%;
+
+  &--short {
+    width: 55%;
+  }
+}
+
+.store__skeleton-price {
+  @include shimmer;
+  height: 1.4rem;
+  width: 4.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.store__skeleton-btn {
+  @include shimmer;
+  height: 2.625rem; // 42px — matches product-card button min-height
+  width: 100%;
+  background-color: rgba(36, 61, 97, 0.35);
+}
+
 .store__error {
   color: var(--color-primary-light);
   font-size: var(--font-size-small);
