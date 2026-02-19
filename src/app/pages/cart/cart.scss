@@ -134,5 +134,17 @@
     gap: 1rem;
     padding-top: 0.75rem;
     flex-wrap: wrap;
+
+    @media (max-width: 767px) {
+      flex-direction: column-reverse;
+
+      app-button {
+        width: 100%;
+
+        ::ng-deep .app-btn {
+          width: 100%;
+        }
+      }
+    }
   }
 }
