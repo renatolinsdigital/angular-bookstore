@@ -53,7 +53,8 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Modern `@if` / `@for` built-in control flow (no `*ngIf` / `*ngFor`)
 - ✅ `input()` signal API replacing `@Input()` decorators
 - ✅ `inject()` function replacing constructor parameter injection
-- ✅ `domain/` layer separating services, components, and models from page-level code
+- ✅ `InjectionToken` for app-wide configuration flags (`src/app/app.tokens.ts`)
+- ✅ `domain/` and `shared/` layers separating services, components, and models from page-level code
 - ✅ Design tokens as CSS custom properties in a single `_variables.scss` partial
 - ✅ BEM-style SCSS with `&__` / `&--` nesting
 - ✅ Self-hosted Open Sans font family via `@font-face`
@@ -66,15 +67,18 @@ For complete documentation, see the `docs/` folder which includes:
 
 ## Features of This Project
 
-- ✅ Landing page with hero section and feature highlights
+- ✅ Landing page with animated book illustration, stats strip, and feature cards
 - ✅ Product catalogue loaded from a static JSON endpoint
 - ✅ Real-time search: filter books by title instantly (client-side, signal-powered)
 - ✅ Shopping cart with add, subtract, set quantity, and remove actions
 - ✅ Cart item badge on the header icon that shows live count, hidden when empty
+- ✅ Checkout modal with mocked PIX, PayPal, and Credit Card payment methods
+- ✅ `UNIQUE_PURCHASE` mode: each title can only be purchased once per order (configurable via `InjectionToken`)
 - ✅ Purchase flow that moves cart items to a download queue
 - ✅ Toast with position configurable via `position` input (`top` | `bottom`, default `top`)
 - ✅ Per-item file download on the success page
 - ✅ Confetti animation on the purchase success screen (`canvas-confetti`)
+- ✅ Book cover placeholder SVG (620×800) shown on image load failure via `(error)` binding
 - ✅ Shared `AppButtonComponent` with variants: `primary`, `outline`, `cta`, `download`, `ghost`
 - ✅ Fully responsive layout across all viewport sizes
 - ✅ 404 not-found page with navigation back to the store
