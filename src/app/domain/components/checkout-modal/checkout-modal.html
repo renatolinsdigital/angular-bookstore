@@ -1,0 +1,139 @@
+<!-- Backdrop -->
+<div class="checkout-modal__backdrop" (click)="cancel()" aria-hidden="true"></div>
+
+<!-- Dialog panel -->
+<div
+  class="checkout-modal__panel"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="checkout-modal-title"
+>
+  <!-- Header -->
+  <div class="checkout-modal__header">
+    <h2 class="checkout-modal__title" id="checkout-modal-title">Checkout</h2>
+    <app-button
+      variant="ghost"
+      class="checkout-modal__close"
+      aria-label="Close checkout"
+      [disabled]="processing()"
+      (click)="cancel()"
+    >
+      <svg
+        class="checkout-modal__close-icon"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </app-button>
+  </div>
+
+  <!-- Order total -->
+  <div class="checkout-modal__totals">
+    <span class="checkout-modal__totals-label">Order total</span>
+    <span class="checkout-modal__totals-value">{{ total() | currencyBrl }}</span>
+  </div>
+
+  <!-- Payment method selection -->
+  <p class="checkout-modal__section-label">Payment method</p>
+
+  <div class="checkout-modal__methods" role="radiogroup" aria-label="Payment method">
+    <!-- Credit / Debit Card -->
+    <button
+      class="checkout-modal__method"
+      [class.checkout-modal__method--selected]="selectedMethod() === 'card'"
+      role="radio"
+      [attr.aria-checked]="selectedMethod() === 'card'"
+      [disabled]="processing()"
+      (click)="selectMethod('card')"
+    >
+      <span class="checkout-modal__method-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+          <line x1="1" y1="10" x2="23" y2="10" />
+        </svg>
+      </span>
+      <span class="checkout-modal__method-info">
+        <span class="checkout-modal__method-name">Credit / Debit Card</span>
+        <span class="checkout-modal__method-desc">Visa, Mastercard, Elo &amp; more</span>
+      </span>
+      <span class="checkout-modal__method-radio" aria-hidden="true"></span>
+    </button>
+
+    <!-- PayPal -->
+    <button
+      class="checkout-modal__method"
+      [class.checkout-modal__method--selected]="selectedMethod() === 'paypal'"
+      role="radio"
+      [attr.aria-checked]="selectedMethod() === 'paypal'"
+      [disabled]="processing()"
+      (click)="selectMethod('paypal')"
+    >
+      <span class="checkout-modal__method-icon" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 12V7H5a2 2 0 0 1 0-4h14v4" />
+          <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+          <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+        </svg>
+      </span>
+      <span class="checkout-modal__method-info">
+        <span class="checkout-modal__method-name">PayPal</span>
+        <span class="checkout-modal__method-desc">Fast and secure checkout</span>
+      </span>
+      <span class="checkout-modal__method-radio" aria-hidden="true"></span>
+    </button>
+
+    <!-- PIX -->
+    <button
+      class="checkout-modal__method"
+      [class.checkout-modal__method--selected]="selectedMethod() === 'pix'"
+      role="radio"
+      [attr.aria-checked]="selectedMethod() === 'pix'"
+      [disabled]="processing()"
+      (click)="selectMethod('pix')"
+    >
+      <span class="checkout-modal__method-icon" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+      </span>
+      <span class="checkout-modal__method-info">
+        <span class="checkout-modal__method-name">PIX</span>
+        <span class="checkout-modal__method-desc">Instant Brazilian payment</span>
+      </span>
+      <span class="checkout-modal__method-radio" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- Actions -->
+  <div class="checkout-modal__actions">
+    <app-button variant="outline" [disabled]="processing()" (click)="cancel()"> Cancel </app-button>
+    <app-button variant="primary" [disabled]="processing()" (click)="confirmPayment()">
+      @if (processing()) {
+        <span class="checkout-modal__spinner"></span>
+        Processing…
+      } @else {
+        Confirm Payment
+      }
+    </app-button>
+  </div>
+</div>

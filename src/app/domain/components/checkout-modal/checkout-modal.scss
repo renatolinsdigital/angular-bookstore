@@ -1,0 +1,241 @@
+@use '../../../../styles/variables' as v;
+
+// =============================================================================
+// Checkout Modal
+// =============================================================================
+
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-modal {
+  // ── Backdrop ───────────────────────────────────────────────────────────────
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.75);
+    backdrop-filter: blur(3px);
+    cursor: pointer;
+  }
+
+  // ── Panel ──────────────────────────────────────────────────────────────────
+  &__panel {
+    position: relative;
+    z-index: 1;
+    background: var(--color-secondary-mid);
+    border: 1px solid var(--color-tertiary-dark);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lift);
+    padding: 2rem;
+    width: min(480px, calc(100vw - 2rem));
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  // ── Header ─────────────────────────────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: var(--font-size-huge);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray1);
+    margin: 0;
+  }
+
+  &__close {
+    padding: 0.25rem;
+    line-height: 0;
+  }
+
+  &__close-icon {
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: var(--color-gray5);
+    transition: fill var(--transition-fast);
+
+    .checkout-modal__close:hover & {
+      fill: var(--color-gray2);
+    }
+  }
+
+  // ── Order total ────────────────────────────────────────────────────────────
+  &__totals {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-tertiary);
+    border: 1px solid var(--color-tertiary-dark);
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1.25rem;
+  }
+
+  &__totals-label {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-gray5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__totals-value {
+    font-size: var(--font-size-extra-large);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  // ── Section label ──────────────────────────────────────────────────────────
+  &__section-label {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-gray5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0;
+  }
+
+  // ── Payment methods ────────────────────────────────────────────────────────
+  &__methods {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--color-tertiary);
+    border: 1.5px solid var(--color-tertiary-dark);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--color-gray2);
+    text-align: left;
+    transition:
+      border-color var(--transition-fast),
+      background var(--transition-fast);
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      background: var(--color-tertiary-dark);
+    }
+
+    &--selected {
+      border-color: var(--color-primary) !important;
+      background: var(--color-tertiary-dark);
+
+      .checkout-modal__method-radio::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+
+  &__method-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__method-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  &__method-name {
+    font-size: var(--font-size-default);
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-gray1);
+  }
+
+  &__method-desc {
+    font-size: var(--font-size-super-small);
+    color: var(--color-gray5);
+  }
+
+  // Custom radio indicator
+  &__method-radio {
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-gray5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color var(--transition-fast);
+
+    &::after {
+      content: '';
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      opacity: 0;
+      transform: scale(0.4);
+      transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+    }
+  }
+
+  .checkout-modal__method--selected &__method-radio {
+    border-color: var(--color-primary);
+  }
+
+  // ── Actions ────────────────────────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding-top: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  // ── Processing spinner ─────────────────────────────────────────────────────
+  &__spinner {
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: checkout-spin 0.75s linear infinite;
+    margin-right: 0.375rem;
+    vertical-align: middle;
+  }
+}
+
+@keyframes checkout-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

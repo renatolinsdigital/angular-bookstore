@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../domain/services/cart.service';
 import { DownloadService } from '../../domain/services/download.service';
@@ -7,10 +7,17 @@ import { PageContainerComponent } from '../../domain/components/page-container/p
 import { CartItemCardComponent } from './cart-item-card/cart-item-card';
 import { CurrencyBrlPipe } from '../../shared/pipes/currency-brl.pipe';
 import { AppButtonComponent } from '../../shared/components/button/button';
+import { CheckoutModalComponent } from '../../domain/components/checkout-modal/checkout-modal';
 
 @Component({
   selector: 'app-cart',
-  imports: [PageContainerComponent, CartItemCardComponent, CurrencyBrlPipe, AppButtonComponent],
+  imports: [
+    PageContainerComponent,
+    CartItemCardComponent,
+    CurrencyBrlPipe,
+    AppButtonComponent,
+    CheckoutModalComponent,
+  ],
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })
@@ -20,13 +27,24 @@ export class CartComponent {
   protected readonly downloadService = inject(DownloadService);
   protected readonly responsive = inject(ResponsiveService);
 
+  protected readonly checkoutOpen = signal(false);
+
   protected goToHome(): void {
     this.router.navigate(['/store']);
   }
 
   protected onPurchase(): void {
+    this.checkoutOpen.set(true);
+  }
+
+  protected onPaymentConfirmed(): void {
+    this.checkoutOpen.set(false);
     this.downloadService.proceedToDownload(this.cartService.cartItems());
     this.cartService.emptyCart();
     this.router.navigate(['/success']);
+  }
+
+  protected onCheckoutCancelled(): void {
+    this.checkoutOpen.set(false);
   }
 }

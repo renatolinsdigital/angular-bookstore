@@ -50,3 +50,12 @@
     </div>
   }
 </app-page-container>
+
+<!-- Checkout modal -->
+@if (checkoutOpen()) {
+  <app-checkout-modal
+    [total]="cartService.cartTotal()"
+    (confirmed)="onPaymentConfirmed()"
+    (cancelled)="onCheckoutCancelled()"
+  />
+}
