@@ -4,6 +4,7 @@
       "id": "1",
       "price": 9.99,
       "title": "The First Book",
+      "description": "An engaging introduction to the world of digital storytelling, exploring the craft of writing compelling narratives from the ground up.",
       "image": "data/images/book1.png",
       "downloadUrl": "data/books/book1.pdf"
     },
@@ -11,6 +12,7 @@
       "id": "2",
       "price": 12.59,
       "title": "The Second Book",
+      "description": "A deep dive into advanced concepts and techniques that elevate your skills to the next level, packed with practical examples.",
       "image": "data/images/book2.png",
       "downloadUrl": "data/books/book2.pdf"
     },
@@ -18,6 +20,7 @@
       "id": "3",
       "price": 29.0,
       "title": "The Third Book",
+      "description": "A comprehensive guide covering architecture patterns and best practices used by industry professionals in large-scale projects.",
       "image": "data/images/book3.png",
       "downloadUrl": "data/books/book3.pdf"
     },
@@ -25,6 +28,7 @@
       "id": "4",
       "price": 19.5,
       "title": "The Fourth Book",
+      "description": "Explores the intersection of creativity and technical expertise, offering a unique perspective on building modern digital products.",
       "image": "data/images/book4.png",
       "downloadUrl": "data/books/book4.pdf"
     },
@@ -32,6 +36,7 @@
       "id": "5",
       "price": 22.5,
       "title": "The Fifth Book",
+      "description": "A hands-on journey through real-world case studies, demonstrating how to solve complex problems with elegant solutions.",
       "image": "data/images/book5.png",
       "downloadUrl": "data/books/book5.pdf"
     },
@@ -39,6 +44,7 @@
       "id": "6",
       "price": 16.9,
       "title": "The Sixth Book",
+      "description": "Concise and focused, this book delivers the essential knowledge you need to get productive quickly without the fluff.",
       "image": "data/images/book6.png",
       "downloadUrl": "data/books/book6.pdf"
     }

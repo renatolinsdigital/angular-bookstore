@@ -15,7 +15,11 @@
   </div>
 
   <!-- Details grid -->
-  <div class="cart-item__details" [class.cart-item__details--smaller]="responsive.isSmaller()">
+  <div
+    class="cart-item__details"
+    [class.cart-item__details--smaller]="responsive.isSmaller()"
+    [class.cart-item__details--unique]="uniquePurchase && !responsive.isSmaller()"
+  >
     <!-- Name + Price -->
     @if (!responsive.youJokingRight()) {
       <div
@@ -24,9 +28,19 @@
         [class.cart-item__name-col--padded]="!responsive.isSmaller() && hasHeader()"
       >
         <span class="cart-item__name">{{ itemName() }}</span>
-        @if (!responsive.isSmaller()) {
+        @if (!responsive.isSmaller() && !uniquePurchase) {
           <span class="cart-item__price">{{ itemPrice() | currencyBrl }}</span>
         }
+      </div>
+    }
+
+    <!-- Description -->
+    @if (itemDescription() && !responsive.isSmaller()) {
+      <div class="cart-item__desc-col">
+        @if (hasHeader() && !responsive.youJokingRight()) {
+          <p class="cart-item__col-header">QUICK DESCRIPTION</p>
+        }
+        <p class="cart-item__desc">{{ itemDescription() }}</p>
       </div>
     }
 
@@ -82,8 +96,8 @@
       </div>
     }
 
-    <!-- Price (for non-smaller screens) -->
-    @if (!responsive.youJokingRight() && !responsive.isSmaller()) {
+    <!-- Price (for non-smaller screens, non-unique mode) -->
+    @if (!responsive.youJokingRight() && !responsive.isSmaller() && !uniquePurchase) {
       <div class="cart-item__price-col">
         @if (hasHeader()) {
           <p class="cart-item__col-header">PRICE</p>
