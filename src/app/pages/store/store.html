@@ -1,53 +1,61 @@
-<app-page-container [isContentLoading]="cartService.status() === 'loading'">
-  <div class="store__header">
-    <div class="store__header-text">
-      <h1 class="store__title">Browse Books</h1>
-      <p class="store__subtitle">Discover your next great read — instant digital download.</p>
-    </div>
-    <div class="store__search-wrapper">
-      <svg
-        class="store__search-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-      <input
-        class="store__search-input"
-        type="search"
-        placeholder="Search by title…"
-        [value]="searchQuery()"
-        (input)="onSearch($event)"
-        aria-label="Search books by title"
-      />
-    </div>
-  </div>
+<div class="store">
+  <!-- Decorative background -->
+  <div class="store__bg-glow store__bg-glow--left" aria-hidden="true"></div>
+  <div class="store__bg-glow store__bg-glow--right" aria-hidden="true"></div>
 
-  @if (cartService.status() === 'failed') {
-    <p class="store__error">Product list is unavailable. Try again later.</p>
-  } @else {
-    @if (filteredProducts().length === 0 && searchQuery()) {
-      <p class="store__no-results">
-        No books match <strong>"{{ searchQuery() }}"</strong>.
-      </p>
-    } @else {
-      <div class="store__grid" [style.grid-template-columns]="gridColumns()">
-        @for (product of filteredProducts(); track product.id) {
-          <app-product-card
-            [productId]="product.id"
-            [title]="product.title"
-            [price]="product.price"
-            [imageUrl]="product.image"
-          />
-        }
+  <app-page-container [isContentLoading]="cartService.status() === 'loading'">
+    <div class="store__header">
+      <div class="store__header-content">
+        <h1 class="store__title">Browse Books</h1>
+        <p class="store__subtitle">Discover your next great read</p>
       </div>
+      <div class="store__search-wrapper">
+        <svg
+          class="store__search-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input
+          class="store__search-input"
+          type="search"
+          placeholder="Search by title…"
+          [value]="searchQuery()"
+          (input)="onSearch($event)"
+          aria-label="Search books by title"
+        />
+      </div>
+    </div>
+
+    <div class="store__divider"></div>
+
+    @if (cartService.status() === 'failed') {
+      <p class="store__error">Product list is unavailable. Try again later.</p>
+    } @else {
+      @if (filteredProducts().length === 0 && searchQuery()) {
+        <p class="store__no-results">
+          No books match <strong>"{{ searchQuery() }}"</strong>.
+        </p>
+      } @else {
+        <div class="store__grid" [style.grid-template-columns]="gridColumns()">
+          @for (product of filteredProducts(); track product.id) {
+            <app-product-card
+              [productId]="product.id"
+              [title]="product.title"
+              [price]="product.price"
+              [imageUrl]="product.image"
+            />
+          }
+        </div>
+      }
     }
-  }
-</app-page-container>
+  </app-page-container>
+</div>
