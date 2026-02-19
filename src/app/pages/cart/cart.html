@@ -6,27 +6,194 @@
     @if (cartService.cartItems().length === 0) {
       <!-- Empty cart state -->
       <div class="cart__empty">
-        <div class="cart__empty-bg-glow" aria-hidden="true"></div>
-        <div class="cart__empty-badge">Your cart is empty</div>
-        <p
-          class="cart__empty-msg"
-          [class.cart__empty-msg--compact]="responsive.youJokingRight()"
-          [class.cart__empty-msg--smaller]="responsive.isSmaller()"
-        >
-          Start browsing and discover your next great read!
-        </p>
-        <div
-          class="cart__empty-image-wrapper"
-          [class.cart__empty-image-wrapper--small]="responsive.isSmall()"
-        >
-          <img
-            src="assets/images/characters_buying.png"
-            alt="The Cart is Empty"
-            class="cart__empty-image"
-            [class.cart__empty-image--tiny]="responsive.youJokingRight()"
-          />
+        <!-- Background glows -->
+        <div class="cart__empty-glow cart__empty-glow--top" aria-hidden="true"></div>
+        <div class="cart__empty-glow cart__empty-glow--accent" aria-hidden="true"></div>
+
+        <!-- Decorative floating book icons -->
+        <div class="cart__empty-deco cart__empty-deco--1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
-        <app-button variant="cta" size="large" (click)="goToHome()">Browse the Store</app-button>
+        <div class="cart__empty-deco cart__empty-deco--2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="cart__empty-deco cart__empty-deco--3" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <!-- Illustration panel (left) -->
+        <div class="cart__empty-illustration" aria-hidden="true">
+          <img src="assets/images/characters_buying.png" alt="" class="cart__empty-image" />
+        </div>
+
+        <!-- Content panel (right) -->
+        <div class="cart__empty-content">
+          <div class="cart__empty-badge">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+            >
+              <path
+                d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M3 6h18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 10a4 4 0 0 1-8 0"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Your cart is empty
+          </div>
+
+          <h1 class="cart__empty-heading">Start your<br />reading adventure</h1>
+
+          <p class="cart__empty-msg">
+            Hundreds of digital books waiting for you. Download instantly, read on any device, keep
+            forever.
+          </p>
+
+          <div class="cart__empty-features">
+            <div class="cart__empty-feature">
+              <span class="cart__empty-feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                >
+                  <path
+                    d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>Instant download</span>
+            </div>
+            <div class="cart__empty-feature">
+              <span class="cart__empty-feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                >
+                  <rect
+                    x="3"
+                    y="11"
+                    width="18"
+                    height="11"
+                    rx="2"
+                    ry="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M7 11V7a5 5 0 0 1 10 0v4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <span>DRM-free files</span>
+            </div>
+            <div class="cart__empty-feature">
+              <span class="cart__empty-feature-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                >
+                  <path
+                    d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>500+ titles</span>
+            </div>
+          </div>
+
+          <app-button variant="cta" size="large" (click)="goToHome()">Browse the Store</app-button>
+        </div>
       </div>
     } @else {
       <div class="cart__layout">
