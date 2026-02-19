@@ -3,6 +3,7 @@ import { signal } from '@angular/core';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ProductCardComponent } from './product-card';
 import { CartService } from '../../services/cart.service';
+import { ToastService } from '../../services/toast.service';
 import { ResponsiveService } from '../../services/responsive.service';
 
 // Backing signal so getQuantityById is reactive inside computed() in the component
@@ -33,6 +34,15 @@ const mockResponsiveService = {
   isDesktopSmallScreen: signal(false),
 };
 
+const mockToastService = {
+  success: vi.fn(),
+  error: vi.fn(),
+  info: vi.fn(),
+  warning: vi.fn(),
+  show: vi.fn(),
+  dismiss: vi.fn(),
+};
+
 describe('ProductCardComponent', () => {
   let component: ProductCardComponent;
   let fixture: ComponentFixture<ProductCardComponent>;
@@ -47,6 +57,7 @@ describe('ProductCardComponent', () => {
       imports: [ProductCardComponent],
       providers: [
         { provide: CartService, useValue: mockCartService },
+        { provide: ToastService, useValue: mockToastService },
         { provide: ResponsiveService, useValue: mockResponsiveService },
       ],
     }).compileComponents();
@@ -85,6 +96,13 @@ describe('ProductCardComponent', () => {
     btn.click();
     await new Promise((r) => setTimeout(r, 300));
     expect(mockCartService.addToCart).toHaveBeenCalledWith('p1');
+  });
+
+  it('should show a success toast after adding to cart', async () => {
+    const btn = fixture.nativeElement.querySelector('.product-card__btn');
+    btn.click();
+    await new Promise((r) => setTimeout(r, 300));
+    expect(mockToastService.success).toHaveBeenCalledWith('"Test Book" added to cart.');
   });
 
   it('should disable button when quantity is at 999', () => {

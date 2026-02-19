@@ -1,5 +1,6 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { CartService } from '../../../domain/services/cart.service';
+import { ToastService } from '../../../domain/services/toast.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
@@ -18,6 +19,7 @@ export class ProductCardComponent {
 
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
+  private readonly toast = inject(ToastService);
   protected readonly isLoading = signal(false);
 
   protected readonly quantityInCart = computed(() =>
@@ -30,6 +32,7 @@ export class ProductCardComponent {
     // Simulate a short network delay (mirrors the React version)
     await new Promise((resolve) => setTimeout(resolve, 200));
     this.cartService.addToCart(this.productId());
+    this.toast.success(`"${this.title()}" added to cart.`);
     this.isLoading.set(false);
   }
 }

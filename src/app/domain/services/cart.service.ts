@@ -56,8 +56,6 @@ export class CartService {
       }
       return [...items, { ...product, quantity: 1 }];
     });
-
-    this.toast.success(`"${product.title}" added to cart.`);
   }
 
   subtractFromCart(productId: string): void {
