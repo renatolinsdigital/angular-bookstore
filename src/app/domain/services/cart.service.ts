@@ -1,5 +1,6 @@
 import { Injectable, Signal, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { delay } from 'rxjs';
 import { Product } from '../models/product.model';
 import { CartItem } from '../models/cart-item.model';
 import { ToastService } from './toast.service';
@@ -32,17 +33,20 @@ export class CartService {
   loadProducts(): void {
     if (this.status() !== 'idle') return;
     this.status.set('loading');
-    this.http.get<{ products: Product[] }>('data/books.json').subscribe({
-      next: ({ products }) => {
-        this.products.set(products);
-        this.status.set('succeeded');
-      },
-      error: (err: Error) => {
-        this.status.set('failed');
-        this.error.set(err?.message ?? 'Failed to load products');
-        this.toast.error('Failed to load products. Please try again.');
-      },
-    });
+    this.http
+      .get<{ products: Product[] }>('data/books.json')
+      .pipe(delay(700))
+      .subscribe({
+        next: ({ products }) => {
+          this.products.set(products);
+          this.status.set('succeeded');
+        },
+        error: (err: Error) => {
+          this.status.set('failed');
+          this.error.set(err?.message ?? 'Failed to load products');
+          this.toast.error('Failed to load products. Please try again.');
+        },
+      });
   }
 
   addToCart(productId: string): void {
