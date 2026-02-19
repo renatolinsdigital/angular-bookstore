@@ -82,6 +82,7 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Shared `AppButtonComponent` with variants: `primary`, `outline`, `cta`, `download`, `ghost`
 - ✅ Fully responsive layout across all viewport sizes
 - ✅ 404 not-found page with navigation back to the store
+- ✅ About page accessible from the header navigation
 
 ---
 

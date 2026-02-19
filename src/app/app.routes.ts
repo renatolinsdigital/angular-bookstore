@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/success/success').then((m) => m.SuccessComponent),
   },
   {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about').then((m) => m.AboutComponent),
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFoundComponent),
   },

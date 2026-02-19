@@ -26,4 +26,8 @@ export class AppHeaderComponent {
   protected goToCart(): void {
     this.router.navigate(['/cart']);
   }
+
+  protected goToAbout(): void {
+    this.router.navigate(['/about']);
+  }
 }
