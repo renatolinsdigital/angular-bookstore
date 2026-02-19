@@ -131,7 +131,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            Top 30 Selling Books
+            {{ product()!.sellingTag || 'Strongly Recommended' }}
           </div>
 
           <h1 class="details__title">{{ product()!.title }}</h1>
