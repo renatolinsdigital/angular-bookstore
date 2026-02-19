@@ -4,6 +4,7 @@ import { ToastService } from '../../../domain/services/toast.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
+import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 @Component({
   selector: 'app-product-card',
@@ -20,6 +21,7 @@ export class ProductCardComponent {
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
   private readonly toast = inject(ToastService);
+  protected readonly uniquePurchase = inject(UNIQUE_PURCHASE);
   protected readonly isLoading = signal(false);
 
   protected readonly quantityInCart = computed(() =>
@@ -27,6 +29,7 @@ export class ProductCardComponent {
   );
 
   protected async handleAddToCart(): Promise<void> {
+    if (this.uniquePurchase && this.quantityInCart() > 0) return;
     if (this.quantityInCart() >= 999) return;
     this.isLoading.set(true);
     // Simulate a short network delay (mirrors the React version)

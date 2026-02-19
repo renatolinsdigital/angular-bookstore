@@ -4,6 +4,7 @@ import { CartService } from '../../../domain/services/cart.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
+import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 @Component({
   selector: 'app-cart-item-card',
@@ -21,6 +22,7 @@ export class CartItemCardComponent implements OnChanges {
 
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
+  protected readonly uniquePurchase = inject(UNIQUE_PURCHASE);
   protected formQuantity = signal('0');
 
   ngOnChanges(): void {

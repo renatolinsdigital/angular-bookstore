@@ -30,7 +30,7 @@
     }
 
     <!-- Quantity controls -->
-    @if (!responsive.youJokingRight()) {
+    @if (!responsive.youJokingRight() && !uniquePurchase) {
       <div class="cart-item__qty-col">
         @if (hasHeader() && !responsive.isSmaller() && !responsive.youJokingRight()) {
           <p class="cart-item__col-header">QUANTITY</p>

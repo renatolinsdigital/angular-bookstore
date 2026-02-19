@@ -35,13 +35,30 @@ Angular Signals (stable since v17) provide:
 
 ```ts
 loadProducts(); // Fetches products once (guards against re-fetch)
-addToCart(id); // Increments quantity or pushes new CartItem
+addToCart(id); // Increments quantity or pushes new CartItem (no-op if UNIQUE_PURCHASE and item already in cart)
 subtractFromCart(id); // Decrements quantity or removes item
 removeFromCart(id); // Removes item regardless of quantity
 emptyCart(); // Clears all cart items
-setQuantity(id, qty); // Sets exact quantity (removes if qty <= 0)
+setQuantity(id, qty); // Sets exact quantity (no-op when UNIQUE_PURCHASE is true)
 getQuantityById(id); // Read-only helper (not a signal)
 ```
+
+### UNIQUE_PURCHASE mode
+
+The `UNIQUE_PURCHASE` injection token (see `src/app/app.tokens.ts`) controls whether a product may appear more than once in an order.
+
+| `UNIQUE_PURCHASE` | `addToCart` behaviour      | Quantity controls in cart |
+| ----------------- | -------------------------- | ------------------------- |
+| `true` (default)  | Adds once; ignores repeats | Hidden                    |
+| `false`           | Increments quantity freely | Visible                   |
+
+`CartService` reads the token eagerly at injection time:
+
+```ts
+readonly uniquePurchase = inject(UNIQUE_PURCHASE);
+```
+
+The `CartItemCardComponent` also injects the token and passes it to the template to toggle the quantity column visibility.
 
 ## DownloadService
 

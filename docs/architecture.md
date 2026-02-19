@@ -36,6 +36,21 @@ CartService.addToCart() mutates cartItems signal
 AppHeaderComponent re-renders cart badge count (reactive via computed())
 ```
 
+## Application Configuration Tokens
+
+App-wide behavioural flags are defined as Angular `InjectionToken`s in `src/app/app.tokens.ts` and provided in `src/app/app.config.ts`. This keeps configuration co-located with the dependency-injection system and trivially overridable in tests.
+
+| Token             | Type      | Default | Description                                                                                                                                                                                                                  |
+| ----------------- | --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `UNIQUE_PURCHASE` | `boolean` | `true`  | When `true`, each product can only appear once per purchase. Quantity controls are hidden in the cart and `CartService.addToCart()` will not increment an item that already exists. Set to `false` to allow multiple copies. |
+
+To change the mode, edit the `useValue` in `src/app/app.config.ts`:
+
+```ts
+// app.config.ts
+{ provide: UNIQUE_PURCHASE, useValue: false } // allow multi-quantity
+```
+
 ## Directory Layout
 
 | Directory                    | Purpose                                                             |

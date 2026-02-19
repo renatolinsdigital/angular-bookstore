@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
 import { CartItem } from '../models/cart-item.model';
 import { ToastService } from './toast.service';
+import { UNIQUE_PURCHASE } from '../../app.tokens';
 
 export type LoadStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 
@@ -10,6 +11,7 @@ export type LoadStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 export class CartService {
   private readonly http = inject(HttpClient);
   private readonly toast = inject(ToastService);
+  readonly uniquePurchase = inject(UNIQUE_PURCHASE);
 
   // ── State ────────────────────────────────────────────────────────────────────
   readonly products = signal<Product[]>([]);
@@ -50,6 +52,7 @@ export class CartService {
     this.cartItems.update((items) => {
       const idx = items.findIndex((i) => i.id === productId);
       if (idx !== -1) {
+        if (this.uniquePurchase) return items;
         return items.map((item, i) =>
           i === idx ? { ...item, quantity: item.quantity + 1 } : item,
         );
@@ -79,6 +82,7 @@ export class CartService {
   }
 
   setQuantity(productId: string, quantity: number): void {
+    if (this.uniquePurchase) return;
     if (quantity <= 0) {
       this.removeFromCart(productId);
       return;
