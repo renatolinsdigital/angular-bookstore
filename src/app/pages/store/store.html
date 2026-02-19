@@ -55,17 +55,12 @@
         </div>
 
         @if (pageResult().totalPages > 1) {
-          <div class="store__pagination">
-            <p class="store__pagination-info">
-              Page {{ pageResult().page }} of {{ pageResult().totalPages }}
-              <span class="store__pagination-total">({{ pageResult().totalItems }} books)</span>
-            </p>
-            <app-paginator
-              [currentPage]="pageResult().page"
-              [totalPages]="pageResult().totalPages"
-              (pageChange)="onPageChange($event)"
-            />
-          </div>
+          <app-paginator
+            [currentPage]="pageResult().page"
+            [totalPages]="pageResult().totalPages"
+            [totalItems]="pageResult().totalItems"
+            (pageChange)="onPageChange($event)"
+          />
         }
       }
     }

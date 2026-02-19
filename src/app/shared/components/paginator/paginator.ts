@@ -8,6 +8,7 @@ import { Component, computed, input, output } from '@angular/core';
 export class PaginatorComponent {
   readonly currentPage = input.required<number>();
   readonly totalPages = input.required<number>();
+  readonly totalItems = input<number>(0);
 
   readonly pageChange = output<number>();
 
@@ -37,5 +38,14 @@ export class PaginatorComponent {
   goTo(page: number): void {
     if (page < 1 || page > this.totalPages() || page === this.currentPage()) return;
     this.pageChange.emit(page);
+  }
+
+  goToInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const val = parseInt(input.value, 10);
+    if (!isNaN(val)) {
+      this.goTo(Math.max(1, Math.min(val, this.totalPages())));
+    }
+    input.value = '';
   }
 }
