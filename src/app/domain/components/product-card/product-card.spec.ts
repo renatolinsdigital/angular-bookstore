@@ -6,6 +6,7 @@ import { ProductCardComponent } from './product-card';
 import { CartService } from '../../services/cart.service';
 import { ToastService } from '../../services/toast.service';
 import { ResponsiveService } from '../../services/responsive.service';
+import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 // Backing signal so getQuantityById is reactive inside computed() in the component
 const mockQty = signal(0);
@@ -61,6 +62,7 @@ describe('ProductCardComponent', () => {
         { provide: CartService, useValue: mockCartService },
         { provide: ToastService, useValue: mockToastService },
         { provide: ResponsiveService, useValue: mockResponsiveService },
+        { provide: UNIQUE_PURCHASE, useValue: true },
       ],
     }).compileComponents();
 

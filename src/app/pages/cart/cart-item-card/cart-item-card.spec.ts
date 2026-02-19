@@ -52,6 +52,7 @@ describe('CartItemCardComponent', () => {
         provideHttpClient(),
         { provide: CartService, useValue: mockCartService },
         { provide: ResponsiveService, useValue: mockResponsiveService },
+        { provide: UNIQUE_PURCHASE, useValue: true },
       ],
     }).compileComponents();
 

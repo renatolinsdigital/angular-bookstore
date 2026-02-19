@@ -8,6 +8,7 @@ import { DownloadService } from '../../domain/services/download.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { CartItem } from '../../domain/models/cart-item.model';
 import { provideHttpClient } from '@angular/common/http';
+import { UNIQUE_PURCHASE } from '../../app.tokens';
 
 const mockCartItems: CartItem[] = [{ id: '1', title: 'Test Book', price: 20, quantity: 1 }];
 
@@ -57,6 +58,7 @@ describe('CartComponent', () => {
         { provide: CartService, useValue: mockCartService },
         { provide: DownloadService, useValue: mockDownloadService },
         { provide: ResponsiveService, useValue: mockResponsiveService },
+        { provide: UNIQUE_PURCHASE, useValue: true },
       ],
     }).compileComponents();
 
