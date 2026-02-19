@@ -3,59 +3,236 @@
   <div class="about__bg-glow about__bg-glow--bottom" aria-hidden="true"></div>
 
   <div class="about__inner">
+    <!-- Hero -->
+    <div class="about__badge">Our Mission</div>
     <h1 class="about__title" [class.about__title--compact]="responsive.isSmaller()">
-      Digital<span class="about__title-accent">Book</span>Store
+      Books worth<br /><span class="about__title-accent">every page.</span>
     </h1>
-    <div class="about__badge">by Renato Lins</div>
-
     <p class="about__subtitle">
-      A modern Angular SPA showcasing best practices in standalone components, signals-based state
-      management, and a dark-themed "Midnight Library" visual design.
+      We believe reading should be affordable, unrestricted, and deeply enjoyable. Every book in our
+      catalogue is written by passionate humans, thoroughly revised, and sold without lock-in — so
+      your library belongs to you, always.
     </p>
 
+    <div class="about__divider" aria-hidden="true"></div>
+
+    <!-- Stats row -->
+    <div class="about__stats">
+      <div class="about__stat">
+        <span class="about__stat-value">500+</span>
+        <span class="about__stat-label">Titles available</span>
+      </div>
+      <div class="about__stat-sep" aria-hidden="true"></div>
+      <div class="about__stat">
+        <span class="about__stat-value">100%</span>
+        <span class="about__stat-label">Human-written</span>
+      </div>
+      <div class="about__stat-sep" aria-hidden="true"></div>
+      <div class="about__stat">
+        <span class="about__stat-value">0</span>
+        <span class="about__stat-label">DRM restrictions</span>
+      </div>
+      <div class="about__stat-sep" aria-hidden="true"></div>
+      <div class="about__stat">
+        <span class="about__stat-value">∞</span>
+        <span class="about__stat-label">Re-downloads</span>
+      </div>
+    </div>
+
+    <!-- Manifesto quote -->
+    <blockquote class="about__manifesto">
+      &ldquo;A reader lives a thousand lives before they die. We exist to make every one of those
+      lives as accessible as possible.&rdquo;
+    </blockquote>
+
+    <!-- Value cards -->
     <div class="about__sections" [class.about__sections--stacked]="responsive.isSmall()">
-      <!-- Stack -->
       <section class="about__card">
-        <h2 class="about__card-title">Tech Stack</h2>
-        <ul class="about__list">
-          <li><span class="about__tag">Angular 21</span> Component framework</li>
-          <li><span class="about__tag">Signals</span> Fine-grained reactive state</li>
-          <li><span class="about__tag">SCSS</span> Design tokens &amp; BEM styling</li>
-          <li><span class="about__tag">Vitest</span> Unit testing</li>
-          <li><span class="about__tag">ESLint + Prettier</span> Code quality</li>
-          <li><span class="about__tag">Husky</span> Pre-commit hooks</li>
-        </ul>
+        <div class="about__card-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+          >
+            <path
+              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle
+              cx="12"
+              cy="7"
+              r="4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h2 class="about__card-title">Written by Humans</h2>
+        <p class="about__card-body">
+          Every title is authored by a real person with real expertise — practitioners, educators,
+          and storytellers who care deeply about their craft. No filler, no AI padding, no
+          ghostwriting shortcuts. Each manuscript goes through multiple rounds of human editing and
+          peer review before it earns a place in our catalogue.
+        </p>
       </section>
 
-      <!-- Practices -->
       <section class="about__card">
-        <h2 class="about__card-title">Angular Practices</h2>
-        <ul class="about__list">
-          <li>Standalone components — no <code>NgModule</code></li>
-          <li>Lazy-loaded routes via <code>loadComponent</code></li>
-          <li><code>&#64;if</code> / <code>&#64;for</code> built-in control flow</li>
-          <li><code>input()</code> signal API replacing <code>&#64;Input()</code></li>
-          <li><code>inject()</code> instead of constructor injection</li>
-          <li><code>InjectionToken</code> for app-wide configuration</li>
-        </ul>
+        <div class="about__card-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+          >
+            <path
+              d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h2 class="about__card-title">DRM-Free Forever</h2>
+        <p class="about__card-body">
+          When you buy a book here, you own it — full stop. No proprietary readers, no licence
+          expiry, no account required to open your own files. Download it once and read it on any
+          device, share it with a friend, or archive it for decades. Your books travel with you, not
+          with a platform.
+        </p>
       </section>
 
-      <!-- Features -->
       <section class="about__card">
-        <h2 class="about__card-title">Features</h2>
-        <ul class="about__list">
-          <li>Searchable product catalogue</li>
-          <li>Shopping cart with quantity controls</li>
-          <li>Checkout modal (PIX / PayPal / Credit Card)</li>
-          <li>Instant download on purchase</li>
-          <li>Confetti animation on success</li>
-          <li>Fully responsive across all viewports</li>
-        </ul>
+        <div class="about__card-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+          >
+            <line
+              x1="12"
+              y1="1"
+              x2="12"
+              y2="23"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h2 class="about__card-title">Priced to Be Read</h2>
+        <p class="about__card-body">
+          Expensive books get left on wish lists. We keep prices deliberately low because we believe
+          the best return on a book is actually reading it. No subscriptions, no bundles you didn't
+          ask for — just honest, one-time pricing that makes saying &ldquo;yes&rdquo; to a new read
+          an easy decision.
+        </p>
       </section>
     </div>
 
+    <!-- Our promise -->
+    <div class="about__promise">
+      <h2 class="about__promise-title">Our promise to every reader</h2>
+      <ul class="about__promise-list">
+        <li>
+          <span class="about__promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="14" height="14">
+              <polyline
+                points="20 6 9 17 4 12"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Every book is manually reviewed for quality, accuracy, and readability before publication.
+        </li>
+        <li>
+          <span class="about__promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="14" height="14">
+              <polyline
+                points="20 6 9 17 4 12"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Downloads are available immediately after purchase — no waiting, no queues.
+        </li>
+        <li>
+          <span class="about__promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="14" height="14">
+              <polyline
+                points="20 6 9 17 4 12"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Re-download your purchases as many times as you need, forever.
+        </li>
+        <li>
+          <span class="about__promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="14" height="14">
+              <polyline
+                points="20 6 9 17 4 12"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          Authors receive a fair share of every sale — supporting the humans behind the words.
+        </li>
+        <li>
+          <span class="about__promise-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" width="14" height="14">
+              <polyline
+                points="20 6 9 17 4 12"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          We will never introduce DRM, subscriptions, or artificial access restrictions.
+        </li>
+      </ul>
+    </div>
+
     <div class="about__actions">
-      <app-button variant="cta" (click)="goToStore()">Browse the Store</app-button>
+      <app-button variant="cta" (click)="goToStore()">Start Reading Today</app-button>
     </div>
   </div>
 </div>
