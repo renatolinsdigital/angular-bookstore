@@ -84,11 +84,11 @@ describe('ProductCardComponent', () => {
     expect(label.textContent.trim()).toBe('ADD TO CART');
   });
 
-  it('should show ADD MORE label when item is already in cart', () => {
+  it('should show ADDED TO CART label when item is already in cart (unique purchase mode)', () => {
     mockQty.set(2);
     fixture.detectChanges();
     const label = fixture.nativeElement.querySelector('.product-card__btn-label');
-    expect(label.textContent.trim()).toBe('ADD MORE');
+    expect(label.textContent.trim()).toBe('ADDED TO CART');
   });
 
   it('should call cartService.addToCart when button is clicked', async () => {

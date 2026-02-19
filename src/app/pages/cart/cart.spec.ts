@@ -76,19 +76,24 @@ describe('CartComponent', () => {
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 
-  it('should call proceedToDownload with current cart items on purchase', () => {
+  it('should open checkout modal on purchase', () => {
     (component as unknown as { onPurchase(): void }).onPurchase();
+    expect((component as unknown as { checkoutOpen: () => boolean }).checkoutOpen()).toBe(true);
+  });
+
+  it('should call proceedToDownload with current cart items on payment confirmed', () => {
+    (component as unknown as { onPaymentConfirmed(): void }).onPaymentConfirmed();
     expect(mockDownloadService.proceedToDownload).toHaveBeenCalledWith(mockCartItems);
   });
 
-  it('should empty cart on purchase', () => {
-    (component as unknown as { onPurchase(): void }).onPurchase();
+  it('should empty cart on payment confirmed', () => {
+    (component as unknown as { onPaymentConfirmed(): void }).onPaymentConfirmed();
     expect(mockCartService.emptyCart).toHaveBeenCalled();
   });
 
-  it('should navigate to /success on purchase', () => {
+  it('should navigate to /success on payment confirmed', () => {
     const spy = vi.spyOn(router, 'navigate');
-    (component as unknown as { onPurchase(): void }).onPurchase();
+    (component as unknown as { onPaymentConfirmed(): void }).onPaymentConfirmed();
     expect(spy).toHaveBeenCalledWith(['/success']);
   });
 });
