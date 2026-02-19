@@ -1,4 +1,5 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../../../domain/services/cart.service';
 import { ToastService } from '../../../domain/services/toast.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
@@ -21,12 +22,17 @@ export class ProductCardComponent {
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
   private readonly toast = inject(ToastService);
+  private readonly router = inject(Router);
   protected readonly uniquePurchase = inject(UNIQUE_PURCHASE);
   protected readonly isLoading = signal(false);
 
   protected readonly quantityInCart = computed(() =>
     this.cartService.getQuantityById(this.productId()),
   );
+
+  protected goToDetails(): void {
+    this.router.navigate(['/details', this.productId()]);
+  }
 
   protected async handleAddToCart(): Promise<void> {
     if (this.uniquePurchase && this.quantityInCart() > 0) return;

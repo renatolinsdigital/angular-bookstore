@@ -35,12 +35,12 @@
     }
 
     <!-- Description -->
-    @if (itemDescription() && !responsive.isSmaller()) {
+    @if (itemQuickDescription() && !responsive.isSmaller()) {
       <div class="cart-item__desc-col">
         @if (hasHeader() && !responsive.youJokingRight()) {
           <p class="cart-item__col-header">QUICK DESCRIPTION</p>
         }
-        <p class="cart-item__desc">{{ itemDescription() }}</p>
+        <p class="cart-item__desc">{{ itemQuickDescription() }}</p>
       </div>
     }
 

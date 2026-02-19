@@ -1,5 +1,12 @@
 <div class="product-card">
-  <div class="product-card__image-wrapper">
+  <div
+    class="product-card__image-wrapper"
+    role="button"
+    tabindex="0"
+    (click)="goToDetails()"
+    (keydown.enter)="goToDetails()"
+    [attr.aria-label]="'View details for ' + title()"
+  >
     <img
       [src]="imageUrl()"
       [alt]="title()"

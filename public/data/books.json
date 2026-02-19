@@ -4,7 +4,8 @@
       "id": "1",
       "price": 9.99,
       "title": "The First Book",
-      "description": "An engaging introduction to the world of digital storytelling, exploring the craft of writing compelling narratives from the ground up.",
+      "quickDescription": "An engaging introduction to the world of digital storytelling, exploring the craft of writing compelling narratives from the ground up.",
+      "fullDescription": "The First Book is the perfect starting point for anyone who has ever wanted to tell a story but didn't know where to begin. Written with warmth and clarity, this title walks you through the fundamentals of digital narrative — from crafting believable characters and building tension, to structuring chapters that keep readers turning pages. Drawing on examples from contemporary authors and time-tested techniques, the book demystifies the creative process and turns intimidating blank pages into opportunities. Whether you are an aspiring novelist, blogger, or content creator, you will finish this book with a complete framework and the confidence to bring your own stories to life.",
       "image": "data/images/book1.png",
       "downloadUrl": "data/books/book1.pdf"
     },
@@ -12,7 +13,8 @@
       "id": "2",
       "price": 12.59,
       "title": "The Second Book",
-      "description": "A deep dive into advanced concepts and techniques that elevate your skills to the next level, packed with practical examples.",
+      "quickDescription": "A deep dive into advanced concepts and techniques that elevate your skills to the next level, packed with practical examples.",
+      "fullDescription": "Building on foundational knowledge, The Second Book challenges you to move beyond beginner patterns and embrace the depth that separates good work from great work. Each chapter tackles a specific advanced concept — from optimising performance and managing complexity, to designing systems that scale gracefully over time. Real-world case studies ground every idea in practice, showing not just what to do but why it matters. Readers consistently report breakthrough moments of clarity while working through the carefully designed exercises. If you feel comfortable with the basics and are hungry for the next step, this is the title that will take you there.",
       "image": "data/images/book2.png",
       "downloadUrl": "data/books/book2.pdf"
     },
@@ -20,7 +22,8 @@
       "id": "3",
       "price": 29.0,
       "title": "The Third Book",
-      "description": "A comprehensive guide covering architecture patterns and best practices used by industry professionals in large-scale projects.",
+      "quickDescription": "A comprehensive guide covering architecture patterns and best practices used by industry professionals in large-scale projects.",
+      "fullDescription": "The Third Book is the definitive resource for engineers and architects who need to design systems that stand the test of time. It examines the most widely adopted structural patterns — from layered and hexagonal architectures to event-driven and microservice approaches — and explains the trade-offs inherent in each. The author draws on decades of industry experience to show how theoretical models translate into the messy reality of production systems, including how to handle legacy constraints, team dynamics, and evolving requirements. Filled with diagrams, annotated code examples, and candid war stories, this book is both a reference manual and an engaging read for anyone serious about professional software design.",
       "image": "data/images/book3.png",
       "downloadUrl": "data/books/book3.pdf"
     },
@@ -28,7 +31,8 @@
       "id": "4",
       "price": 19.5,
       "title": "The Fourth Book",
-      "description": "Explores the intersection of creativity and technical expertise, offering a unique perspective on building modern digital products.",
+      "quickDescription": "Explores the intersection of creativity and technical expertise, offering a unique perspective on building modern digital products.",
+      "fullDescription": "What happens when artistic sensibility meets engineering rigour? The Fourth Book explores exactly that intersection, arguing that the most enduring digital products are built by people who refuse to separate craft from code. Through a series of deeply personal essays and structured workshops, the author guides you through developing a design eye, understanding user psychology, and weaving that understanding into every technical decision you make. The result is a product philosophy that produces software people love, not just software that works. Ideal for developers who feel the pull of design, designers who want to understand technology more deeply, and product thinkers who want to bridge both worlds.",
       "image": "data/images/book4.png",
       "downloadUrl": "data/books/book4.pdf"
     },
@@ -36,7 +40,8 @@
       "id": "5",
       "price": 22.5,
       "title": "The Fifth Book",
-      "description": "A hands-on journey through real-world case studies, demonstrating how to solve complex problems with elegant solutions.",
+      "quickDescription": "A hands-on journey through real-world case studies, demonstrating how to solve complex problems with elegant solutions.",
+      "fullDescription": "Theory is valuable, but there is no substitute for watching a seasoned practitioner tackle a genuine problem in real time. The Fifth Book presents twelve complete case studies drawn from diverse domains — healthcare, finance, education, and e-commerce — each one walked through from initial brief to deployed solution. For every case, the author explains the reasoning behind key decisions, the mistakes made along the way, and the lessons extracted. Supplementary exercises invite you to attempt each challenge yourself before reading the solution, transforming passive reading into active problem-solving. By the final chapter, you will have an expanded mental toolkit and a portfolio of transferable patterns ready to apply in your own projects.",
       "image": "data/images/book5.png",
       "downloadUrl": "data/books/book5.pdf"
     },
@@ -44,7 +49,8 @@
       "id": "6",
       "price": 16.9,
       "title": "The Sixth Book",
-      "description": "Concise and focused, this book delivers the essential knowledge you need to get productive quickly without the fluff.",
+      "quickDescription": "Concise and focused, this book delivers the essential knowledge you need to get productive quickly without the fluff.",
+      "fullDescription": "In a world of thousand-page tomes and endless online tutorials, The Sixth Book is a breath of fresh air — a tightly scoped, ruthlessly edited guide that respects your time. Every page earns its place. The author identified the twenty percent of knowledge that yields eighty percent of results and structured the entire book around that core. Each section ends with a concise summary and a single actionable task, making it easy to integrate learning into a busy schedule. Perfect for professionals upskilling on the job, this book has been praised by readers as the resource they wish had existed when they started. Pick it up, work through it in a weekend, and emerge genuinely more capable.",
       "image": "data/images/book6.png",
       "downloadUrl": "data/books/book6.pdf"
     }

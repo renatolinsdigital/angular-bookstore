@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { signal } from '@angular/core';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ProductCardComponent } from './product-card';
@@ -56,6 +57,7 @@ describe('ProductCardComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ProductCardComponent],
       providers: [
+        provideRouter([]),
         { provide: CartService, useValue: mockCartService },
         { provide: ToastService, useValue: mockToastService },
         { provide: ResponsiveService, useValue: mockResponsiveService },

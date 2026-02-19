@@ -1,0 +1,57 @@
+<app-page-container>
+  @if (cartService.status() === 'loading') {
+    <div class="details__loading">
+      <p>Loading...</p>
+    </div>
+  } @else if (!product()) {
+    <div class="details__not-found">
+      <p class="details__not-found-text">Product not found.</p>
+      <app-button variant="outline" (click)="goToStore()">Back to Store</app-button>
+    </div>
+  } @else {
+    <div class="details__layout" [class.details__layout--stacked]="responsive.isSmaller()">
+      <!-- Cover image -->
+      <div class="details__cover-col">
+        <img
+          [src]="product()!.image"
+          [alt]="product()!.title"
+          class="details__cover"
+          (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
+        />
+      </div>
+
+      <!-- Info panel -->
+      <div class="details__info-col">
+        <h1 class="details__title">{{ product()!.title }}</h1>
+        <p class="details__price">{{ product()!.price | currencyBrl }}</p>
+
+        @if (product()!.fullDescription) {
+          <p class="details__description">{{ product()!.fullDescription }}</p>
+        }
+
+        <div class="details__actions">
+          <app-button
+            variant="primary"
+            size="large"
+            [disabled]="
+              (uniquePurchase && quantityInCart() > 0) || quantityInCart() >= 999 || isLoading()
+            "
+            (click)="handleAddToCart()"
+          >
+            @if (isLoading()) {
+              <span class="details__btn-spinner"></span>
+            } @else {
+              {{ uniquePurchase && quantityInCart() > 0 ? 'ADDED TO CART' : 'ADD TO CART' }}
+            }
+          </app-button>
+
+          @if (quantityInCart() > 0) {
+            <app-button variant="outline" (click)="goToCart()">View Cart</app-button>
+          }
+
+          <app-button variant="ghost" (click)="goToStore()">← Back to Store</app-button>
+        </div>
+      </div>
+    </div>
+  }
+</app-page-container>
