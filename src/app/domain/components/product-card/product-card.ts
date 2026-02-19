@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../../domain/services/cart.service';
 import { ToastService } from '../../../domain/services/toast.service';
@@ -25,6 +25,15 @@ export class ProductCardComponent {
   private readonly router = inject(Router);
   protected readonly uniquePurchase = inject(UNIQUE_PURCHASE);
   protected readonly isLoading = signal(false);
+  protected readonly imageLoading = signal(true);
+
+  constructor() {
+    // Reset shimmer whenever the cover URL changes (e.g. on page navigation)
+    effect(() => {
+      this.imageUrl(); // track
+      this.imageLoading.set(true);
+    });
+  }
 
   protected readonly quantityInCart = computed(() =>
     this.cartService.getQuantityById(this.productId()),
@@ -32,6 +41,15 @@ export class ProductCardComponent {
 
   protected goToDetails(): void {
     this.router.navigate(['/details', this.productId()]);
+  }
+
+  protected onImageLoad(): void {
+    this.imageLoading.set(false);
+  }
+
+  protected onImageError(event: Event): void {
+    (event.target as HTMLImageElement).src = 'assets/images/cover-placeholder.svg';
+    this.imageLoading.set(false);
   }
 
   protected async handleAddToCart(): Promise<void> {

@@ -1,6 +1,7 @@
 <div class="product-card">
   <div
     class="product-card__image-wrapper"
+    [class.product-card__image-wrapper--loading]="imageLoading()"
     role="button"
     tabindex="0"
     (click)="goToDetails()"
@@ -12,7 +13,8 @@
       [alt]="title()"
       class="product-card__image"
       loading="lazy"
-      (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
+      (load)="onImageLoad()"
+      (error)="onImageError($event)"
     />
   </div>
 

@@ -26,6 +26,8 @@ export class StoreComponent implements OnInit {
   readonly currentPage = signal(1);
   readonly pageSize = inject(PAGE_SIZE);
   readonly isLoading = signal(true);
+  /** True only during the very first fetch — prevents full-page blink on page changes. */
+  readonly isInitialLoad = signal(true);
 
   /** Populated reactively via BooksApiService — reacts to page and query changes. */
   readonly pageResult: Signal<PagedResult>;
@@ -46,7 +48,10 @@ export class StoreComponent implements OnInit {
       params$.pipe(
         tap(() => this.isLoading.set(true)),
         switchMap(({ page, query }) => this.booksApi.fetchPage(page, query, this.pageSize)),
-        tap(() => this.isLoading.set(false)),
+        tap(() => {
+          this.isLoading.set(false);
+          this.isInitialLoad.set(false);
+        }),
       ),
       { initialValue: EMPTY_PAGE },
     );
