@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { signal } from '@angular/core';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ProductCardComponent } from './product-card';
@@ -86,11 +86,22 @@ describe('ProductCardComponent', () => {
     expect(label.textContent.trim()).toBe('ADD TO CART');
   });
 
-  it('should show ADDED TO CART label when item is already in cart (unique purchase mode)', () => {
+  it('should show VIEW IN CART label when item is already in cart (unique purchase mode)', () => {
     mockQty.set(2);
     fixture.detectChanges();
     const label = fixture.nativeElement.querySelector('.product-card__btn-label');
-    expect(label.textContent.trim()).toBe('ADDED TO CART');
+    expect(label.textContent.trim()).toBe('VIEW IN CART');
+  });
+
+  it('should navigate to /cart when VIEW IN CART is clicked (unique purchase mode)', async () => {
+    mockQty.set(1);
+    fixture.detectChanges();
+    const routerSpy = vi.spyOn(TestBed.inject(Router), 'navigate');
+    const btn = fixture.nativeElement.querySelector('.product-card__btn');
+    btn.click();
+    await new Promise((r) => setTimeout(r, 300));
+    expect(routerSpy).toHaveBeenCalledWith(['/cart']);
+    expect(mockCartService.addToCart).not.toHaveBeenCalled();
   });
 
   it('should call cartService.addToCart when button is clicked', async () => {

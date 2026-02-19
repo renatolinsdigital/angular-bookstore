@@ -35,7 +35,10 @@ export class ProductCardComponent {
   }
 
   protected async handleAddToCart(): Promise<void> {
-    if (this.uniquePurchase && this.quantityInCart() > 0) return;
+    if (this.uniquePurchase && this.quantityInCart() > 0) {
+      this.router.navigate(['/cart']);
+      return;
+    }
     if (this.quantityInCart() >= 999) return;
     this.isLoading.set(true);
     // Simulate a short network delay (mirrors the React version)

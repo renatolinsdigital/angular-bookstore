@@ -39,7 +39,10 @@ export class DetailsComponent implements OnInit {
   }
 
   protected async handleAddToCart(): Promise<void> {
-    if (this.uniquePurchase && this.quantityInCart() > 0) return;
+    if (this.uniquePurchase && this.quantityInCart() > 0) {
+      this.router.navigate(['/cart']);
+      return;
+    }
     if (this.quantityInCart() >= 999) return;
     this.isLoading.set(true);
     await new Promise((resolve) => setTimeout(resolve, 200));

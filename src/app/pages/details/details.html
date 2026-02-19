@@ -33,15 +33,17 @@
           <app-button
             variant="primary"
             size="large"
-            [disabled]="
-              (uniquePurchase && quantityInCart() > 0) || quantityInCart() >= 999 || isLoading()
-            "
+            [disabled]="quantityInCart() >= 999 || isLoading()"
             (click)="handleAddToCart()"
           >
             @if (isLoading()) {
               <span class="details__btn-spinner"></span>
+            } @else if (uniquePurchase && quantityInCart() > 0) {
+              VIEW IN CART
+            } @else if (quantityInCart() > 0) {
+              ADD ONE MORE
             } @else {
-              {{ uniquePurchase && quantityInCart() > 0 ? 'ADDED TO CART' : 'ADD TO CART' }}
+              ADD TO CART
             }
           </app-button>
 

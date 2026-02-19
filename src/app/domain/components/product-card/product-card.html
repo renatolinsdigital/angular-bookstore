@@ -29,7 +29,7 @@
     [class.product-card__btn--compact]="responsive.youJokingRight()"
     [class.product-card__btn--loading]="isLoading()"
     [class.product-card__btn--full-width]="responsive.isSmaller()"
-    [disabled]="(uniquePurchase && quantityInCart() > 0) || quantityInCart() >= 999 || isLoading()"
+    [disabled]="quantityInCart() >= 999 || isLoading()"
     (click)="handleAddToCart()"
   >
     @if (isLoading()) {
@@ -43,9 +43,9 @@
       }
       <span class="product-card__btn-label">
         @if (uniquePurchase) {
-          {{ quantityInCart() > 0 ? 'ADDED TO CART' : 'ADD TO CART' }}
+          {{ quantityInCart() > 0 ? 'VIEW IN CART' : 'ADD TO CART' }}
         } @else {
-          {{ quantityInCart() > 0 ? 'ADD MORE' : 'ADD TO CART' }}
+          {{ quantityInCart() > 0 ? 'ADD ONE MORE' : 'ADD TO CART' }}
         }
       </span>
     }

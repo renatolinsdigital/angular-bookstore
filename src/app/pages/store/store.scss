@@ -34,11 +34,12 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 2.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 1;
+  padding-bottom: 2rem;
 }
 
 .store__header-content {
