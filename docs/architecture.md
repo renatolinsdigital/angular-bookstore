@@ -4,14 +4,15 @@ All components are standalone (no `NgModule`). Every page route is lazy-loaded v
 
 ## Routes
 
-| Path       | Component           | Purpose                              |
-| ---------- | ------------------- | ------------------------------------ |
-| `/`        | `HomeComponent`     | Landing page                         |
-| `/store`   | `StoreComponent`    | Searchable product catalogue         |
-| `/cart`    | `CartComponent`     | Shopping cart + checkout modal       |
-| `/success` | `SuccessComponent`  | Post-purchase download page          |
-| `/about`   | `AboutComponent`    | Project overview, stack, and credits |
-| `**`       | `NotFoundComponent` | 404 fallback                         |
+| Path           | Component           | Purpose                              |
+| -------------- | ------------------- | ------------------------------------ |
+| `/`            | `HomeComponent`     | Landing page                         |
+| `/store`       | `StoreComponent`    | Searchable product catalogue         |
+| `/cart`        | `CartComponent`     | Shopping cart + checkout modal       |
+| `/success`     | `SuccessComponent`  | Post-purchase download page          |
+| `/about`       | `AboutComponent`    | Project overview, stack, and credits |
+| `/details/:id` | `DetailsComponent`  | Product detail with full description |
+| `**`           | `NotFoundComponent` | 404 fallback                         |
 
 ## Data Flow
 
@@ -33,11 +34,17 @@ DownloadService.proceedToDownload() + CartService.emptyCart() → /success
 
 Defined in `src/app/app.tokens.ts`, provided in `src/app/app.config.ts`.
 
-| Token             | Type      | Default | Effect                                                          |
-| ----------------- | --------- | ------- | --------------------------------------------------------------- |
-| `UNIQUE_PURCHASE` | `boolean` | `true`  | One copy per product per order; hides quantity controls in cart |
+| Token             | Type             | Default | Effect                                                          |
+| ----------------- | ---------------- | ------- | --------------------------------------------------------------- |
+| `UNIQUE_PURCHASE` | `boolean`        | `true`  | One copy per product per order; hides quantity controls in cart |
+| `CURRENCY`        | `'usd' \| 'brl'` | `'usd'` | Display currency for all prices (`$` or `R$`)                   |
 
-Override: `{ provide: UNIQUE_PURCHASE, useValue: false }`
+Override example:
+
+```ts
+{ provide: UNIQUE_PURCHASE, useValue: false }
+{ provide: CURRENCY, useValue: 'brl' }
+```
 
 ## Directory Layout
 

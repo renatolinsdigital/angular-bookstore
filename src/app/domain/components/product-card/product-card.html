@@ -19,7 +19,7 @@
   <p class="product-card__title">{{ title() }}</p>
 
   <p class="product-card__price" [class.product-card__price--compact]="responsive.youJokingRight()">
-    {{ price() | currencyBrl }}
+    {{ price() | appCurrency }}
   </p>
 
   <app-button

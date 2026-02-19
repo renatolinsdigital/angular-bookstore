@@ -1,12 +1,12 @@
 import { Component, input, output, signal } from '@angular/core';
-import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
+import { AppCurrencyPipe } from '../../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
 
 export type PaymentMethod = 'card' | 'paypal' | 'pix';
 
 @Component({
   selector: 'app-checkout-modal',
-  imports: [CurrencyBrlPipe, AppButtonComponent],
+  imports: [AppCurrencyPipe, AppButtonComponent],
   templateUrl: './checkout-modal.html',
   styleUrl: './checkout-modal.scss',
 })

@@ -1,9 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { formatToBRL } from '../helpers/currency.helper';
-
-@Pipe({ name: 'currencyBrl', standalone: true })
-export class CurrencyBrlPipe implements PipeTransform {
-  transform(value: number): string {
-    return formatToBRL(value);
-  }
-}
+/**
+ * @deprecated Use `AppCurrencyPipe` from `app-currency.pipe` instead.
+ * Kept for backward compatibility — simply re-exports the new pipe.
+ */
+export { AppCurrencyPipe as CurrencyBrlPipe } from './app-currency.pipe';

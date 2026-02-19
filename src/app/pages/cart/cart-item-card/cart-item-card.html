@@ -29,7 +29,7 @@
       >
         <span class="cart-item__name">{{ itemName() }}</span>
         @if (!responsive.isSmaller() && !uniquePurchase) {
-          <span class="cart-item__price">{{ itemPrice() | currencyBrl }}</span>
+          <span class="cart-item__price">{{ itemPrice() | appCurrency }}</span>
         }
       </div>
     }
@@ -102,7 +102,7 @@
         @if (hasHeader()) {
           <p class="cart-item__col-header">PRICE</p>
         }
-        <span class="cart-item__subtotal">{{ itemPrice() * quantity() | currencyBrl }}</span>
+        <span class="cart-item__subtotal">{{ itemPrice() * quantity() | appCurrency }}</span>
       </div>
     }
 

@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../domain/services/cart.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { ToastService } from '../../domain/services/toast.service';
-import { CurrencyBrlPipe } from '../../shared/pipes/currency-brl.pipe';
+import { AppCurrencyPipe } from '../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../shared/components/button/button';
 import { PageContainerComponent } from '../../domain/components/page-container/page-container';
 import { UNIQUE_PURCHASE } from '../../app.tokens';
 
 @Component({
   selector: 'app-details',
-  imports: [CurrencyBrlPipe, AppButtonComponent, PageContainerComponent],
+  imports: [AppCurrencyPipe, AppButtonComponent, PageContainerComponent],
   templateUrl: './details.html',
   styleUrl: './details.scss',
 })

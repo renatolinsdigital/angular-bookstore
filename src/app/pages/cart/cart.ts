@@ -5,7 +5,7 @@ import { DownloadService } from '../../domain/services/download.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { PageContainerComponent } from '../../domain/components/page-container/page-container';
 import { CartItemCardComponent } from './cart-item-card/cart-item-card';
-import { CurrencyBrlPipe } from '../../shared/pipes/currency-brl.pipe';
+import { AppCurrencyPipe } from '../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../shared/components/button/button';
 import { CheckoutModalComponent } from '../../domain/components/checkout-modal/checkout-modal';
 
@@ -14,7 +14,7 @@ import { CheckoutModalComponent } from '../../domain/components/checkout-modal/c
   imports: [
     PageContainerComponent,
     CartItemCardComponent,
-    CurrencyBrlPipe,
+    AppCurrencyPipe,
     AppButtonComponent,
     CheckoutModalComponent,
   ],

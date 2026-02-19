@@ -23,7 +23,7 @@
       <!-- Info panel -->
       <div class="details__info-col">
         <h1 class="details__title">{{ product()!.title }}</h1>
-        <p class="details__price">{{ product()!.price | currencyBrl }}</p>
+        <p class="details__price">{{ product()!.price | appCurrency }}</p>
 
         @if (product()!.fullDescription) {
           <p class="details__description">{{ product()!.fullDescription }}</p>

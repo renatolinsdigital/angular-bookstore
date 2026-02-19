@@ -9,3 +9,13 @@ export const UNIQUE_PURCHASE = new InjectionToken<boolean>('UNIQUE_PURCHASE', {
   providedIn: 'root',
   factory: () => true,
 });
+
+/**
+ * Display currency for all prices throughout the app.
+ * Accepted values: `'usd'` (default, e.g. $9.99) or `'brl'` (e.g. R$\u00a09,99).
+ * Override in `app.config.ts` via `{ provide: CURRENCY, useValue: 'brl' }`.
+ */
+export const CURRENCY = new InjectionToken<'usd' | 'brl'>('CURRENCY', {
+  providedIn: 'root',
+  factory: () => 'usd',
+});

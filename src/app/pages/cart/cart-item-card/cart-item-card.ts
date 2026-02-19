@@ -2,13 +2,13 @@ import { Component, OnChanges, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../../domain/services/cart.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
-import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
+import { AppCurrencyPipe } from '../../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
 import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 @Component({
   selector: 'app-cart-item-card',
-  imports: [FormsModule, CurrencyBrlPipe, AppButtonComponent],
+  imports: [FormsModule, AppCurrencyPipe, AppButtonComponent],
   templateUrl: './cart-item-card.html',
   styleUrl: './cart-item-card.scss',
 })

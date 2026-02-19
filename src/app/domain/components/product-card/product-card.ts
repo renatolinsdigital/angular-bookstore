@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { CartService } from '../../../domain/services/cart.service';
 import { ToastService } from '../../../domain/services/toast.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
-import { CurrencyBrlPipe } from '../../../shared/pipes/currency-brl.pipe';
+import { AppCurrencyPipe } from '../../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
 import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 @Component({
   selector: 'app-product-card',
-  imports: [CurrencyBrlPipe, AppButtonComponent],
+  imports: [AppCurrencyPipe, AppButtonComponent],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })
