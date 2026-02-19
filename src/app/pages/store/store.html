@@ -43,7 +43,7 @@
           No books match <strong>"{{ searchQuery() }}"</strong>.
         </p>
       } @else {
-        <div class="store__grid" [style.grid-template-columns]="gridColumns()">
+        <div class="store__grid">
           @for (product of pageResult().products; track product.id) {
             <app-product-card
               [productId]="product.id"

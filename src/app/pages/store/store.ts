@@ -1,8 +1,7 @@
-import { Component, OnInit, Signal, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, Signal, inject, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { combineLatest, switchMap, tap } from 'rxjs';
 import { CartService } from '../../domain/services/cart.service';
-import { ResponsiveService } from '../../domain/services/responsive.service';
 import { BooksApiService, PagedResult } from '../../domain/services/books-api.service';
 import { PageContainerComponent } from '../../domain/components/page-container/page-container';
 import { ProductCardComponent } from '../../domain/components/product-card/product-card';
@@ -20,7 +19,6 @@ const EMPTY_PAGE: PagedResult = { products: [], totalItems: 0, totalPages: 1, pa
 export class StoreComponent implements OnInit {
   private readonly booksApi = inject(BooksApiService);
   protected readonly cartService = inject(CartService);
-  protected readonly responsive = inject(ResponsiveService);
 
   readonly searchQuery = signal('');
   readonly currentPage = signal(1);
@@ -31,12 +29,6 @@ export class StoreComponent implements OnInit {
 
   /** Populated reactively via BooksApiService — reacts to page and query changes. */
   readonly pageResult: Signal<PagedResult>;
-
-  readonly gridColumns = computed(() => {
-    if (this.responsive.isSmaller()) return '1fr';
-    if (this.responsive.isSmall()) return '1fr 1fr';
-    return '1fr 1fr 1fr';
-  });
 
   constructor() {
     const params$ = combineLatest({

@@ -145,12 +145,28 @@
 
 .store__grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr); // ≥ 960 px — desktop
   gap: 2.2rem 1.5rem;
   width: 100%;
   min-height: 688px;
   align-items: start;
   margin-top: 0.5rem;
   margin-bottom: 0;
+
+  // 768 px – 959 px  →  3 columns
+  @media (max-width: 959px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // 480 px – 767 px  →  2 columns
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // < 480 px  →  1 column
+  @media (max-width: 479px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .store__pagination {

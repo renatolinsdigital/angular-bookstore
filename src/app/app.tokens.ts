@@ -17,7 +17,7 @@ export const UNIQUE_PURCHASE = new InjectionToken<boolean>('UNIQUE_PURCHASE', {
 
 /**
  * Display currency for all prices throughout the app.
- * Accepted values: `'usd'` (default, e.g. $9.99) or `'brl'` (e.g. R$\u00a09,99).
+ * Accepted values: `'usd'` (default, e.g. $9.99) or `'brl'` (e.g. R$25,99).
  * Override in `app.config.ts` via `{ provide: CURRENCY, useValue: 'brl' }`.
  */
 export const CURRENCY = new InjectionToken<'usd' | 'brl'>('CURRENCY', {
@@ -27,12 +27,9 @@ export const CURRENCY = new InjectionToken<'usd' | 'brl'>('CURRENCY', {
 
 /**
  * Number of books displayed per page in the store grid.
- * Defaults to `10`. Override in `app.config.ts`:
- * ```ts
- * { provide: PAGE_SIZE, useValue: 12 }
- * ```
+ * Defaults is `8`. Override in `app.config.ts`:
  */
 export const PAGE_SIZE = new InjectionToken<number>('PAGE_SIZE', {
   providedIn: 'root',
-  factory: () => 6,
+  factory: () => 8,
 });
