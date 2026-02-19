@@ -1,23 +1,44 @@
-<app-page-container>
-  <div class="not-found__card">
-    <p
-      class="not-found__title"
-      [class.not-found__title--compact]="responsive.youJokingRight()"
-      [class.not-found__title--smaller]="responsive.isSmaller()"
-    >
-      Oops... it seems the page doesn't exist :s
-    </p>
-    <div
-      class="not-found__image-wrapper"
-      [class.not-found__image-wrapper--small]="responsive.isSmall()"
-    >
-      <img
-        src="assets/images/characters_buying.png"
-        alt="Page Not Found"
-        class="not-found__image"
-        [class.not-found__image--tiny]="responsive.youJokingRight()"
-      />
+<div class="not-found">
+  <!-- Background glows -->
+  <div class="not-found__bg-glow not-found__bg-glow--left" aria-hidden="true"></div>
+  <div class="not-found__bg-glow not-found__bg-glow--right" aria-hidden="true"></div>
+
+  <app-page-container>
+    <div class="not-found__card">
+      <!-- Floating question mark particles -->
+      <div class="not-found__particle not-found__particle--1" aria-hidden="true">?</div>
+      <div class="not-found__particle not-found__particle--2" aria-hidden="true">?</div>
+      <div class="not-found__particle not-found__particle--3" aria-hidden="true">?</div>
+      <div class="not-found__particle not-found__particle--4" aria-hidden="true">✦</div>
+      <div class="not-found__particle not-found__particle--5" aria-hidden="true">✦</div>
+      <div class="not-found__particle not-found__particle--6" aria-hidden="true">?</div>
+      <div class="not-found__particle not-found__particle--7" aria-hidden="true">✦</div>
+      <div class="not-found__particle not-found__particle--8" aria-hidden="true">?</div>
+
+      <!-- Giant glitching 404 -->
+      <div class="not-found__code" aria-hidden="true">404</div>
+
+      <!-- Character illustration with pulsing rings -->
+      <div class="not-found__visual">
+        <div class="not-found__ring not-found__ring--1" aria-hidden="true"></div>
+        <div class="not-found__ring not-found__ring--2" aria-hidden="true"></div>
+        <img
+          src="assets/images/characters_buying.png"
+          alt="Lost character searching the shelves"
+          class="not-found__image"
+        />
+      </div>
+
+      <!-- Copy -->
+      <div class="not-found__copy">
+        <div class="not-found__badge">Lost in the stacks</div>
+        <h1 class="not-found__title">This page took a wrong turn.</h1>
+        <p class="not-found__subtitle">
+          The page you are looking for is not available. It may have been moved or no longer exists.
+          Don’t worry, click below to return to a safe place.
+        </p>
+        <app-button variant="primary" (click)="goToHome()">BROWSE THE STORE</app-button>
+      </div>
     </div>
-    <app-button variant="primary" (click)="goToHome()">BROWSE THE STORE</app-button>
-  </div>
-</app-page-container>
+  </app-page-container>
+</div>
