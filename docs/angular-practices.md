@@ -279,3 +279,85 @@ protected get quantityInCart() {
 ```
 
 Templates call the computed as a function: `{{ quantityInCart() }}`.
+
+---
+
+## Code Quality & Commit Hooks
+
+### ESLint
+
+The project uses a flat ESLint config (`eslint.config.js`) with three rule sets layered together:
+
+| Layer                | Package                                             | Purpose                                                        |
+| -------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
+| Core JS rules        | `@eslint/js` recommended                            | Common JavaScript best-practices                               |
+| TypeScript rules     | `typescript-eslint` recommended + stylistic         | Type-safety and style consistency                              |
+| Angular rules        | `angular-eslint` ts + template recommended          | Angular-specific patterns and a11y                             |
+| Prettier integration | `eslint-plugin-prettier` + `eslint-config-prettier` | Formatting reported as lint errors; conflicting rules disabled |
+
+Spec files (`**/*.spec.ts`) have `@typescript-eslint/no-explicit-any` downgraded to `warn` because test helpers use `unknown`-narrowed access patterns (`component as unknown as { method(): void }`) that avoid raw `any` while keeping test code readable.
+
+```bash
+npm run lint          # report violations
+npm run lint:fix      # auto-fix all fixable violations
+```
+
+### Prettier
+
+Prettier is configured inside `package.json` under the `"prettier"` key:
+
+```json
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "overrides": [{ "files": "*.html", "options": { "parser": "angular" } }]
+}
+```
+
+`endOfLine: "lf"` combined with `.gitattributes` (`* text=auto eol=lf`) ensures all text files are stored with Unix line endings regardless of the developer's OS.
+
+```bash
+npm run format        # prettier --write src/**/*.{ts,html,scss,css,json}
+```
+
+### Husky & lint-staged
+
+**Husky** installs a `pre-commit` git hook automatically when dependencies are installed (`"prepare": "husky"` script). The hook runs **lint-staged**, which only lints and formats the files that are actually staged — keeping commits fast even in large projects.
+
+`.husky/pre-commit`:
+
+```bash
+npx lint-staged
+```
+
+`lint-staged` config in `package.json`:
+
+```json
+{
+  "*.ts": ["eslint --fix", "prettier --write"],
+  "*.html": ["eslint --fix", "prettier --write"],
+  "*.{scss,css,json,md}": ["prettier --write"]
+}
+```
+
+This means every commit is automatically lint-clean and consistently formatted — no manual `npm run lint:fix` needed before pushing.
+
+### Accessing Protected/Private Members in Tests
+
+When a test needs to call a `protected` or `private` component method, use a typed `unknown` intermediate cast instead of `as any`:
+
+```ts
+// ✅ typed — no any, IDE-checkable
+(component as unknown as { goToHome(): void }).goToHome();
+
+// ✅ for components with multiple private members, define a local type:
+type CartItemCardInternal = {
+  formQuantity: WritableSignal<string>;
+  subtract(): void;
+};
+(component as unknown as CartItemCardInternal).subtract();
+
+// ❌ raw any — triggers @typescript-eslint/no-explicit-any
+(component as any).goToHome();
+```

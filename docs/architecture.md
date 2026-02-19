@@ -1,33 +1,5 @@
 # Architecture Overview
 
-## High-Level Structure
-
-DigitalBookStore is a client-side SPA built with **Angular 21**. There is no backend — product data is loaded from a static JSON file, and "purchases" are simulated by moving items from the cart state into a download state.
-
-```
-Browser
-  └─ Angular SPA
-       ├─ AppComponent (shell)
-       │    ├─ AppHeaderComponent
-       │    ├─ <router-outlet>  ← lazy page components
-       │    └─ AppFooterComponent
-       ├─ Domain (singleton services + shared components + models)
-       │    ├─ services/
-       │    │    ├─ CartService      — product catalogue + cart state
-       │    │    ├─ DownloadService  — purchased items
-       │    │    ├─ ResponsiveService — reactive viewport breakpoints
-       │    │    └─ ToastService    — ephemeral notification state
-       │    ├─ components/
-       │    │    ├─ AppHeaderComponent
-       │    │    ├─ AppFooterComponent
-       │    │    ├─ PageContainerComponent
-       │    │    └─ ProductCardComponent
-       │    └─ models/   — pure TypeScript interfaces
-       └─ Shared utilities
-            ├─ CurrencyBrlPipe
-            └─ formatToUSD helper
-```
-
 ## Module Strategy
 
 The project uses **entirely standalone components** — no `NgModule` exists. Each component declares its own `imports` array. This is the official Angular recommendation since v17.

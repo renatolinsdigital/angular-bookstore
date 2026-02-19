@@ -5,9 +5,8 @@ An **Angular** SPA for purchasing digital books, with **Signals** for state mana
 ## Quick Start
 
 ```bash
-npm install                      # Install dependencies
+npm install                      # Install dependencies (also installs git hooks via husky)
 npm run dev                      # Start the dev server at http://localhost:4200
-npm test -- --watch=false        # Run all unit tests once
 ```
 
 ## Main Stack
@@ -23,7 +22,12 @@ npm test -- --watch=false        # Run all unit tests once
 - **Angular CLI** - Project scaffolding, build, and dev server
 - **HttpClient** - HTTP requests to static JSON data
 - **Sass** - CSS preprocessor with BEM naming conventions
-- **Vitest** - Unit testing (Angular CLI default)
+- **Vitest** - Unit testing (Angular CLI default via `@angular/build:unit-test`)
+- **ESLint** - Static analysis with `@angular-eslint`, `typescript-eslint`, and `eslint-plugin-prettier`
+- **Prettier** - Opinionated code formatter (enforced as ESLint errors, LF line endings)
+- **Husky** - Git hook manager (`pre-commit` runs lint-staged automatically)
+- **lint-staged** - Runs ESLint + Prettier only on staged files before each commit
+- **canvas-confetti** - Confetti burst animation on the purchase success screen
 
 ### Prerequisites
 
@@ -56,6 +60,9 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Responsive layout driven by a `ResponsiveService` with named breakpoints
 - ✅ Strict TypeScript with `strictTemplates` Angular compiler option
 - ✅ Unit tests for all components — Vitest via `@angular/build:unit-test`, signal-backed mocks, co-located `.spec.ts` files
+- ✅ ESLint with `@angular-eslint` + `typescript-eslint` + Prettier integration
+- ✅ Pre-commit hook via Husky that runs lint-staged (ESLint + Prettier on staged files only)
+- ✅ `.gitattributes` enforcing LF line endings across the repository
 
 ## Features of This Project
 
@@ -64,9 +71,11 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Real-time search: filter books by title instantly (client-side, signal-powered)
 - ✅ Shopping cart with add, subtract, set quantity, and remove actions
 - ✅ Cart item badge on the header icon that shows live count, hidden when empty
-- ✅ Prices displayed in USD
 - ✅ Purchase flow that moves cart items to a download queue
+- ✅ Toast with position configurable via `position` input (`top` | `bottom`, default `top`)
 - ✅ Per-item file download on the success page
+- ✅ Confetti animation on the purchase success screen (`canvas-confetti`)
+- ✅ Shared `AppButtonComponent` with variants: `primary`, `outline`, `cta`, `download`, `ghost`
 - ✅ Fully responsive layout across all viewport sizes
 - ✅ 404 not-found page with navigation back to the store
 
