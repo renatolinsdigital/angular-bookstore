@@ -1,3 +1,14 @@
+@keyframes promise-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .about {
   width: 100%;
   flex: 1;
@@ -191,66 +202,6 @@
   }
 }
 
-// ── Card grid ────────────────────────────────────────────────────────────────
-
-.about__sections {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  width: 100%;
-  margin-bottom: 3rem;
-  text-align: left;
-
-  &--stacked {
-    grid-template-columns: 1fr;
-  }
-}
-
-// ── Individual card ───────────────────────────────────────────────────────────
-
-.about__card {
-  background: var(--color-tertiary);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top: 3px solid var(--color-primary);
-  border-radius: var(--radius-md);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-.about__card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius-md);
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  color: var(--color-primary);
-  flex-shrink: 0;
-
-  svg {
-    display: block;
-  }
-}
-
-.about__card-title {
-  font-size: var(--font-size-large);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
-  margin: 0;
-}
-
-.about__card-body {
-  font-size: var(--font-size-small);
-  color: var(--color-gray5);
-  line-height: var(--line-height-taller);
-  margin: 0;
-}
-
 // ── Our promise block ─────────────────────────────────────────────────────────
 
 .about__promise {
@@ -287,6 +238,24 @@
     font-size: var(--font-size-small);
     color: var(--color-gray4);
     line-height: var(--line-height-tall);
+    opacity: 0;
+    animation: promise-slide-in 0.4s ease forwards;
+
+    &:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.25s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.35s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.45s;
+    }
   }
 }
 
