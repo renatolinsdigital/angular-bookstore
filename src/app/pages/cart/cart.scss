@@ -2,25 +2,67 @@
 
 .cart {
   &__empty {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 1.5rem 2rem;
+    padding: 5rem 2rem 3rem;
     background-color: var(--color-tertiary);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--color-tertiary-dark);
     width: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  &__empty-bg-glow {
+    position: absolute;
+    top: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36rem;
+    height: 36rem;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.13) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__empty-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-full);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: var(--color-primary);
+    font-size: var(--font-size-super-small);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2.2rem;
+    z-index: 1;
+  }
+
+  &__empty-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(245, 158, 11, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
+    margin: 2.2rem 0 2.5rem 0;
+    border-radius: 1px;
+    box-shadow: 0 1px 0 0 rgba(245, 158, 11, 0.07);
+    z-index: 1;
   }
 
   &__empty-msg {
     text-align: center;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
     font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-extra-large);
-    line-height: var(--line-height-taller);
+    font-size: var(--font-size-jumbo);
+    line-height: var(--line-height-tall);
     color: var(--color-gray2);
-    max-width: auto;
+    max-width: 520px;
+    z-index: 1;
 
     &--compact {
       font-size: var(--font-size-default);
@@ -33,9 +75,10 @@
   }
 
   &__empty-image-wrapper {
-    margin-bottom: 1.75rem;
+    margin-bottom: 2.5rem;
     border-bottom: 2px solid var(--color-primary);
     min-width: 450px;
+    z-index: 1;
 
     &--small {
       min-width: 180px;
@@ -46,6 +89,7 @@
     max-height: 460px;
     width: 100%;
     object-fit: contain;
+    z-index: 1;
 
     &--tiny {
       max-width: 80px;

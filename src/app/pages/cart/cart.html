@@ -2,12 +2,14 @@
   @if (cartService.cartItems().length === 0) {
     <!-- Empty cart state -->
     <div class="cart__empty">
+      <div class="cart__empty-bg-glow" aria-hidden="true"></div>
+      <div class="cart__empty-badge">Your cart is empty</div>
       <p
         class="cart__empty-msg"
         [class.cart__empty-msg--compact]="responsive.youJokingRight()"
         [class.cart__empty-msg--smaller]="responsive.isSmaller()"
       >
-        You don't have any items in your cart yet. Go shopping!
+        Start browsing and discover your next great read!
       </p>
       <div
         class="cart__empty-image-wrapper"
@@ -20,7 +22,7 @@
           [class.cart__empty-image--tiny]="responsive.youJokingRight()"
         />
       </div>
-      <app-button variant="primary" (click)="goToHome()">BROWSE THE STORE</app-button>
+      <app-button variant="cta" size="large" (click)="goToHome()">Browse the Store</app-button>
     </div>
   } @else {
     <!-- Cart items list -->
