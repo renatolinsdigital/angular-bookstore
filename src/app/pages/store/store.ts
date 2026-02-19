@@ -79,7 +79,7 @@ export class StoreComponent implements OnInit {
 
   onCategoryToggle(cat: string): void {
     this.currentPage.set(1);
-    const next = this.activeCategory() === cat ? null : cat;
+    const next = !cat || this.activeCategory() === cat ? null : cat;
     this.activeCategory.set(next);
     this.router.navigate([], {
       relativeTo: this.route,

@@ -38,6 +38,15 @@
     <!-- Category filter pills -->
     @if (categories().length) {
       <div class="store__categories" role="list" aria-label="Filter by category">
+        <button
+          class="store__category-pill"
+          [class.store__category-pill--active]="activeCategory() === null"
+          (click)="onCategoryToggle('')"
+          type="button"
+          role="listitem"
+        >
+          All
+        </button>
         @for (cat of categories(); track cat) {
           <button
             class="store__category-pill"
