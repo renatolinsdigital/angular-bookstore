@@ -1,122 +1,91 @@
 <div class="cart-item" [class.cart-item--compact]="responsive.youJokingRight()">
-  <!-- Product image column -->
-  <div class="cart-item__image-col">
-    @if (hasHeader() && !responsive.isSmaller() && !responsive.youJokingRight()) {
-      <p class="cart-item__col-header">PRODUCT</p>
-    }
+  <!-- Book cover -->
+  <div class="cart-item__cover">
     <img
       [src]="imageUrl()"
       [alt]="itemName()"
-      class="cart-item__image"
+      class="cart-item__cover-img"
       (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
-      [class.cart-item__image--compact]="responsive.youJokingRight()"
-      [class.cart-item__image--smaller]="responsive.isSmaller()"
     />
   </div>
 
-  <!-- Details grid -->
-  <div
-    class="cart-item__details"
-    [class.cart-item__details--smaller]="responsive.isSmaller()"
-    [class.cart-item__details--unique]="uniquePurchase && !responsive.isSmaller()"
-  >
-    <!-- Name + Price -->
-    @if (!responsive.youJokingRight()) {
-      <div
-        class="cart-item__name-col"
-        [class.cart-item__name-col--row]="responsive.isSmaller()"
-        [class.cart-item__name-col--padded]="!responsive.isSmaller() && hasHeader()"
-      >
-        <span class="cart-item__name">{{ itemName() }}</span>
-
-        <span class="cart-item__price">{{ itemPrice() | appCurrency }}</span>
-      </div>
-    }
-
-    <!-- Description -->
+  <!-- Info -->
+  <div class="cart-item__info">
+    <p class="cart-item__name">{{ itemName() }}</p>
     @if (itemQuickDescription() && !responsive.isSmaller()) {
-      <div class="cart-item__desc-col">
-        @if (hasHeader() && !responsive.youJokingRight()) {
-          <p class="cart-item__col-header">QUICK DESCRIPTION</p>
-        }
-        <p class="cart-item__desc">{{ itemQuickDescription() }}</p>
-      </div>
+      <p class="cart-item__desc">{{ itemQuickDescription() }}</p>
     }
-
-    <!-- Quantity controls -->
-    @if (!responsive.youJokingRight() && !uniquePurchase) {
-      <div class="cart-item__qty-col">
-        @if (hasHeader() && !responsive.isSmaller() && !responsive.youJokingRight()) {
-          <p class="cart-item__col-header">QUANTITY</p>
-        }
-        <div class="cart-item__qty-controls">
-          <app-button
-            variant="ghost"
-            class="cart-item__qty-btn"
-            (click)="subtract()"
-            aria-label="Subtract"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              aria-hidden="true"
-            >
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-          </app-button>
-          <input
-            class="cart-item__qty-input"
-            type="number"
-            [value]="formQuantity()"
-            (input)="onQuantityInput($event)"
-            (blur)="onQuantityBlur()"
-            min="0"
-            max="999"
-          />
-          <app-button variant="ghost" class="cart-item__qty-btn" (click)="add()" aria-label="Add">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              aria-hidden="true"
-            >
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-          </app-button>
-        </div>
-      </div>
-    }
-
-    <!-- Price (for non-smaller screens, non-unique mode) -->
-    @if (!responsive.youJokingRight() && !responsive.isSmaller() && !uniquePurchase) {
-      <div class="cart-item__price-col">
-        @if (hasHeader()) {
-          <p class="cart-item__col-header">PRICE</p>
-        }
-        <span class="cart-item__subtotal">{{ itemPrice() * quantity() | appCurrency }}</span>
-      </div>
-    }
-
-    <!-- Remove button -->
-    @if (!responsive.youJokingRight()) {
-      <div class="cart-item__remove-col">
-        <app-button
-          variant="ghost"
-          class="cart-item__remove-btn"
-          (click)="remove()"
-          aria-label="Remove item"
-        >
-          <img src="assets/images/trash.svg" alt="Remove" />
-        </app-button>
-      </div>
-    }
+    <p class="cart-item__unit-price">{{ itemPrice() | appCurrency }} each</p>
   </div>
+
+  <!-- Quantity controls -->
+  @if (!uniquePurchase && !responsive.youJokingRight()) {
+    <div class="cart-item__qty">
+      <app-button
+        variant="ghost"
+        class="cart-item__qty-btn"
+        (click)="subtract()"
+        aria-label="Subtract"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+      </app-button>
+      <input
+        class="cart-item__qty-input"
+        type="number"
+        [value]="formQuantity()"
+        (input)="onQuantityInput($event)"
+        (blur)="onQuantityBlur()"
+        min="0"
+        max="999"
+      />
+      <app-button variant="ghost" class="cart-item__qty-btn" (click)="add()" aria-label="Add">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+      </app-button>
+    </div>
+  }
+
+  <!-- Subtotal -->
+  @if (!responsive.youJokingRight()) {
+    <p class="cart-item__subtotal">{{ itemPrice() * quantity() | appCurrency }}</p>
+  }
+
+  <!-- Remove -->
+  @if (!responsive.youJokingRight()) {
+    <button class="cart-item__remove" (click)="remove()" [attr.aria-label]="'Remove ' + itemName()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  }
 </div>

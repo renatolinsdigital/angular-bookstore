@@ -1,60 +1,93 @@
-<app-page-container>
-  @if (cartService.cartItems().length === 0) {
-    <!-- Empty cart state -->
-    <div class="cart__empty">
-      <div class="cart__empty-bg-glow" aria-hidden="true"></div>
-      <div class="cart__empty-badge">Your cart is empty</div>
-      <p
-        class="cart__empty-msg"
-        [class.cart__empty-msg--compact]="responsive.youJokingRight()"
-        [class.cart__empty-msg--smaller]="responsive.isSmaller()"
-      >
-        Start browsing and discover your next great read!
-      </p>
-      <div
-        class="cart__empty-image-wrapper"
-        [class.cart__empty-image-wrapper--small]="responsive.isSmall()"
-      >
-        <img
-          src="assets/images/characters_buying.png"
-          alt="The Cart is Empty"
-          class="cart__empty-image"
-          [class.cart__empty-image--tiny]="responsive.youJokingRight()"
-        />
-      </div>
-      <app-button variant="cta" size="large" (click)="goToHome()">Browse the Store</app-button>
-    </div>
-  } @else {
-    <!-- Cart items list -->
-    <div class="cart__list">
-      @for (item of cartService.cartItems(); track item.id; let i = $index) {
-        <app-cart-item-card
-          [itemId]="item.id"
-          [itemName]="item.title"
-          [itemPrice]="item.price"
-          [itemQuickDescription]="item.quickDescription"
-          [quantity]="item.quantity"
-          [imageUrl]="item.image"
-          [hasHeader]="i === 0"
-        />
-      }
+<div class="cart">
+  <div class="cart__bg-glow cart__bg-glow--left" aria-hidden="true"></div>
+  <div class="cart__bg-glow cart__bg-glow--right" aria-hidden="true"></div>
 
-      <!-- Totals row -->
-      <div class="cart__totals">
-        <span class="cart__totals-label">Total:</span>
-        <span class="cart__totals-value">{{ cartService.cartTotal() | appCurrency }}</span>
+  <app-page-container>
+    @if (cartService.cartItems().length === 0) {
+      <!-- Empty cart state -->
+      <div class="cart__empty">
+        <div class="cart__empty-bg-glow" aria-hidden="true"></div>
+        <div class="cart__empty-badge">Your cart is empty</div>
+        <p
+          class="cart__empty-msg"
+          [class.cart__empty-msg--compact]="responsive.youJokingRight()"
+          [class.cart__empty-msg--smaller]="responsive.isSmaller()"
+        >
+          Start browsing and discover your next great read!
+        </p>
+        <div
+          class="cart__empty-image-wrapper"
+          [class.cart__empty-image-wrapper--small]="responsive.isSmall()"
+        >
+          <img
+            src="assets/images/characters_buying.png"
+            alt="The Cart is Empty"
+            class="cart__empty-image"
+            [class.cart__empty-image--tiny]="responsive.youJokingRight()"
+          />
+        </div>
+        <app-button variant="cta" size="large" (click)="goToHome()">Browse the Store</app-button>
       </div>
+    } @else {
+      <div class="cart__layout">
+        <!-- Left: items -->
+        <section class="cart__items">
+          <div class="cart__items-header">
+            <h1 class="cart__items-title">Shopping Cart</h1>
+            <span class="cart__items-count">
+              {{ cartService.cartItems().length }}
+              {{ cartService.cartItems().length === 1 ? 'item' : 'items' }}
+            </span>
+          </div>
 
-      <!-- Actions -->
-      <div class="cart__actions">
-        <app-button variant="outline" (click)="goToHome()">Continue Shopping</app-button>
-        <app-button variant="primary" (click)="onPurchase()">PURCHASE</app-button>
+          @for (item of cartService.cartItems(); track item.id) {
+            <app-cart-item-card
+              [itemId]="item.id"
+              [itemName]="item.title"
+              [itemPrice]="item.price"
+              [itemQuickDescription]="item.quickDescription"
+              [quantity]="item.quantity"
+              [imageUrl]="item.image"
+            />
+          }
+        </section>
+
+        <!-- Right: order summary -->
+        <aside class="cart__summary">
+          <h2 class="cart__summary-title">Order Summary</h2>
+
+          <div class="cart__summary-lines">
+            @for (item of cartService.cartItems(); track item.id) {
+              <div class="cart__summary-line">
+                <span class="cart__summary-line-name">{{ item.title }}</span>
+                <span class="cart__summary-line-price">{{
+                  item.price * item.quantity | appCurrency
+                }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="cart__summary-sep" aria-hidden="true"></div>
+
+          <div class="cart__summary-total">
+            <span class="cart__summary-total-label">Total</span>
+            <span class="cart__summary-total-value">{{
+              cartService.cartTotal() | appCurrency
+            }}</span>
+          </div>
+
+          <div class="cart__summary-cta">
+            <app-button variant="primary" (click)="onPurchase()">PURCHASE</app-button>
+          </div>
+          <div class="cart__summary-continue">
+            <app-button variant="outline" (click)="goToHome()">Continue Shopping</app-button>
+          </div>
+        </aside>
       </div>
-    </div>
-  }
-</app-page-container>
+    }
+  </app-page-container>
+</div>
 
-<!-- Checkout modal -->
 @if (checkoutOpen()) {
   <app-checkout-modal
     [total]="cartService.cartTotal()"
