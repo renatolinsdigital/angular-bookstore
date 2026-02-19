@@ -167,6 +167,17 @@
   }
 }
 
+@keyframes home-card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 // ── Stats strip ───────────────────────────────────────────────────────────────
 
 .home__stats {
@@ -228,7 +239,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  padding-bottom: 5rem;
+  padding-bottom: 3.5rem;
 
   &--column {
     grid-template-columns: 1fr;
@@ -245,10 +256,22 @@
   flex-direction: column;
   align-items: flex-start;
   box-shadow: var(--shadow-md);
+  opacity: 0;
+  animation: home-card-appear 0.45s ease forwards;
   transition:
     transform var(--transition-default),
     box-shadow var(--transition-default),
     border-top-color var(--transition-default);
+
+  &:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.25s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.35s;
+  }
 
   &:hover {
     transform: translateY(-4px);
@@ -287,4 +310,62 @@
   font-size: var(--font-size-small);
   line-height: var(--line-height-taller);
   color: var(--color-gray5);
+}
+
+// ── Human-authored card ─────────────────────────────────────────────────────────
+
+.home__human-card {
+  display: flex;
+  opacity: 0;
+  animation: home-card-appear 0.45s ease forwards 0.05s;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: var(--color-tertiary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 3.5rem;
+  text-align: left;
+}
+
+.home__human-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+
+  svg {
+    display: block;
+  }
+}
+
+.home__human-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.home__human-card-title {
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin: 0;
+}
+
+.home__human-card-text {
+  font-size: var(--font-size-small);
+  color: var(--color-gray5);
+  line-height: var(--line-height-taller);
+  margin: 0;
 }
