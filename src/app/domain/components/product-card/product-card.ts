@@ -20,6 +20,8 @@ export class ProductCardComponent {
   readonly imageUrl = input<string | undefined>(undefined);
   readonly sellingTag = input<string | undefined>(undefined);
   readonly quickDescription = input<string | undefined>(undefined);
+  readonly author = input<string | undefined>(undefined);
+  readonly pagesCount = input<number | undefined>(undefined);
 
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
