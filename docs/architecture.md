@@ -2,6 +2,17 @@
 
 All components are standalone (no `NgModule`). Every page route is lazy-loaded via `loadComponent`.
 
+## Routes
+
+| Path       | Component           | Purpose                              |
+| ---------- | ------------------- | ------------------------------------ |
+| `/`        | `HomeComponent`     | Landing page                         |
+| `/store`   | `StoreComponent`    | Searchable product catalogue         |
+| `/cart`    | `CartComponent`     | Shopping cart + checkout modal       |
+| `/success` | `SuccessComponent`  | Post-purchase download page          |
+| `/about`   | `AboutComponent`    | Project overview, stack, and credits |
+| `**`       | `NotFoundComponent` | 404 fallback                         |
+
 ## Data Flow
 
 ```

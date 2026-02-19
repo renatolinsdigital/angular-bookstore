@@ -53,7 +53,7 @@ Used on home (below hero) and success (inside hero card). Amber value + grey lab
 
 ## Header
 
-`135°` gradient + 2 px amber bottom border. Cart button is a translucent amber chip.
+`135°` gradient + 2 px amber bottom border. Cart button is a translucent amber chip. An **About** nav link sits between the logo and the cart button, hidden on the smallest viewport (`youJokingRight`).
 
 ## Accessibility
 
