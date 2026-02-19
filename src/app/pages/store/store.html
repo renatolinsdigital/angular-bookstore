@@ -3,7 +3,7 @@
   <div class="store__bg-glow store__bg-glow--left" aria-hidden="true"></div>
   <div class="store__bg-glow store__bg-glow--right" aria-hidden="true"></div>
 
-  <app-page-container [isContentLoading]="cartService.status() === 'loading'">
+  <app-page-container [isContentLoading]="isLoading()">
     <div class="store__header">
       <div class="store__header-content">
         <h1 class="store__title">Browse Books</h1>
@@ -38,13 +38,13 @@
     @if (cartService.status() === 'failed') {
       <p class="store__error">Product list is unavailable. Try again later.</p>
     } @else {
-      @if (filteredProducts().length === 0 && searchQuery()) {
+      @if (pageResult().products.length === 0 && searchQuery()) {
         <p class="store__no-results">
           No books match <strong>"{{ searchQuery() }}"</strong>.
         </p>
       } @else {
         <div class="store__grid" [style.grid-template-columns]="gridColumns()">
-          @for (product of filteredProducts(); track product.id) {
+          @for (product of pageResult().products; track product.id) {
             <app-product-card
               [productId]="product.id"
               [title]="product.title"
@@ -53,6 +53,20 @@
             />
           }
         </div>
+
+        @if (pageResult().totalPages > 1) {
+          <div class="store__pagination">
+            <p class="store__pagination-info">
+              Page {{ pageResult().page }} of {{ pageResult().totalPages }}
+              <span class="store__pagination-total">({{ pageResult().totalItems }} books)</span>
+            </p>
+            <app-paginator
+              [currentPage]="pageResult().page"
+              [totalPages]="pageResult().totalPages"
+              (pageChange)="onPageChange($event)"
+            />
+          </div>
+        }
       }
     }
   </app-page-container>

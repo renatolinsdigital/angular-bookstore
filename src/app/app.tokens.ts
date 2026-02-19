@@ -24,3 +24,15 @@ export const CURRENCY = new InjectionToken<'usd' | 'brl'>('CURRENCY', {
   providedIn: 'root',
   factory: () => 'usd',
 });
+
+/**
+ * Number of books displayed per page in the store grid.
+ * Defaults to `10`. Override in `app.config.ts`:
+ * ```ts
+ * { provide: PAGE_SIZE, useValue: 12 }
+ * ```
+ */
+export const PAGE_SIZE = new InjectionToken<number>('PAGE_SIZE', {
+  providedIn: 'root',
+  factory: () => 6,
+});
