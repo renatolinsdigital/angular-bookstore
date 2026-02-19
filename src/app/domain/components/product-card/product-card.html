@@ -12,6 +12,7 @@
       [src]="imageUrl()"
       [alt]="title()"
       class="product-card__image"
+      [class.product-card__image--loaded]="!imageLoading()"
       loading="lazy"
       (load)="onImageLoad()"
       (error)="onImageError($event)"
