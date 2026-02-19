@@ -94,6 +94,12 @@
       }
     }
 
+    &--full-width {
+      ::ng-deep .app-btn {
+        max-width: 100%;
+      }
+    }
+
     &--in-cart {
       ::ng-deep .app-btn {
         background-color: var(--color-accent);

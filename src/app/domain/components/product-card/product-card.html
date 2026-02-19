@@ -21,6 +21,7 @@
     [class.product-card__btn--in-cart]="quantityInCart() > 0"
     [class.product-card__btn--compact]="responsive.youJokingRight()"
     [class.product-card__btn--loading]="isLoading()"
+    [class.product-card__btn--full-width]="responsive.isSmaller()"
     [disabled]="(uniquePurchase && quantityInCart() > 0) || quantityInCart() >= 999 || isLoading()"
     (click)="handleAddToCart()"
   >
