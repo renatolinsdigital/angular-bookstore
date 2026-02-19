@@ -1,49 +1,62 @@
-<app-page-container>
-  <div class="success__card">
-    <p
-      class="success__title"
-      [class.success__title--compact]="responsive.youJokingRight()"
-      [class.success__title--smaller]="responsive.isSmaller()"
-    >
-      Purchase completed successfully. Download your books below and enjoy your reading time!
-    </p>
+<div class="success">
+  <!-- Decorative background glows -->
+  <div class="success__bg-glow success__bg-glow--left" aria-hidden="true"></div>
+  <div class="success__bg-glow success__bg-glow--right" aria-hidden="true"></div>
 
-    <div
-      class="success__image-wrapper"
-      [class.success__image-wrapper--small]="responsive.isSmall()"
-    >
-      <img
-        src="assets/images/characters_success.png"
-        alt="Order Success"
-        class="success__image"
-        [class.success__image--tiny]="responsive.youJokingRight()"
-      />
-    </div>
-
-    <!-- Download list -->
-    <div class="success__downloads">
-      @for (item of downloadService.downloadItems(); track item.id) {
-        <div
-          class="success__download-item"
-          [class.success__download-item--column]="responsive.isSmaller()"
-        >
-          <span
-            class="success__item-title"
-            [class.success__item-title--compact]="responsive.youJokingRight()"
-          >
-            {{ item.title }}
-          </span>
-          <app-button
-            variant="download"
-            [fullWidth]="responsive.isSmaller()"
-            (click)="downloadItem(item.downloadUrl)"
-          >
-            Download
-          </app-button>
+  <app-page-container>
+    <div class="success__hero-card">
+      <div class="success__hero-content">
+        <div class="success__badge">Thank you for your purchase!</div>
+        <h1 class="success__title">Your books are ready</h1>
+        <p class="success__subtitle">
+          Download your new books below and enjoy unlimited reading time.
+        </p>
+        <div class="success__stats">
+          <div class="success__stat">
+            <span class="success__stat-value">Freedom</span>
+            <span class="success__stat-label">DRM-Free books</span>
+          </div>
+          <div class="success__stat-divider" aria-hidden="true"></div>
+          <div class="success__stat">
+            <span class="success__stat-value">∞</span>
+            <span class="success__stat-label">Re-downloads</span>
+          </div>
         </div>
-      }
-    </div>
 
-    <app-button variant="primary" (click)="goToHome()">BACK TO STORE</app-button>
-  </div>
-</app-page-container>
+        <div class="success__downloads">
+          @for (item of downloadService.downloadItems(); track item.id) {
+            <div
+              class="success__download-item"
+              [class.success__download-item--column]="responsive.isSmaller()"
+            >
+              <span
+                class="success__item-title"
+                [class.success__item-title--compact]="responsive.youJokingRight()"
+              >
+                {{ item.title }}
+              </span>
+              <app-button
+                variant="download"
+                [fullWidth]="responsive.isSmaller()"
+                (click)="downloadItem(item.downloadUrl)"
+              >
+                Download
+              </app-button>
+            </div>
+          }
+        </div>
+
+        <div class="success__actions">
+          <app-button variant="primary" (click)="goToHome()">BACK TO STORE</app-button>
+        </div>
+      </div>
+      <div class="success__hero-visual">
+        <img
+          src="assets/images/characters_success.png"
+          alt="Order Success"
+          class="success__image"
+        />
+      </div>
+    </div>
+  </app-page-container>
+</div>
