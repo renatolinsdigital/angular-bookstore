@@ -12,6 +12,7 @@
     <div class="app-header__right">
       @if (!responsive.youJokingRight()) {
         <nav class="app-header__nav" aria-label="Main navigation">
+          <button class="app-header__nav-link" (click)="goToStore()">Store</button>
           <button class="app-header__nav-link" (click)="goToAbout()">About</button>
         </nav>
       }

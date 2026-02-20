@@ -14,4 +14,5 @@ export class AppButtonComponent {
   readonly disabled = input(false);
   readonly type = input<ButtonType>('button');
   readonly fullWidth = input(false);
+  readonly hideArrow = input(false);
 }

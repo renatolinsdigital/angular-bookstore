@@ -10,7 +10,7 @@
   [disabled]="disabled()"
 >
   <ng-content />
-  @if (variant() === 'cta') {
+  @if (variant() === 'cta' && !hideArrow()) {
     <svg class="app-btn__cta-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
       <path
         fill-rule="evenodd"

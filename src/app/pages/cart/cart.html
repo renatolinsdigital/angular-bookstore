@@ -2,6 +2,84 @@
   <div class="cart__bg-glow cart__bg-glow--left" aria-hidden="true"></div>
   <div class="cart__bg-glow cart__bg-glow--right" aria-hidden="true"></div>
 
+  <!-- Floating background particles -->
+  <div class="cart__particle cart__particle--1" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+  <div class="cart__particle cart__particle--2" aria-hidden="true">✦</div>
+  <div class="cart__particle cart__particle--3" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+  <div class="cart__particle cart__particle--4" aria-hidden="true">★</div>
+  <div class="cart__particle cart__particle--5" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+  <div class="cart__particle cart__particle--6" aria-hidden="true">✦</div>
+  <div class="cart__particle cart__particle--7" aria-hidden="true">✧</div>
+  <div class="cart__particle cart__particle--8" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+
   <app-page-container>
     @if (cartService.cartItems().length === 0) {
       <!-- Empty cart state -->
@@ -134,35 +212,7 @@
               </span>
               <span>Instant download</span>
             </div>
-            <div class="cart__empty-feature">
-              <span class="cart__empty-feature-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                >
-                  <rect
-                    x="3"
-                    y="11"
-                    width="18"
-                    height="11"
-                    rx="2"
-                    ry="2"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  />
-                  <path
-                    d="M7 11V7a5 5 0 0 1 10 0v4"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </span>
-              <span>DRM-free files</span>
-            </div>
+
             <div class="cart__empty-feature">
               <span class="cart__empty-feature-icon">
                 <svg
@@ -196,14 +246,40 @@
         </div>
       </div>
     } @else {
+      <!-- Motivational hero header -->
+      <div class="cart__hero">
+        <div class="cart__hero-badge">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+          >
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Almost there
+        </div>
+        <h1 class="cart__hero-title">
+          You're about to enter the<br />
+          <span class="cart__hero-accent">realm of new knowledge</span>
+        </h1>
+      </div>
+
       <div class="cart__layout">
         <!-- Left: items -->
         <section class="cart__items">
           <div class="cart__items-header">
-            <h1 class="cart__items-title">Shopping Cart</h1>
+            <h2 class="cart__items-title">Your Selection</h2>
             <span class="cart__items-count">
               {{ cartService.cartItems().length }}
-              {{ cartService.cartItems().length === 1 ? 'item' : 'items' }}
+              {{ cartService.cartItems().length === 1 ? 'book' : 'books' }}
             </span>
           </div>
 
@@ -213,6 +289,7 @@
               [itemName]="item.title"
               [itemPrice]="item.price"
               [itemQuickDescription]="item.quickDescription"
+              [itemAuthor]="item.author"
               [quantity]="item.quantity"
               [imageUrl]="item.image"
             />
@@ -221,7 +298,11 @@
 
         <!-- Right: order summary -->
         <aside class="cart__summary">
-          <h2 class="cart__summary-title">Order Summary</h2>
+          <!-- Heading -->
+          <div class="cart__summary-head">
+            <h2 class="cart__summary-title">Your Reading Bundle</h2>
+            <p class="cart__summary-tagline">One purchase. Unlimited rereads.</p>
+          </div>
 
           <div class="cart__summary-lines">
             @for (item of cartService.cartItems(); track item.id) {
@@ -237,17 +318,67 @@
           <div class="cart__summary-sep" aria-hidden="true"></div>
 
           <div class="cart__summary-total">
-            <span class="cart__summary-total-label">Total</span>
+            <div class="cart__summary-total-left">
+              <span class="cart__summary-total-label">Total</span>
+              <span class="cart__summary-total-note">No subscriptions. Ever.</span>
+            </div>
             <span class="cart__summary-total-value">{{
               cartService.cartTotal() | appCurrency
             }}</span>
           </div>
 
-          <div class="cart__summary-cta">
-            <app-button variant="primary" (click)="onPurchase()">PURCHASE</app-button>
+          <!-- Trust signals -->
+          <div class="cart__trust">
+            <div class="cart__trust-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+              >
+                <path
+                  d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Instant download
+            </div>
+
+            <div class="cart__trust-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+              >
+                <path
+                  d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <polyline
+                  points="22 4 12 14.01 9 11.01"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Keep forever
+            </div>
           </div>
-          <div class="cart__summary-continue">
-            <app-button variant="outline" (click)="goToHome()">Continue Shopping</app-button>
+
+          <div class="cart__summary-cta">
+            <app-button variant="cta" [hideArrow]="true" (click)="onPurchase()"
+              >&#9889;&nbsp;UNLOCK MY LIBRARY</app-button
+            >
           </div>
         </aside>
       </div>

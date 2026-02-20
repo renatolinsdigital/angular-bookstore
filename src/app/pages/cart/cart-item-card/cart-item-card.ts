@@ -17,6 +17,8 @@ export class CartItemCardComponent implements OnChanges {
   readonly itemName = input.required<string>();
   readonly itemPrice = input.required<number>();
   readonly itemQuickDescription = input<string | undefined>(undefined);
+  readonly itemAuthor = input<string | undefined>(undefined);
+  readonly itemSellingTag = input<string | undefined>(undefined);
   readonly quantity = input(0);
   readonly imageUrl = input<string | undefined>(undefined);
   readonly hasHeader = input(false);
