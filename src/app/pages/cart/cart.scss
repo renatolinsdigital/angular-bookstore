@@ -176,6 +176,10 @@
   align-items: center;
   padding: 3.5rem 1rem 2.75rem;
   animation: cart-hero-in 0.5s ease forwards;
+
+  @media (max-width: 480px) {
+    padding: 2rem 0 1.75rem;
+  }
 }
 
 .cart__hero-badge {
@@ -221,16 +225,6 @@
 
 // ── Empty state ───────────────────────────────────────────────────────────────
 
-@keyframes cart-empty-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-14px);
-  }
-}
-
 @keyframes cart-deco-drift {
   0%,
   100% {
@@ -273,6 +267,7 @@
       left: -4rem;
       width: 30rem;
       height: 30rem;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.09) 0%, transparent 65%);
     }
 
     &--accent {
@@ -280,6 +275,7 @@
       right: -4rem;
       width: 28rem;
       height: 28rem;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
     }
   }
 
@@ -339,14 +335,6 @@
     padding: 3rem 1.5rem 2.5rem 2.5rem;
     z-index: 1;
     height: 100%;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-
-      pointer-events: none;
-    }
 
     @media (max-width: 767px) {
       padding: 2.5rem 2rem 0.5rem;

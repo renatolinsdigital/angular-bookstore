@@ -125,6 +125,230 @@
     </button>
   </div>
 
+  <!-- Payment details (dynamic per method) -->
+  @if (selectedMethod() === 'card') {
+    <div class="checkout-modal__fields" aria-label="Credit card details">
+      <div class="checkout-modal__field checkout-modal__field--full">
+        <label class="checkout-modal__label" for="cm-card-name">Cardholder Name</label>
+        <input
+          id="cm-card-name"
+          class="checkout-modal__input"
+          type="text"
+          placeholder="Name on card"
+          [(ngModel)]="cardName"
+          [disabled]="processing()"
+          autocomplete="cc-name"
+        />
+      </div>
+      <div class="checkout-modal__field checkout-modal__field--full">
+        <label class="checkout-modal__label" for="cm-card-number">Card Number</label>
+        <input
+          id="cm-card-number"
+          class="checkout-modal__input checkout-modal__input--mono"
+          type="text"
+          placeholder="0000 0000 0000 0000"
+          [(ngModel)]="cardNumber"
+          [disabled]="processing()"
+          autocomplete="cc-number"
+          maxlength="19"
+        />
+      </div>
+      <div class="checkout-modal__field-row">
+        <div class="checkout-modal__field">
+          <label class="checkout-modal__label" for="cm-expiry">Expiry Date</label>
+          <input
+            id="cm-expiry"
+            class="checkout-modal__input"
+            type="text"
+            placeholder="MM / YY"
+            [(ngModel)]="expiryDate"
+            [disabled]="processing()"
+            autocomplete="cc-exp"
+            maxlength="7"
+          />
+        </div>
+        <div class="checkout-modal__field">
+          <label class="checkout-modal__label" for="cm-cvv">CVV</label>
+          <input
+            id="cm-cvv"
+            class="checkout-modal__input"
+            type="password"
+            placeholder="•••"
+            [(ngModel)]="cvv"
+            [disabled]="processing()"
+            autocomplete="cc-csc"
+            maxlength="4"
+          />
+        </div>
+      </div>
+    </div>
+  } @else if (selectedMethod() === 'paypal') {
+    <div class="checkout-modal__paypal" aria-label="PayPal login">
+      <div class="checkout-modal__paypal-header">
+        <svg
+          class="checkout-modal__paypal-logo"
+          role="img"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          aria-label="PayPal"
+        >
+          <path
+            d="M15.607 4.653H8.941L6.645 19.251H1.82L4.862 0h7.995c3.754 0 6.375 2.294 6.473 5.513-.648-.478-2.105-.86-3.722-.86m6.57 5.546c0 3.41-3.01 6.853-6.958 6.853h-2.493L11.595 24H6.74l1.845-11.538h3.592c4.208 0 7.346-3.634 7.153-6.949a5.24 5.24 0 0 1 2.848 4.686M9.653 5.546h6.408c.907 0 1.942.222 2.363.541-.195 2.741-2.655 5.483-6.441 5.483H8.714Z"
+          />
+        </svg>
+        <span class="checkout-modal__paypal-heading">Sign in to PayPal</span>
+      </div>
+      <div class="checkout-modal__fields">
+        <div class="checkout-modal__field checkout-modal__field--full">
+          <label class="checkout-modal__label" for="cm-pp-email">Email</label>
+          <input
+            id="cm-pp-email"
+            class="checkout-modal__input"
+            type="email"
+            placeholder="your@email.com"
+            [(ngModel)]="paypalEmail"
+            [disabled]="processing()"
+            autocomplete="email"
+          />
+        </div>
+        <div class="checkout-modal__field checkout-modal__field--full">
+          <label class="checkout-modal__label" for="cm-pp-pass">Password</label>
+          <input
+            id="cm-pp-pass"
+            class="checkout-modal__input"
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="paypalPassword"
+            [disabled]="processing()"
+            autocomplete="current-password"
+          />
+        </div>
+      </div>
+    </div>
+  } @else if (selectedMethod() === 'pix') {
+    <div class="checkout-modal__pix" aria-label="PIX payment">
+      <p class="checkout-modal__pix-instruction">
+        Scan the QR code with your banking app to complete the payment instantly.
+      </p>
+      <div class="checkout-modal__pix-qr-wrap">
+        <!-- Simulated QR code -->
+        <svg
+          class="checkout-modal__pix-qr"
+          viewBox="0 0 37 37"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="PIX QR Code"
+        >
+          <!-- Top-left finder -->
+          <rect x="1" y="1" width="10" height="10" rx="1.5" fill="currentColor" />
+          <rect x="2.5" y="2.5" width="7" height="7" rx="0.8" fill="var(--color-secondary-mid)" />
+          <rect x="3.5" y="3.5" width="5" height="5" rx="0.5" fill="currentColor" />
+          <!-- Top-right finder -->
+          <rect x="26" y="1" width="10" height="10" rx="1.5" fill="currentColor" />
+          <rect x="27.5" y="2.5" width="7" height="7" rx="0.8" fill="var(--color-secondary-mid)" />
+          <rect x="28.5" y="3.5" width="5" height="5" rx="0.5" fill="currentColor" />
+          <!-- Bottom-left finder -->
+          <rect x="1" y="26" width="10" height="10" rx="1.5" fill="currentColor" />
+          <rect x="2.5" y="27.5" width="7" height="7" rx="0.8" fill="var(--color-secondary-mid)" />
+          <rect x="3.5" y="28.5" width="5" height="5" rx="0.5" fill="currentColor" />
+          <!-- Data modules (scattered for realism) -->
+          <rect x="13" y="1" width="2" height="2" fill="currentColor" />
+          <rect x="16" y="1" width="2" height="2" fill="currentColor" />
+          <rect x="20" y="1" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="4" width="2" height="2" fill="currentColor" />
+          <rect x="17" y="4" width="2" height="2" fill="currentColor" />
+          <rect x="22" y="4" width="2" height="2" fill="currentColor" />
+          <rect x="14" y="7" width="2" height="2" fill="currentColor" />
+          <rect x="19" y="7" width="2" height="2" fill="currentColor" />
+          <rect x="21" y="7" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="10" width="2" height="2" fill="currentColor" />
+          <rect x="16" y="10" width="2" height="2" fill="currentColor" />
+          <rect x="20" y="10" width="2" height="2" fill="currentColor" />
+          <rect x="1" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="4" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="7" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="11" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="14" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="18" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="22" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="26" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="30" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="34" y="13" width="2" height="2" fill="currentColor" />
+          <rect x="2" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="6" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="10" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="17" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="20" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="24" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="28" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="32" y="16" width="2" height="2" fill="currentColor" />
+          <rect x="1" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="5" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="9" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="12" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="16" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="19" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="23" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="27" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="31" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="34" y="19" width="2" height="2" fill="currentColor" />
+          <rect x="2" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="7" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="11" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="15" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="18" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="22" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="26" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="30" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="33" y="22" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="26" width="2" height="2" fill="currentColor" />
+          <rect x="17" y="26" width="2" height="2" fill="currentColor" />
+          <rect x="20" y="26" width="2" height="2" fill="currentColor" />
+          <rect x="24" y="26" width="2" height="2" fill="currentColor" />
+          <rect x="28" y="26" width="2" height="2" fill="currentColor" />
+          <rect x="32" y="26" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="29" width="2" height="2" fill="currentColor" />
+          <rect x="16" y="29" width="2" height="2" fill="currentColor" />
+          <rect x="20" y="29" width="2" height="2" fill="currentColor" />
+          <rect x="23" y="29" width="2" height="2" fill="currentColor" />
+          <rect x="27" y="29" width="2" height="2" fill="currentColor" />
+          <rect x="31" y="29" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="32" width="2" height="2" fill="currentColor" />
+          <rect x="17" y="32" width="2" height="2" fill="currentColor" />
+          <rect x="21" y="32" width="2" height="2" fill="currentColor" />
+          <rect x="25" y="32" width="2" height="2" fill="currentColor" />
+          <rect x="29" y="32" width="2" height="2" fill="currentColor" />
+          <rect x="34" y="32" width="2" height="2" fill="currentColor" />
+          <rect x="13" y="35" width="2" height="2" fill="currentColor" />
+          <rect x="16" y="35" width="2" height="2" fill="currentColor" />
+          <rect x="19" y="35" width="2" height="2" fill="currentColor" />
+          <rect x="22" y="35" width="2" height="2" fill="currentColor" />
+          <rect x="26" y="35" width="2" height="2" fill="currentColor" />
+          <rect x="30" y="35" width="2" height="2" fill="currentColor" />
+        </svg>
+      </div>
+      <div class="checkout-modal__pix-key">
+        <span class="checkout-modal__pix-key-label">PIX Key (CNPJ)</span>
+        <div class="checkout-modal__pix-key-row">
+          <code class="checkout-modal__pix-key-value">12.345.678/0001-99</code>
+          <button
+            class="checkout-modal__pix-copy"
+            type="button"
+            [disabled]="processing()"
+            (click)="copyPixKey()"
+          >
+            @if (pixCopied()) {
+              Copied!
+            } @else {
+              Copy
+            }
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
   <!-- Actions -->
   <div class="checkout-modal__actions">
     <app-button variant="outline" [disabled]="processing()" (click)="cancel()"> Cancel </app-button>

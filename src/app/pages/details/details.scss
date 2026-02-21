@@ -54,12 +54,6 @@
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 // ── Outer wrapper ──────────────────────────────────────────────────────────────
 
 .details {
@@ -133,6 +127,10 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 1.5rem 0 2rem;
+
+    .details__cover-col {
+      position: static;
+    }
   }
 }
 
