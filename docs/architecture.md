@@ -48,13 +48,14 @@ Override example:
 
 ## Directory Layout
 
-| Path                         | Purpose                                                          |
-| ---------------------------- | ---------------------------------------------------------------- |
-| `src/app/app.tokens.ts`      | `InjectionToken` definitions                                     |
-| `src/app/domain/models/`     | Shared TypeScript interfaces                                     |
-| `src/app/domain/services/`   | Singleton services (state)                                       |
-| `src/app/domain/components/` | Shared components (header, footer, product card, checkout modal) |
-| `src/app/pages/`             | Route-level page components                                      |
-| `src/app/shared/`            | Pipes and helpers                                                |
-| `src/styles/`                | SCSS partials                                                    |
-| `public/`                    | Static files served at root                                      |
+| Path                         | Purpose                                                                           |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| `src/app/app.tokens.ts`      | `InjectionToken` definitions                                                      |
+| `src/app/domain/models/`     | Shared TypeScript interfaces                                                      |
+| `src/app/domain/services/`   | Singleton services (state)                                                        |
+| `src/app/domain/components/` | Domain-specific components (header, footer, product card, checkout modal)         |
+| `src/app/pages/`             | Route-level page components                                                       |
+| `src/app/shared/components/` | Generic reusable components (button, paginator, toast, page-container, meta-chip) |
+| `src/app/shared/`            | Pipes, helpers, and generic reusable components                                   |
+| `src/styles/`                | SCSS partials                                                                     |
+| `public/`                    | Static files served at root                                                       |

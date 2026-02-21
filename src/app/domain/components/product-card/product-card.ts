@@ -5,11 +5,12 @@ import { ToastService } from '../../../domain/services/toast.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { AppCurrencyPipe } from '../../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
+import { MetaChipComponent } from '../../../shared/components/meta-chip/meta-chip';
 import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 @Component({
   selector: 'app-product-card',
-  imports: [AppCurrencyPipe, AppButtonComponent],
+  imports: [AppCurrencyPipe, AppButtonComponent, MetaChipComponent],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })

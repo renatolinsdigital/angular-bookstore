@@ -34,7 +34,7 @@
         }
         <div class="product-card__flip-meta">
           @if (author()) {
-            <span class="product-card__flip-meta-item">
+            <app-meta-chip variant="meta">
               <svg viewBox="0 0 24 24" fill="none" width="11" height="11" aria-hidden="true">
                 <circle
                   cx="12"
@@ -54,10 +54,10 @@
                 />
               </svg>
               {{ author() }}
-            </span>
+            </app-meta-chip>
           }
           @if (pagesCount()) {
-            <span class="product-card__flip-meta-item">
+            <app-meta-chip variant="meta">
               <svg viewBox="0 0 24 24" fill="none" width="11" height="11" aria-hidden="true">
                 <path
                   d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
@@ -75,7 +75,7 @@
                 />
               </svg>
               {{ pagesCount() }} pages
-            </span>
+            </app-meta-chip>
           }
         </div>
         <span class="product-card__view-hint">View Details &rarr;</span>

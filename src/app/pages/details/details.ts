@@ -5,12 +5,13 @@ import { ResponsiveService } from '../../domain/services/responsive.service';
 import { ToastService } from '../../domain/services/toast.service';
 import { AppCurrencyPipe } from '../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../shared/components/button/button';
-import { PageContainerComponent } from '../../domain/components/page-container/page-container';
+import { PageContainerComponent } from '../../shared/components/page-container/page-container';
+import { MetaChipComponent } from '../../shared/components/meta-chip/meta-chip';
 import { UNIQUE_PURCHASE } from '../../app.tokens';
 
 @Component({
   selector: 'app-details',
-  imports: [AppCurrencyPipe, AppButtonComponent, PageContainerComponent],
+  imports: [AppCurrencyPipe, AppButtonComponent, PageContainerComponent, MetaChipComponent],
   templateUrl: './details.html',
   styleUrl: './details.scss',
 })

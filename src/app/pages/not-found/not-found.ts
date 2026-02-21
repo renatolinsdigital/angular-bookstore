@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { PageContainerComponent } from '../../domain/components/page-container/page-container';
+import { PageContainerComponent } from '../../shared/components/page-container/page-container';
 import { AppButtonComponent } from '../../shared/components/button/button';
 
 @Component({

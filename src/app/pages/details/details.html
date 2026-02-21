@@ -30,7 +30,7 @@
           <!-- Chips under the cover -->
           <div class="details__chips">
             @if (product()!.author) {
-              <span class="details__chip">
+              <app-meta-chip animationDelay="0.45s">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -57,11 +57,11 @@
                   />
                 </svg>
                 By {{ product()!.author }}
-              </span>
+              </app-meta-chip>
             }
 
             @if (product()!.pagesCount) {
-              <span class="details__chip">
+              <app-meta-chip animationDelay="0.55s">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -86,7 +86,7 @@
                   />
                 </svg>
                 {{ product()!.pagesCount }} Pages
-              </span>
+              </app-meta-chip>
             }
           </div>
         </div>

@@ -4,7 +4,7 @@ import { combineLatest, switchMap, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../domain/services/cart.service';
 import { BooksApiService, PagedResult } from '../../domain/services/books-api.service';
-import { PageContainerComponent } from '../../domain/components/page-container/page-container';
+import { PageContainerComponent } from '../../shared/components/page-container/page-container';
 import { ProductCardComponent } from '../../domain/components/product-card/product-card';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator';
 import { PAGE_SIZE } from '../../app.tokens';
