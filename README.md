@@ -1,8 +1,21 @@
 # DigitalBookStore
 
-An **Angular** SPA for purchasing digital books, with **Signals** for state management and **SCSS** for styling. Features a landing page, a searchable book catalogue, a shopping cart, and an instant-download purchase flow. The project features lazy-loaded routes and a design token system based on CSS variables.
+An Open-Source Angular SPA built as a portfolio project for exploring modern frontend development. This standalone application allows users to browse and simulate the purchase of digital books. It uses Angular Signals for state management and Sass (SCSS) for styling, with features including a landing page with a free-books shelf, a paginated and filterable book catalog with a details page, a shopping cart, and a mocked checkout with an instant-download purchase flow. The project also implements lazy-loaded routes and a design token system based on CSS variables.
 
-## Quick Start
+## Prints
+
+![Home Page](prints/01.png)
+---
+
+![Store](prints/02.png)
+---
+
+![Cart](prints/03.png)
+---
+
+![Download Page](prints/04.png)
+
+## Development Quick Start
 
 ```bash
 npm install                      # Install dependencies (also installs git hooks via husky)
@@ -71,28 +84,25 @@ For complete documentation, see the `docs/` folder which includes:
 ## Features of This Project
 
 - ✅ Landing page with animated book illustration, stats strip, and feature cards
-- ✅ Product catalogue loaded from a static JSON endpoint
+- ✅ Featured free-books shelf on the landing page, downloadable instantly with no cart step
+- ✅ Product catalogue loaded from a static JSON endpoint, paged in memory by `BooksApiService`
 - ✅ Real-time search: filter books by title instantly (client-side, signal-powered)
+- ✅ Category filter chips synced to a `category` query param, so filtered links are shareable
+- ✅ Skeleton loading cards shown while a catalogue page is in flight
+- ✅ Paginator with ellipsis-collapsed page numbers and a jump-to-page input
+- ✅ Book details page with metadata chips, live cart quantity, and add-to-cart/download actions
 - ✅ Shopping cart with add, subtract, set quantity, and remove actions
 - ✅ Cart item badge on the header icon that shows live count, hidden when empty
+- ✅ Zero-priced books download instantly from the store, details page, or home shelf, bypassing the cart
 - ✅ Checkout modal with mocked PIX, PayPal, and Credit Card payment methods
 - ✅ `UNIQUE_PURCHASE` mode: each title can only be purchased once per order (configurable via `InjectionToken`)
+- ✅ `CURRENCY` mode: prices rendered in USD or BRL via `AppCurrencyPipe` (configurable via `InjectionToken`)
 - ✅ Purchase flow that moves cart items to a download queue
-- ✅ Toast with position configurable via `position` input (`top` | `bottom`, default `top`)
+- ✅ Toast notifications (success, error, info, warning) with position configurable via `position` input (`top` | `bottom`, default `top`)
 - ✅ Per-item file download on the success page
 - ✅ Confetti animation on the purchase success screen (`canvas-confetti`)
 - ✅ Book cover placeholder SVG (620×800) shown on image load failure via `(error)` binding
 - ✅ Shared `AppButtonComponent` with variants: `primary`, `outline`, `cta`, `download`, `ghost`
-- ✅ Fully responsive layout across all viewport sizes
+- ✅ Fully responsive layout across all viewport sizes, driven by a shared `ResponsiveService`
 - ✅ 404 not-found page with navigation back to the store
 - ✅ About page accessible from the header navigation
-
----
-
-## Improvement Possibilities
-
-- Dark/light mode toggle
-- Authentication / user accounts
-- Pagination / infinite scroll
-- Real payment integration
-- Translation / i18n
