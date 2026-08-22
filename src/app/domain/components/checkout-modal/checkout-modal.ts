@@ -1,7 +1,8 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppCurrencyPipe } from '../../../shared/pipes/app-currency.pipe';
 import { AppButtonComponent } from '../../../shared/components/button/button';
+import { ResponsiveService } from '../../services/responsive.service';
 
 export type PaymentMethod = 'card' | 'paypal' | 'pix';
 
@@ -12,6 +13,8 @@ export type PaymentMethod = 'card' | 'paypal' | 'pix';
   styleUrl: './checkout-modal.scss',
 })
 export class CheckoutModalComponent {
+  protected readonly responsive = inject(ResponsiveService);
+
   readonly total = input<number>(0);
 
   readonly confirmed = output<void>();

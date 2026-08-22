@@ -45,7 +45,7 @@
       }
     }
 
-    // Projected content keeps parent scope — no ::ng-deep needed
+    // Projected content keeps parent scope, no ::ng-deep needed
     span.logo-accent {
       color: var(--color-primary);
     }
@@ -62,6 +62,11 @@
     align-items: center;
     gap: 0.625rem;
     margin-left: 2rem;
+
+    // Below this, logo + nav + cart no longer fit on one row without overlap.
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 
   &__nav-link {

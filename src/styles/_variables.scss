@@ -4,21 +4,21 @@
 
 :root {
   // ── Brand Colors ─────────────────────────────────────────────────────────────
-  // Warm amber — reading-lamp warmth, drives all CTAs and highlights
+  // Warm amber (reading-lamp warmth), drives all CTAs and highlights
   --color-primary: #f59e0b;
   --color-primary-dark: #d97706;
   --color-primary-light: #fde68a;
 
-  // Midnight slate — deep immersive background, evokes late-night reading
+  // Midnight slate, deep immersive background, evokes late-night reading
   --color-secondary: #0f172a;
   --color-secondary-mid: #1e293b;
   --color-secondary-dark: #020617;
 
-  // Deep ocean blue — elevated card surface; distinct from bg, premium feel
+  // Deep ocean blue, elevated card surface; distinct from bg, premium feel
   --color-tertiary: #1a2d4a;
   --color-tertiary-dark: #243d61;
 
-  // Soft indigo — modern accent for badges, active states, highlights
+  // Soft indigo, modern accent for badges, active states, highlights
   --color-accent: #6366f1;
   --color-accent-dark: #4f46e5;
 
@@ -69,9 +69,9 @@
   --line-height-biggest: 2.4;
 
   // ── Border Radius ─────────────────────────────────────────────────────────────
-  --radius-sm: 0.375rem; // 6px  — small elements (badges, tags)
-  --radius-md: 0.75rem; // 12px — cards, panels
-  --radius-lg: 1rem; // 16px — large cards, modals
+  --radius-sm: 0.375rem; // 6px, small elements (badges, tags)
+  --radius-md: 0.75rem; // 12px, cards, panels
+  --radius-lg: 1rem; // 16px, large cards, modals
   --radius-full: 9999px; // pill shapes
 
   // ── Shadows ───────────────────────────────────────────────────────────────────

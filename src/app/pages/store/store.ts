@@ -31,10 +31,10 @@ export class StoreComponent implements OnInit {
   /** Placeholder array used to render skeleton cards while a fetch is in-flight. */
   readonly skeletonRange: readonly unknown[];
 
-  /** All unique categories derived from the catalogue — loaded once. */
+  /** All unique categories derived from the catalogue (loaded once). */
   readonly categories: Signal<string[]>;
 
-  /** Populated reactively via BooksApiService — reacts to page, query and category changes. */
+  /** Populated reactively via BooksApiService, reacts to page, query and category changes. */
   readonly pageResult: Signal<PagedResult>;
 
   constructor() {

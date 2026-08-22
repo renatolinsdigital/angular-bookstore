@@ -27,7 +27,7 @@ Controlled by the `UNIQUE_PURCHASE` injection token (`src/app/app.tokens.ts`).
 
 ## DownloadService
 
-`src/app/domain/services/download.service.ts` — holds purchased items (deduplicated by ID).
+`src/app/domain/services/download.service.ts`: holds purchased items (deduplicated by ID).
 
 ```ts
 downloadItems: Signal<CartItem[]>
@@ -62,7 +62,7 @@ onPaymentCancelled(): void {
 
 ## ResponsiveService
 
-`src/app/domain/services/responsive.service.ts` — reactive viewport breakpoints.
+`src/app/domain/services/responsive.service.ts`: reactive viewport breakpoints.
 
 Key signals: `isSmaller` (< 768 px), `isSmall` (< 960 px), `isSuperSmall` (≤ 480 px), `youJokingRight` (≤ 330 px), `isDesktopBigScreen` (≥ 1280 px).
 

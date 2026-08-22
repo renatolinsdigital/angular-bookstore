@@ -23,6 +23,7 @@ const mockDownloadItems: CartItem[] = [
 const mockDownloadService = {
   downloadItems: signal<CartItem[]>(mockDownloadItems),
   proceedToDownload: vi.fn(),
+  downloadFile: vi.fn(),
 };
 
 const mockResponsiveService = {
@@ -70,19 +71,15 @@ describe('SuccessComponent', () => {
     expect(spy).toHaveBeenCalledWith(['/store']);
   });
 
-  it('should do nothing in downloadItem() when no URL is provided', () => {
-    const spy = vi.spyOn(document.body, 'appendChild');
-    (component as unknown as { downloadItem(url?: string): void }).downloadItem(undefined);
-    expect(spy).not.toHaveBeenCalled();
-  });
-
-  it('should trigger download link when downloadItem() is called with a URL', () => {
-    const appendSpy = vi.spyOn(document.body, 'appendChild').mockImplementation(() => ({}) as Node);
-    const removeSpy = vi.spyOn(document.body, 'removeChild').mockImplementation(() => ({}) as Node);
+  it('should delegate downloadItem() to the download service', () => {
     (component as unknown as { downloadItem(url: string): void }).downloadItem(
       'https://example.com/book.pdf',
     );
-    expect(appendSpy).toHaveBeenCalled();
-    expect(removeSpy).toHaveBeenCalled();
+    expect(mockDownloadService.downloadFile).toHaveBeenCalledWith('https://example.com/book.pdf');
+  });
+
+  it('should pass a missing URL through to the download service', () => {
+    (component as unknown as { downloadItem(url?: string): void }).downloadItem(undefined);
+    expect(mockDownloadService.downloadFile).toHaveBeenCalledWith(undefined);
   });
 });

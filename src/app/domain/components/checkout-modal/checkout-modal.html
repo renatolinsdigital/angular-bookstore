@@ -351,8 +351,20 @@
 
   <!-- Actions -->
   <div class="checkout-modal__actions">
-    <app-button variant="outline" [disabled]="processing()" (click)="cancel()"> Cancel </app-button>
-    <app-button variant="primary" [disabled]="processing()" (click)="confirmPayment()">
+    <app-button
+      variant="outline"
+      [fullWidth]="responsive.isSmaller()"
+      [disabled]="processing()"
+      (click)="cancel()"
+    >
+      Cancel
+    </app-button>
+    <app-button
+      variant="primary"
+      [fullWidth]="responsive.isSmaller()"
+      [disabled]="processing()"
+      (click)="confirmPayment()"
+    >
       @if (processing()) {
         <span class="checkout-modal__spinner"></span>
         Processing…

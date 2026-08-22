@@ -64,7 +64,7 @@
     @if (cartService.status() === 'failed') {
       <p class="store__error">Product list is unavailable. Try again later.</p>
     } @else if (isLoading()) {
-      <!-- Skeleton grid — same columns/gap as the real grid, no layout shift -->
+      <!-- Skeleton grid: same columns/gap as the real grid, no layout shift -->
       <div class="store__grid">
         @for (_ of skeletonRange; track $index) {
           <div class="store__skeleton-card">
@@ -101,6 +101,7 @@
             [quickDescription]="product.quickDescription"
             [author]="product.author"
             [pagesCount]="product.pagesCount"
+            [downloadUrl]="product.downloadUrl"
           />
         }
       </div>

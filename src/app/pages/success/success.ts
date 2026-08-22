@@ -36,12 +36,6 @@ export class SuccessComponent implements AfterViewInit {
   }
 
   protected downloadItem(downloadUrl?: string): void {
-    if (!downloadUrl) return;
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = '';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    this.downloadService.downloadFile(downloadUrl);
   }
 }

@@ -5,7 +5,7 @@ paths:
 
 # Data Layer Conventions
 
-There is no backend. `BooksApiService` is the seam that stands in for one —
+There is no backend. `BooksApiService` is the seam that stands in for one:
 it fetches `public/data/books.json` once and does paging, filtering, and
 category extraction in memory, with an artificial `delay()` to simulate
 network latency.
@@ -22,6 +22,6 @@ network latency.
   `InjectionToken`s in `src/app/app.tokens.ts` rather than hard-coding
   values.
 - If a real backend ever replaces the JSON, `BooksApiService` is the only
-  file whose internals should need to change — keep its public method
+  file whose internals should need to change: keep its public method
   signatures (`fetchPage`, `fetchCategories`) return-typed as `Observable`
   so callers stay untouched.

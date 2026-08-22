@@ -92,7 +92,7 @@ Use `computed()` for reactive derived state to avoid `NG0100` errors in tests.
 protected readonly quantityInCart = computed(() =>
   this.cartService.getQuantityById(this.productId())
 );
-// ❌ getter — Angular cannot track reactivity
+// ❌ getter, Angular cannot track reactivity
 ```
 
 ## Unit Testing
@@ -126,14 +126,14 @@ Mock signals with real `signal()` instances so the reactivity graph stays intact
 }
 ````
 
-This means every commit is automatically lint-clean and consistently formatted — no manual `npm run lint:fix` needed before pushing.
+This means every commit is automatically lint-clean and consistently formatted: no manual `npm run lint:fix` needed before pushing.
 
 ### Accessing Protected/Private Members in Tests
 
 When a test needs to call a `protected` or `private` component method, use a typed `unknown` intermediate cast instead of `as any`:
 
 ```ts
-// ✅ typed — no any, IDE-checkable
+// ✅ typed, no any, IDE-checkable
 (component as unknown as { goToHome(): void }).goToHome();
 
 // ✅ for components with multiple private members, define a local type:
@@ -143,6 +143,6 @@ type CartItemCardInternal = {
 };
 (component as unknown as CartItemCardInternal).subtract();
 
-// ❌ raw any — triggers @typescript-eslint/no-explicit-any
+// ❌ raw any: triggers @typescript-eslint/no-explicit-any
 (component as any).goToHome();
 ```

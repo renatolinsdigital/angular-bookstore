@@ -66,7 +66,7 @@ describe('CartComponent', () => {
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
     // Routes are stubbed out, so let navigate() resolve instead of rejecting
-    // with NG04002 — these tests only assert which URL was requested.
+    // with NG04002, these tests only assert which URL was requested.
     vi.spyOn(router, 'navigate').mockResolvedValue(true);
     fixture.detectChanges();
   });

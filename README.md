@@ -33,7 +33,7 @@ npm run dev                      # Start the dev server at http://localhost:4200
 
 - Node.js `^22.22.3 || ^24.15.0 || >=26.0.0` (required by Angular 22)
 
-The Angular CLI ships as a local devDependency — no global install needed.
+The Angular CLI ships as a local devDependency: no global install needed.
 `npm install` provides it, and the npm scripts above (or `npx ng`) run it.
 If `ng` is "not recognized", dependencies simply haven't been installed yet.
 
@@ -50,7 +50,7 @@ For complete documentation, see the `docs/` folder which includes:
 
 ## Technical Implementations of This Project
 
-- ✅ Standalone components — no `NgModule` anywhere in the codebase
+- ✅ Standalone components: no `NgModule` anywhere in the codebase
 - ✅ Signal-based state with `signal()`, `computed()`, and injectable services
 - ✅ Lazy-loaded routes via `loadComponent` for optimal bundle splitting
 - ✅ Modern `@if` / `@for` built-in control flow (no `*ngIf` / `*ngFor`)
@@ -63,7 +63,7 @@ For complete documentation, see the `docs/` folder which includes:
 - ✅ Self-hosted Open Sans font family via `@font-face`
 - ✅ Responsive layout driven by a `ResponsiveService` with named breakpoints
 - ✅ Strict TypeScript with `strictTemplates` Angular compiler option
-- ✅ Unit tests for all components — Vitest via `@angular/build:unit-test`, signal-backed mocks, co-located `.spec.ts` files
+- ✅ Unit tests for all components (Vitest via `@angular/build:unit-test`, signal-backed mocks, co-located `.spec.ts` files)
 - ✅ ESLint with `@angular-eslint` + `typescript-eslint` + Prettier integration
 - ✅ Pre-commit hook via Husky that runs lint-staged (ESLint + Prettier on staged files only)
 - ✅ `.gitattributes` enforcing LF line endings across the repository

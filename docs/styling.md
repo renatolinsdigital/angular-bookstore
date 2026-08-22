@@ -54,7 +54,7 @@ Self-hosted Open Sans (400, 600, 700) via `@font-face` in `_typography.scss`. Ap
 
 ## Cover Placeholder
 
-`public/assets/images/cover-placeholder.svg` (620 × 800, dark navy) is used as the fallback when a product image 404s. Triggered via the `(error)` event — not a template expression:
+`public/assets/images/cover-placeholder.svg` (620 × 800, dark navy) is used as the fallback when a product image 404s. Triggered via the `(error)` event, not a template expression:
 
 ```html
 <img [src]="imageUrl()" (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'" />

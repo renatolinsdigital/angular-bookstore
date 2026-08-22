@@ -127,8 +127,12 @@
           }
 
           <div class="details__price-row">
-            <span class="details__price">{{ product()!.price | appCurrency }}</span>
-            <span class="details__price-note">one-time · keep forever</span>
+            <span class="details__price" [class.details__price--free]="isFree()">
+              {{ isFree() ? 'Free' : (product()!.price | appCurrency) }}
+            </span>
+            <span class="details__price-note">
+              {{ isFree() ? 'no cost · keep forever' : 'one-time · keep forever' }}
+            </span>
           </div>
 
           <div class="details__divider" aria-hidden="true"></div>
@@ -156,11 +160,14 @@
             <app-button
               variant="primary"
               size="large"
+              [fullWidth]="responsive.isSmaller()"
               [disabled]="quantityInCart() >= 999 || isLoading()"
               (click)="handleAddToCart()"
             >
               @if (isLoading()) {
                 <span class="details__btn-spinner"></span>
+              } @else if (isFree()) {
+                DOWNLOAD
               } @else if (uniquePurchase && quantityInCart() > 0) {
                 VIEW IN CART
               } @else if (quantityInCart() > 0) {
@@ -170,7 +177,9 @@
               }
             </app-button>
 
-            <app-button variant="outline" (click)="goToStore()">← Back to Store</app-button>
+            <app-button variant="outline" [fullWidth]="responsive.isSmaller()" (click)="goToStore()"
+              >← Back to Store</app-button
+            >
           </div>
         </div>
       </div>

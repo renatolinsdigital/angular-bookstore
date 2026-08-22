@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../../domain/services/cart.service';
+import { DownloadService } from '../../../domain/services/download.service';
 import { ToastService } from '../../../domain/services/toast.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { AppCurrencyPipe } from '../../../shared/pipes/app-currency.pipe';
@@ -23,9 +24,11 @@ export class ProductCardComponent {
   readonly quickDescription = input<string | undefined>(undefined);
   readonly author = input<string | undefined>(undefined);
   readonly pagesCount = input<number | undefined>(undefined);
+  readonly downloadUrl = input<string | undefined>(undefined);
 
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
+  private readonly downloadService = inject(DownloadService);
   private readonly toast = inject(ToastService);
   private readonly router = inject(Router);
   protected readonly uniquePurchase = inject(UNIQUE_PURCHASE);
@@ -44,6 +47,8 @@ export class ProductCardComponent {
     this.cartService.getQuantityById(this.productId()),
   );
 
+  protected readonly isFree = computed(() => this.price() === 0);
+
   protected goToDetails(): void {
     this.router.navigate(['/details', this.productId()]);
   }
@@ -58,6 +63,11 @@ export class ProductCardComponent {
   }
 
   protected async handleAddToCart(): Promise<void> {
+    if (this.isFree()) {
+      this.downloadService.downloadFile(this.downloadUrl());
+      this.toast.success(`"${this.title()}" downloaded.`);
+      return;
+    }
     if (this.uniquePurchase && this.quantityInCart() > 0) {
       this.router.navigate(['/cart']);
       return;

@@ -11,4 +11,15 @@ export class DownloadService {
       return [...existing, ...toAdd];
     });
   }
+
+  /** Triggers a browser download for a book file. */
+  downloadFile(downloadUrl?: string): void {
+    if (!downloadUrl) return;
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = '';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 }

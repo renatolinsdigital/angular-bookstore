@@ -178,6 +178,142 @@
   }
 }
 
+// ── Featured free books ───────────────────────────────────────────────────────
+
+.home__free {
+  padding-bottom: 3.5rem;
+}
+
+.home__free-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+
+  &--stacked {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+.home__free-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .home__free-head--stacked & {
+    align-items: center;
+  }
+}
+
+.home__free-title {
+  font-size: var(--font-size-huge);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  line-height: var(--line-height-default);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.home__free-subtitle {
+  font-size: var(--font-size-small);
+  color: var(--color-gray5);
+  line-height: var(--line-height-tall);
+}
+
+.home__free-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  &--column {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home__free-card {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--color-tertiary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 2px solid var(--color-success);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition-default),
+    box-shadow var(--transition-default);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.home__free-cover-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 84px;
+  aspect-ratio: 5 / 7;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgba(36, 61, 97, 0.5);
+}
+
+.home__free-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home__free-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.1rem 0.4rem;
+  background: var(--color-success);
+  color: var(--color-white);
+  font-size: var(--font-size-smallest);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+.home__free-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.home__free-book-title {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray1);
+  line-height: var(--line-height-tall);
+}
+
+.home__free-author {
+  font-size: var(--font-size-super-small);
+  color: var(--color-primary);
+  margin-top: 0.15rem;
+}
+
+.home__free-desc {
+  font-size: var(--font-size-super-small);
+  color: var(--color-gray5);
+  line-height: var(--line-height-tall);
+  margin: 0.5rem 0 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 // ── Stats strip ───────────────────────────────────────────────────────────────
 
 .home__stats {
@@ -198,6 +334,11 @@
 
     .home__stat-divider {
       display: none;
+    }
+
+    .home__stat {
+      flex: 1 1 auto;
+      min-width: 130px;
     }
   }
 }

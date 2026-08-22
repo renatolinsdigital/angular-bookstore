@@ -19,7 +19,7 @@ body {
 // ── App layout ──────────────────────────────────────────────────────────────
 // .app-body is a flex column that fills the space between header and footer.
 // Routed component hosts are direct children of .app-body but carry their own
-// _nghost attribute — Angular encapsulation never adds the AppComponent content
+// _nghost attribute: Angular encapsulation never adds the AppComponent content
 // attribute to them, so these rules MUST live here in the global stylesheet.
 //
 // Similarly, child component hosts like <app-page-container> inside page
@@ -31,14 +31,14 @@ body {
   flex-direction: column;
 }
 
-// Component hosts inside page wrappers — must also propagate flex height.
+// Component hosts inside page wrappers: must also propagate flex height.
 app-page-container {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-// router-outlet is an empty marker — remove it from the flex flow entirely.
+// router-outlet is an empty marker, remove it from the flex flow entirely.
 .app-body > router-outlet {
   display: none;
 }

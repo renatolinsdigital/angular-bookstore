@@ -1,15 +1,15 @@
 # Visual Design
 
-**Theme:** Midnight Library — dark, warm, immersive.
+**Theme:** Midnight Library: dark, warm, immersive.
 
 ## Colour Palette
 
 | Role       | Value                 | Usage                                                          |
 | ---------- | --------------------- | -------------------------------------------------------------- |
 | Background | `#0f172a`             | Page canvas (deep navy)                                        |
-| Primary    | `#f59e0b` / `#d97706` | CTAs, prices, cart badge, header border — amber "reading lamp" |
+| Primary    | `#f59e0b` / `#d97706` | CTAs, prices, cart badge, header border (amber "reading lamp") |
 | Surface    | `#1a2d4a` / `#243d61` | Cards and panels; three-layer depth hierarchy                  |
-| Accent     | `#6366f1` / `#4f46e5` | In-cart state, info labels, download borders — indigo          |
+| Accent     | `#6366f1` / `#4f46e5` | In-cart state, info labels, download borders (indigo)          |
 | Neutral    | `#f9fafb` → `#6b7280` | Text hierarchy, dividers, disabled states                      |
 
 Two-accent grammar: **amber = action/purchase**, **indigo = state/information**.
@@ -37,7 +37,7 @@ Self-hosted **Open Sans** (400 / 600 / 700). Scale from `--font-size-smallest` (
 - **Card hover**: rises 5 px + `--shadow-lift` + cover scales to 1.03×.
 - **Button**: rises 1 px on hover, returns on `:active`.
 - **Toast**: spring-overshoot enter (`cubic-bezier(0.34, 1.56, 0.64, 1)`), scale from 0.95.
-- **Home book illustration**: `@keyframes home-float` — 6 s ease-in-out `translateY(0 → -14px)`. Hidden on mobile.
+- **Home book illustration**: `@keyframes home-float`: 6 s ease-in-out `translateY(0 → -14px)`. Hidden on mobile.
 
 ## Background Glow Pattern
 

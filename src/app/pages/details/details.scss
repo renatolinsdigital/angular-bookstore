@@ -241,6 +241,11 @@
   color: var(--color-primary);
   line-height: 1;
   letter-spacing: -0.02em;
+
+  &--free {
+    color: var(--color-success);
+    text-transform: uppercase;
+  }
 }
 
 .details__price-note {

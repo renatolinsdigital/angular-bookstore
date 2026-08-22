@@ -106,6 +106,62 @@
       </div>
     </div>
 
+    <!-- Featured free books -->
+    @if (freeBooks().length) {
+      <section class="home__free">
+        <div class="home__free-head" [class.home__free-head--stacked]="responsive.isSmaller()">
+          <div class="home__free-intro">
+            <h2 class="home__free-title">Start reading right now</h2>
+            <p class="home__free-subtitle">
+              No cart, no checkout. Download these and keep them forever.
+            </p>
+          </div>
+        </div>
+
+        <div class="home__free-grid" [class.home__free-grid--column]="responsive.isSmall()">
+          @for (book of freeBooks(); track book.id) {
+            <article class="home__free-card">
+              <div
+                class="home__free-cover-wrap"
+                role="button"
+                tabindex="0"
+                (click)="goToDetails(book.id)"
+                (keydown.enter)="goToDetails(book.id)"
+                [attr.aria-label]="'View details for ' + book.title"
+              >
+                <img
+                  class="home__free-cover"
+                  [src]="book.image"
+                  [alt]="book.title"
+                  loading="lazy"
+                  (error)="$any($event.target).src = 'assets/images/cover-placeholder.svg'"
+                />
+                <span class="home__free-tag">Free</span>
+              </div>
+
+              <div class="home__free-body">
+                <h3 class="home__free-book-title">{{ book.title }}</h3>
+                @if (book.author) {
+                  <p class="home__free-author">by {{ book.author }}</p>
+                }
+                @if (book.quickDescription) {
+                  <p class="home__free-desc">{{ book.quickDescription }}</p>
+                }
+                <app-button
+                  variant="primary"
+                  [fullWidth]="true"
+                  (click)="downloadFreeBook(book)"
+                  [attr.aria-label]="'Download ' + book.title"
+                >
+                  Download
+                </app-button>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
+
     <!-- Stats strip -->
     <div class="home__stats" [class.home__stats--compact]="responsive.isSmall()">
       <div class="home__stat">

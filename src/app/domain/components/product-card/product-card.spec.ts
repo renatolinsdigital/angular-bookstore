@@ -4,6 +4,7 @@ import { signal } from '@angular/core';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { ProductCardComponent } from './product-card';
 import { CartService } from '../../services/cart.service';
+import { DownloadService } from '../../services/download.service';
 import { ToastService } from '../../services/toast.service';
 import { ResponsiveService } from '../../services/responsive.service';
 import { UNIQUE_PURCHASE } from '../../../app.tokens';
@@ -36,6 +37,12 @@ const mockResponsiveService = {
   isDesktopSmallScreen: signal(false),
 };
 
+const mockDownloadService = {
+  downloadItems: signal([]),
+  proceedToDownload: vi.fn(),
+  downloadFile: vi.fn(),
+};
+
 const mockToastService = {
   success: vi.fn(),
   error: vi.fn(),
@@ -60,6 +67,7 @@ describe('ProductCardComponent', () => {
       providers: [
         provideRouter([]),
         { provide: CartService, useValue: mockCartService },
+        { provide: DownloadService, useValue: mockDownloadService },
         { provide: ToastService, useValue: mockToastService },
         { provide: ResponsiveService, useValue: mockResponsiveService },
         { provide: UNIQUE_PURCHASE, useValue: true },
@@ -126,5 +134,38 @@ describe('ProductCardComponent', () => {
     // The native <button> is the inner .app-btn inside <app-button>
     const btn = fixture.nativeElement.querySelector('.product-card__btn .app-btn');
     expect(btn.disabled).toBe(true);
+  });
+
+  describe('free books', () => {
+    beforeEach(() => {
+      fixture.componentRef.setInput('price', 0);
+      fixture.componentRef.setInput('downloadUrl', 'data/books/example.pdf');
+      fixture.detectChanges();
+    });
+
+    it('should show Free instead of a price', () => {
+      const price = fixture.nativeElement.querySelector('.product-card__price');
+      expect(price.textContent.trim()).toBe('Free');
+    });
+
+    it('should show a DOWNLOAD label', () => {
+      const label = fixture.nativeElement.querySelector('.product-card__btn-label');
+      expect(label.textContent.trim()).toBe('DOWNLOAD');
+    });
+
+    it('should download instead of adding to cart', async () => {
+      const btn = fixture.nativeElement.querySelector('.product-card__btn');
+      btn.click();
+      await new Promise((r) => setTimeout(r, 300));
+      expect(mockDownloadService.downloadFile).toHaveBeenCalledWith('data/books/example.pdf');
+      expect(mockCartService.addToCart).not.toHaveBeenCalled();
+    });
+
+    it('should stay enabled even when the cart quantity is at 999', () => {
+      mockQty.set(999);
+      fixture.detectChanges();
+      const btn = fixture.nativeElement.querySelector('.product-card__btn .app-btn');
+      expect(btn.disabled).toBe(false);
+    });
   });
 });

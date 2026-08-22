@@ -85,22 +85,43 @@
 
   <p class="product-card__title">{{ title() }}</p>
 
-  <p class="product-card__price" [class.product-card__price--compact]="responsive.youJokingRight()">
-    {{ price() | appCurrency }}
+  <p
+    class="product-card__price"
+    [class.product-card__price--compact]="responsive.youJokingRight()"
+    [class.product-card__price--free]="isFree()"
+  >
+    {{ isFree() ? 'Free' : (price() | appCurrency) }}
   </p>
 
   <app-button
     variant="ghost"
     class="product-card__btn"
-    [class.product-card__btn--in-cart]="quantityInCart() > 0"
+    [class.product-card__btn--in-cart]="!isFree() && quantityInCart() > 0"
+    [class.product-card__btn--free]="isFree()"
     [class.product-card__btn--compact]="responsive.youJokingRight()"
     [class.product-card__btn--loading]="isLoading()"
     [class.product-card__btn--full-width]="responsive.isSmaller()"
-    [disabled]="quantityInCart() >= 999 || isLoading()"
+    [disabled]="(!isFree() && quantityInCart() >= 999) || isLoading()"
     (click)="handleAddToCart()"
   >
     @if (isLoading()) {
       <span class="product-card__btn-spinner"></span>
+    } @else if (isFree()) {
+      @if (!responsive.youJokingRight()) {
+        <svg
+          class="product-card__btn-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+        </svg>
+      }
+      <span class="product-card__btn-label">DOWNLOAD</span>
     } @else {
       @if (!responsive.youJokingRight()) {
         <img src="assets/images/cart-add.svg" alt="" class="product-card__btn-icon" />

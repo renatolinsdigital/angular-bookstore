@@ -14,7 +14,7 @@ export interface PagedResult {
 export class BooksApiService {
   private readonly http = inject(HttpClient);
 
-  /** Cached full catalogue — loaded once, then served from memory. */
+  /** Cached full catalogue (loaded once, then served from memory). */
   private catalogue$: Observable<Product[]> | null = null;
 
   private getCatalogue(): Observable<Product[]> {
@@ -59,6 +59,14 @@ export class BooksApiService {
           page: safePage,
         };
       }),
+    );
+  }
+
+  /** Returns every zero-priced book, for the featured free shelf on the home page. */
+  fetchFreeBooks(): Observable<Product[]> {
+    return this.getCatalogue().pipe(
+      delay(500),
+      map((books) => books.filter((b) => b.price === 0)),
     );
   }
 

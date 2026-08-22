@@ -1,6 +1,7 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../domain/services/cart.service';
+import { DownloadService } from '../../domain/services/download.service';
 import { ResponsiveService } from '../../domain/services/responsive.service';
 import { ToastService } from '../../domain/services/toast.service';
 import { AppCurrencyPipe } from '../../shared/pipes/app-currency.pipe';
@@ -20,6 +21,7 @@ export class DetailsComponent implements OnInit {
   private readonly router = inject(Router);
   protected readonly cartService = inject(CartService);
   protected readonly responsive = inject(ResponsiveService);
+  private readonly downloadService = inject(DownloadService);
   private readonly toast = inject(ToastService);
   protected readonly uniquePurchase = inject(UNIQUE_PURCHASE);
 
@@ -35,11 +37,18 @@ export class DetailsComponent implements OnInit {
 
   protected readonly isLoading = signal(false);
 
+  protected readonly isFree = computed(() => this.product()?.price === 0);
+
   ngOnInit(): void {
     this.cartService.loadProducts();
   }
 
   protected async handleAddToCart(): Promise<void> {
+    if (this.isFree()) {
+      this.downloadService.downloadFile(this.product()?.downloadUrl);
+      this.toast.success(`"${this.product()?.title}" downloaded.`);
+      return;
+    }
     if (this.uniquePurchase && this.quantityInCart() > 0) {
       this.router.navigate(['/cart']);
       return;
