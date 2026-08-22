@@ -2,6 +2,8 @@
 
 An Open-Source Angular SPA built as a portfolio project for exploring modern frontend development. This standalone application allows users to browse and simulate the purchase of digital books. It uses Angular Signals for state management and Sass (SCSS) for styling, with features including a landing page, a paginated and filterable book catalog with a details page, a shopping cart, and a mocked checkout with an instant-download purchase flow. The project also implements lazy-loaded routes and a design token system based on CSS variables.
 
+You can browse this project at http://digitalbookstore.netlify.app.
+
 ## Prints
 
 ![Home Page](prints/01.png)
