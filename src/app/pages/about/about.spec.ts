@@ -40,7 +40,7 @@ describe('AboutComponent', () => {
 
   it('should render the page title', () => {
     const title = fixture.nativeElement.querySelector('.about__title');
-    expect(title.textContent.trim()).toContain('BookStore');
+    expect(title.textContent.trim()).toContain('Books worth');
   });
 
   it('should navigate to /store when goToStore() is called', () => {

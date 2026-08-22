@@ -13,6 +13,7 @@ interface CartItemCardInternal {
 import { CartService } from '../../../domain/services/cart.service';
 import { ResponsiveService } from '../../../domain/services/responsive.service';
 import { provideHttpClient } from '@angular/common/http';
+import { UNIQUE_PURCHASE } from '../../../app.tokens';
 
 const mockCartService = {
   totalItemsInCart: signal(0),

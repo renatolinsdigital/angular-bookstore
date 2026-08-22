@@ -12,7 +12,7 @@ npm run dev                      # Start the dev server at http://localhost:4200
 ## Main Stack
 
 - **TypeScript** - Type-safe JavaScript
-- **Angular** - Component framework (v21)
+- **Angular** - Component framework (v22)
 - **Angular Signals** - Fine-grained reactive state (no NgRx)
 - **Angular Router** - Client-side routing with lazy loading
 - **SCSS** - Pure CSS preprocessor with design tokens
@@ -31,8 +31,11 @@ npm run dev                      # Start the dev server at http://localhost:4200
 
 ### Prerequisites
 
-- Node.js 20+
-- Angular CLI: `npm i -g @angular/cli`
+- Node.js `^22.22.3 || ^24.15.0 || >=26.0.0` (required by Angular 22)
+
+The Angular CLI ships as a local devDependency — no global install needed.
+`npm install` provides it, and the npm scripts above (or `npx ng`) run it.
+If `ng` is "not recognized", dependencies simply haven't been installed yet.
 
 ## Documentation
 

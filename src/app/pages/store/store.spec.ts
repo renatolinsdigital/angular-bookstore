@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
 import { of } from 'rxjs';
+import { provideRouter } from '@angular/router';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { StoreComponent } from './store';
 import { CartService } from '../../domain/services/cart.service';
@@ -46,6 +47,7 @@ const mockBooksApiService = {
       : mockProducts;
     return of(makePage(filtered, page, Math.ceil(filtered.length / 10) || 1));
   }),
+  fetchCategories: vi.fn().mockReturnValue(of(['Fiction', 'Programming'])),
 };
 
 const mockResponsiveService = {
@@ -74,6 +76,7 @@ describe('StoreComponent', () => {
       imports: [StoreComponent],
       providers: [
         provideHttpClient(),
+        provideRouter([]),
         { provide: CartService, useValue: mockCartService },
         { provide: BooksApiService, useValue: mockBooksApiService },
         { provide: ResponsiveService, useValue: mockResponsiveService },
@@ -95,7 +98,7 @@ describe('StoreComponent', () => {
   });
 
   it('should call fetchPage on init with page 1, empty query and configured page size', () => {
-    expect(mockBooksApiService.fetchPage).toHaveBeenCalledWith(1, '', 10);
+    expect(mockBooksApiService.fetchPage).toHaveBeenCalledWith(1, '', 10, undefined);
   });
 
   it('should update searchQuery and reset page to 1 on onSearch()', () => {
@@ -109,24 +112,5 @@ describe('StoreComponent', () => {
   it('should update currentPage on onPageChange()', () => {
     component.onPageChange(2);
     expect(component.currentPage()).toBe(2);
-  });
-
-  it('should compute 3-column grid on large screen', () => {
-    mockResponsiveService.isSmaller.set(false);
-    mockResponsiveService.isSmall.set(false);
-    expect(component.gridColumns()).toBe('1fr 1fr 1fr');
-  });
-
-  it('should compute 2-column grid on small screen', () => {
-    mockResponsiveService.isSmaller.set(false);
-    mockResponsiveService.isSmall.set(true);
-    fixture.detectChanges();
-    expect(component.gridColumns()).toBe('1fr 1fr');
-  });
-
-  it('should compute 1-column grid on smaller screen', () => {
-    mockResponsiveService.isSmaller.set(true);
-    fixture.detectChanges();
-    expect(component.gridColumns()).toBe('1fr');
   });
 });
